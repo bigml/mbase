@@ -1,0 +1,126 @@
+MISC
+====
+删除行尾空格 M-x delete-trailing-whitespace <RET>
+插入自增计数器 c-x ( F3 xxx)
+
+FONT
+====
+apt-get install xfonts-terminus
+
+
+COLOR
+====
+DARK SERIALS
+----
+Calm Forest        Artur Hefczyc <kobit@plusnet.pl>
+Robin Hood         Jinwei Shen <shenjw@wam.umd.edu>
+Standard XEmacs    XEmacs Team, added by Alex Schroeder <alex@gnu.org>
+
+
+MODE
+====
+
+gerneal
+----
+C-x RET r 设置当前文件的显示coding system
+C-x RET f 设置当前文件的保存coding system
+C-x C-f /sudo:/etc/fstab    edit file as root
+C-x C-f /METHOD:USER@HOST#PORT:FILENAME edit remote file
+
+M-i                insert tab/spaces (tab-to-tab-stop) ~= C-q TAB
+
+debug
+----
+M-x gdb --annotate=3 xxx
+
+C-x <SPC>       添加断点
+C-x C-a C-b     添加断点
+C-x C-a C-d     删除断点
+C-x C-a C-n     单步执行，无视函数
+C-x C-a C-s     单步执行，进入函数
+C-x C-a C-f     跳出当前函数
+C-x C-a C-u     运行到光标所在语句
+C-x C-a C-r     继续运行程序
+C-x C-a C-w     观察复杂结构提变量的值
+
+(setq gdb-many-windows t)       可查看局部变量
+(setq gud-tooltip-mode t)       鼠标显示变量值
+(setq gdb-use-separate-io-buffer t)     输入输出单独窗口
+
+
+version control
+----
+single file:
+C-x v =            vc-diff
+C-x v D            vc-root-diff
+C-x v l            vc-print-log
+dir mode(skeleton)
+C-x v d            vc-dir
+l                  vc-print-log (can use any key in single mode - C-x v)
+TAB                vc-dir-next-directory
+M                  vc-dir-mark-all-files
+U                  vc-dir-unmark-all-files
+x                  vc-dir-hide-up-to-date (refresh)
+v                  vc-next-action
+
+
+html
+----
+C-c C-i            add > + end tag, place cusor inside. useful for <a href=""C-c C-i
+C-c C-b            add > + blank line + endtag. useful for <pC-c C-b
+C-c C-v            toggle validate mode
+
+
+js
+----n
+
+
+tex
+----
+C-c C-c            compile/view file
+C-c C-s            insert section, parag...
+C-c C-m            insert macros(ref, space...)
+C-c C-e            insert enviorment(itemize, enumvertate, picture...)
+C-c C-f            insert font(press b for font list)
+
+C-C C-o C-f        enable/disable tex folder mode
+C-c C-o C-e        TeX-fold-env
+C-c C-o i          TeX-fold-clearout-item
+
+
+ecb
+----
+M-x ecb-active     [de]active ecb
+C-c . l w          ecb-toggle-ecb-windows (hide/show ecb windows)
+RETURN             see node
+TAB                expand/unexpand node
+Left/Right         up/down node
+
+C-c . m   a/b/d/h/m/s        ecb-maxmize-window-
+                                 (analyse/speedbar/directories/history/methods/sources)
+C-c . g 1/a/b/d/h/m/s/l/c    ecb-goto-window-
+                                (edit1/.../edit-last/comilation)
+C-c . l c/r/t/w              ecb-layout-
+                                (change/redraw/toggle-layout/toggle-windows)
+C-c . f h/m/s/...            ecb-filter-.... (filter node)
+
+
+
+cscope
+------
+C-c s I            cscope-index-files
+C-c s L            cscope-create-list-of-files-to-index
+C-c s t            cscope-find-this-text-string
+C-c s c            cscope-find-functions-calling-this-function
+
+
+
+folder
+------
+M-x hs-minor-mode  进入hideshow mode
+C-c @ C-s   折叠当前代码
+C-c @ C-h   显示当前折叠
+C-c @ C-c   切换当前折叠
+
+C-c @ C-M-s 显示所有代码
+C-c @ C-M-h 折叠所有代码

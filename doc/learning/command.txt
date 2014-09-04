@@ -1,0 +1,106 @@
+网络
+---
+
+rpcinfo -p localhost give a listing of running RPC programs that has to include mountd, portmapper, nfs, and nlockmgr
+
+
+恢复文件
+------
+grep -a -B 50 -A 60 'some string in the file' /dev/sda1 > result.txt
+
+关于grep的-a意为–binary-files=text，也就是把二进制文件当作文本文件。
+-B和-A的选项就是这段字符串之前几行和之后几行。
+/dev/sda1，就是硬盘设备，
+> results.txt，就是把结果重定向到results.txt文件中。
+
+
+批量替换
+------
+sed -i "s/oldstring/newstring/g" `grep oldstring -rl yourdir`
+
+
+日期处理
+------
+输出当前秒数
+date +%s
+date +%s 和 time(NULL) 返回的数字一样，都是 seconds since 00:00:00 UTC
+故，无论在什么时区设置的机器上，其返回的数字都是一致的（不会因Timezone选择不同而不同）。
+所以，用其判断系统当前日期、时间，必须使用localtime()函数（如mutl_getdatetime()）。
+或者，在这个秒数的基础上手动加上时区秒数（在使用mevent的g_ctime时特别注意）。
+
+
+输出某特定时刻的秒数
+date -d "2011-11-15 00:00:00" +%s
+
+今天的日期
+TODAY=`date +%Y%m%d`
+
+将秒数转换成日期
+date -d "$((1354494968 - `date '+%s'` )) sec" +'%Y-%-m-%-d %H:%M:%S'
+
+
+
+添加用户
+------
+#useradd -d /home/hjj -m hjj
+#passwd hjj
+
+
+创建密匙
+------
+cd ~/.ssh (with mode 700)
+mkdir key_backup
+cp id_rsa* key_backup
+rm id_rsa*
+ssh-keygen -t rsa -C "bigmaliang@gmail.com"
+
+测试当前用户在 github 上的登录名
+ssh -[v]T git@github.com
+
+
+修改路由
+------
+#route 查看路由表
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+115.182.70.70   172.16.255.254  255.255.255.255 UGH   0      0        0 ppp0
+115.182.70.70   172.16.255.254  255.255.255.255 UGH   0      0        0 ppp0
+172.16.255.254  *               255.255.255.255 UH    0      0        0 ppp0
+192.168.11.255  *               255.255.255.255 UH    0      0        0 ppp1
+default         *               0.0.0.0         U     0      0        0 ppp1
+比如这里，除了192.168.3.*走ppp1，其余全走ppp0可以这样操作：
+#route add -net 192.168.3.0 netmask 255.255.255.0 dev ppp1
+$sudo route -nv add -net 192.168.3.0 -netmask 255.255.255.0 -interface ppp1(mac osx)
+#route del default
+#route add default dev ppp0
+#route
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+115.182.70.70   172.16.255.254  255.255.255.255 UGH   0      0        0 ppp0
+115.182.70.70   172.16.255.254  255.255.255.255 UGH   0      0        0 ppp0
+172.16.255.254  *               255.255.255.255 UH    0      0        0 ppp0
+192.168.11.255  *               255.255.255.255 UH    0      0        0 ppp1
+192.168.3.0     *               255.255.255.0   U     0      0        0 ppp1
+default         *               0.0.0.0         U     0      0        0 ppp0
+
+
+TAB 键自动补齐 link 目录后的 /
+--------------------------
+echo "set mark-symlinked-directories on" >> ~/.inputrc
+Ctrl+x, then Ctrl+r
+
+
+scrot
+-----
+抓屏软件
+
+scrot -d 3 x.jpg
+scrot -d 3 -s x.jpg
+scrot -u x.jpg
+
+  -s, --select              interactively choose a window or rectangle
+                            with the mouse
+  -b, --border              When selecting a window, grab wm border too
+  -u, --focused             use the currently focused window
+
+
+git rev-list --objects --all |     while read sha1 fname;     do         echo -e "$(git cat-file -s $sha1)\t$\t$fname";     done | sort -n > filesize.txt

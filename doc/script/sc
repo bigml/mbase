@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# sc new.jpg -s -d 3
+
+PWD=`pwd`
+FPATH=${PWD}/../pop/fly/pic/
+
+FNAME=$1
+shift
+OP=$*
+
+scrot ${OP} ${FPATH}${FNAME}

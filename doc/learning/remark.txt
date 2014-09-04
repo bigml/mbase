@@ -1,0 +1,169 @@
+HTML & JS
+=========
+
+获取表单中的输入控件, 及其点击状态
+-------------
+$("input[name=permittype]") 或者$("input:radio")
+$("input:[name=permittype]:checked").val()
+if ($("input:checkbox").attr("checked") == true ) ...
+ // Check #x
+ $("#x").attr('checked', 'checked');
+ // Uncheck #x
+ $("#x").removeAttr('checked');
+
+http://visualjquery.com/
+
+div-id-name
+div-class-name
+
+setTimeout(fn, msec)
+setInterval(fn, msec)
+window.clearInterval(intervalID);
+window.clearTimeout(timeoutID);
+document.getElementById('ape_honey-im').contentWindow
+
+js2-mode
+--------
+http://code.google.com/p/js2-mode/issues/detail?id=94
+http://stackoverflow.com/questions/2370028/emacs-js2-mode-disable-indenting-completely
+http://mihai.bazon.net/projects/editing-javascript-with-emacs-js2-mode
+http://www.saltycrane.com/blog/2010/03/emacs-espresso-mode-jquery/
+
+
+Js2 Mirror Mode: Hide Value Toggle  off (nil)
+   State: STANDARD.
+   Non-nil to insert closing brackets, parens, etc. automatically.
+Js2 Bounce Indent P: Hide Value Toggle  on (non-nil)
+   State: SET for current session only.
+   跳跃式缩进， 多按几次Tab 会有不同的缩进
+Js2 Mode Escape Quotes: Hide Value Toggle  on (non-nil)
+   State: STANDARD.
+   Non-nil to disable automatic quote-escaping inside strings.
+
+****http://www.nongnu.org/espresso/****
+
+
+日期格式
+-------
+Date() 对象是 js 里处理日期的对象, 用以下方式申明:
+可加参数: 秒数, 日期字符串...
+
+Date() 返回如下格式字符串
+"Fri Nov 13 2009 15:51:05 GMT+0800"
+
+new Date() 返回日期对象
+
+
+获取指定格式的日期:
+
+方法1
+var dt  = new Date(eval(raw.time));
+var y = dt.getFullYear(), m = dt.getMonth(), d = dt.getDay();
+var h = dt.getHours(), mt = dt.getMinutes(), s = dt.getSeconds();
+var tm = h+":"+mt+":"+s;
+这里的hour 不是本地时间的小时
+
+方法2
+var tm = Date(eval(raw.time)).match(/\d{1,2}:\d{1,2}:\d{1,2}/)[0];
+
+
+键盘事件
+-------
+    function bindEnter(type) {
+        $("#" + type + "pass").keyup(function(e) {
+            if (e.which == 13) {
+                $("#" + type + "Grab").click();
+            }
+        });
+    }
+
+    bindEnter("mail");
+    bindEnter("msn");
+
+
+$.getJSON('http://otherdomain.com/cgi?callback=?', {data}, function() {});
+能实现真正的跨域获取数据
+
+
+var data = {name: 'foo', age: 10};
+var type = age;
+
+data.name ===> foo
+data['name'] ===> foo
+data[name] ===> undefined
+data[type] ===> 10
+data.type ===> reference error
+
+
+
+PHP, JS
+========
+php 有for, foreach, js 只有for, jQuery有 $.each(obj, xxx)
+js 中 for 效率远大于 $.each(), 但 for 只能用于数组, $.each()
+中不能用 continue, break之类跳出循环, 可用 return false类似break,
+return true类似continue.
+
+div 没有focus, blur 事件, 只有mouseover mouseout 事件
+
+form 的 submit button 可绑定事件onclick="return sendSubmit();",
+然后再函数内return false取消提交.
+
+
+css
+===
+position
+一般与 left, top 属性并用
+    static    默认属性。 块级元素生成一矩形框，作为文档流的一部分。 行内元素创建一个或多个行框，置于其父元素中。
+    relative  偏移某个距离。 原本占有的空间保留。
+    absolute  元素从文档流中删除， 并相对于其包含块定位。 元素在正常文档流中占用的空间将会关闭， 等同于不存在。
+              元素定位后生成一个块级框， 无论在正常流中生成何种框。
+    fixed     类似 absolute， 除了包含块是视窗本身。
+display
+    inline <span>
+    inline-block <a>
+    block <div>
+
+background属性:
+http://www.w3school.com.cn/css/pr_background.asp
+background: background-color background-image background-repeat background-attachment background-position
+    按顺序就可以了， 没有的可以省略。
+    color: #ee0000 之类
+    image: url(images/body_bg.gif)
+    repeat: 是否以及如何重复背景图像。 默认repeat. [repeat-x repeat-y no-repeat inherit]
+    attachment: 背景图像是否固定，或者随元素的滚动而滚动。 只有当背景图像小于元素尺寸、且元素有滚动条时才有用。 默认 scroll [fixed inherit]
+    position: 设置背景图像放在元素中的位置。
+        三种情况(可以混用)：
+        1          top/center/bottom left/center/right
+        2         %x      %y
+        3         xpos    ypos
+       -100px -200px 背景图像放在元素的左边100px, 上边200px。 也可以说从这个位置开始放。
+       100%  100%    背景图片放在元素的右下角。
+
+overflow: 内容溢出时元素的表现：
+    visible 默认， 内容显示在元素框之外
+    hidden  内容被裁减，且其余内容不可见
+    scroll  内容被裁减，但有滚动条可以查看
+    auto    同上
+    inherit
+
+
+C
+=
+struct 放到.c中能隐藏其中数据结构, 防止非法访问其成员.
+
+typedef struct 新类型, 以驼峰命名 chatNum *cnum, anchor
+函数名 下划线命名 chatnum_new()
+宏  大写 SFREE
+
+JS
+==
+函数名 functionName
+类    ClassName
+
+
+firefox
+=======
+about:config
+
+dom.allow_scripts_to_close_windows; true 让用户脚本关闭窗口
+network.dns.disableIPv6; true    解决dns解析超慢

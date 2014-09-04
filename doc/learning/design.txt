@@ -1,0 +1,76 @@
+设计风格
+------
+    http://www.ronniesan.com/work/
+    http://www.douban.com/
+    http://www.dropbox.com/
+    http://photo.163.com/story130@126/big/#aid=191548433&id=5998768727
+    http://www.smashingmagazine.com/2010/11/08/equal-height-columns-using-borders-and-negative-margins-with-css/
+
+
+http://www.openclipart.org/
+http://www.deviantart.com/
+http://ffffound.com/
+http://dribbble.com
+http://iconmoon.com/blog2/chinese-designers-dribbble/
+http://hi.baidu.com/madesign/blog
+http://www.coroflot.com
+
+工具站
+----
+http://www.colr.org/
+http://www.colorsontheweb.com/
+http://www.colorschemer.com/
+
+特色站
+-----
+手写风格
+http://fredhq.com/projects/notebook
+http://www.codewranglers.org
+http://forrst.com/
+http://www.dzlover.net
+
+http://js1k.com
+http://js1k.com/2010-first/demo/151 [bubble]
+
+个人站
+-----
+JJ.Ying 应骏赳 Shanghai 油条
+ying.jun.jiu@gmail.com
+http://iconmoon.com/
+
+DZLover (鱼刺) Shanghai 手绘
+yuci@themex.net
+http://www.dzlover.net
+
+shek Guangdong 色彩，光线 3D
+oooshek@gmail.com
+http://shek0101.deviantart.com/ === http://www.sshek.com/
+
+
+KINGYO 成都
+kingyo@live.com 29614502
+http://www.ikingyo.com/
+
+KIDAUBIS (步果断) 苏州
+kidaubis@gmail.com
+http://www.kidcomic.net/
+
+
+http://www.yeeyan.com/articles/view/pestwave/51250
+《创业入门》之--三步打造完美网站
+简介
+
+创建一家网络公司需要三个步骤:
+1. 看上去很美（Look good），有一个漂亮的logo。
+2. 聚集人气（Get noticed），
+3. 信誉为本（Build trust）。
+
+
+
+
+http://www.yeeyan.com/articles/tag/logo
+logo 设计
+
+
+产品的业务模式同样需要从用户出发，针对于用户的需求设计业务模式，比针对于系统架构设计业务模式更合理。
+当然，产品设计也不能只围绕着固有的业务模式展开思路，还需要回归到用户的原始需求

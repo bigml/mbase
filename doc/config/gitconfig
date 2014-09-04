@@ -1,0 +1,13 @@
+[user]
+    name = bigml
+    email = bigmaliang@gmail.com
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    logl = log --pretty=oneline
+    logf = log --pretty=format:'%h - %an, %ad : %s' --date=iso
+    pulla = pull --recurse-submodules
