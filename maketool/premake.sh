@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/usr/sbin
+PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/usr/sbin:/sbin
 
 #srcdir="/tmp"
 srcdir="/usr/local/src"
@@ -51,12 +51,12 @@ declare -a Config=(
 
 
 echo -n "config /usr/local/lib"
-if ! grep '/usr/local/lib' /etc/ld.so.conf
+if ! grep '/usr/local/lib' /etc/ld.so.conf > /dev/null 2>&1
 then
     echo "/usr/local/lib" >> /etc/ld.so.conf
     ldconfig
 fi
-if ! grep '/usr/local/lib/pkgconfig' /etc/profile
+if ! grep '/usr/local/lib/pkgconfig' /etc/profile > /dev/null 2>&1
 then
     echo "export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH" >> /etc/profile
 fi
