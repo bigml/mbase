@@ -23,7 +23,7 @@ You can checkout business worker with mbase together use --recursive option,
 or, checkout mbase partly for personal use.
 
 On fresh system, You need to excute premake.sh before mbase can compile ok.
-This script just tested on Linux platform (currently, mbase also works on OsX, but not the premake.sh).
+This script just tested on Linux platform (currently, mbase also works on OSX, but not the premake.sh).
 
 
 #### attention ####

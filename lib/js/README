@@ -1,3 +1,5 @@
+3rd partly js modlue
+
 [submodule "lib/js/jquerytools"]
 	path = lib/js/jquerytools
 	url = https://github.com/jquerytools/jquerytools.git

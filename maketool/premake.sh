@@ -36,7 +36,7 @@ declare -a Download=(
 
     'git clone https://github.com/bigmaliang/libmongo-client.git libmongo-client'
 
-    'wget http://www.fastcgi.com/dist/fcgi.tar.gz && mkdir fcgi && tar zxvf fcgi.tar.gz -C fcgi/ --strip-components=1'
+    'git clone https://github.com/bigmaliang/fcgi.git fcgi'
     'git clone https://github.com/Orc/discount.git libmarkdown');
 
 declare -a Config=(
@@ -48,6 +48,19 @@ declare -a Config=(
 
     './configure'
     './configure.sh');
+
+
+echo -n "config /usr/local/lib"
+if ! grep '/usr/local/lib' /etc/ld.so.conf
+then
+    echo "/usr/local/lib" >> /etc/ld.so.conf
+    ldconfig
+fi
+if ! grep '/usr/local/lib/pkgconfig' /etc/profile
+then
+    echo "export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH" >> /etc/profile
+fi
+echo "ok"
 
 
 for (( i = 0 ; i < ${#Packagename[@]} ; i++ ))
@@ -73,16 +86,5 @@ do
         cd $pwd
     fi
 done
-
-echo -n "make sure /usr/local/lib in ld.so.conf..."
-if grep '/usr/local/lib' /etc/ld.so.conf
-then
-    ;
-else
-    echo "/usr/local/lib" >> /etc/ld.so.conf
-    ldconfig
-fi
-echo "ok"
-
 
 echo "all done, compile will be ok now"
