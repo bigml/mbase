@@ -1,6 +1,7 @@
 mbase - basic of moon
 
 moon is a highy concurrency dynamic web solution write in c
+(currently by bigmaliang@gmail.com)
 
 
 
