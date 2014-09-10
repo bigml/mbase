@@ -22,7 +22,6 @@ NEOERR* mmg_init(char *host, int port, int ms, mmg_conn **db)
 
     ldb->con = mongo_sync_connect(host, port, true);
     if (!ldb->con) {
-        GET_LAST_ERROR(ldb->con, NULL);
         return nerr_raise(NERR_DB, "sync connect: %s %d %s",
                           m_errmsg, errno, strerror(errno));
     }
