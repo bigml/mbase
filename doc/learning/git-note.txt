@@ -99,8 +99,7 @@ D DIY
 
     submodule改变路径：
       修改.gitmodule; git submodlue sync
-    submodule删除
-：
+    submodule删除：
       1. Delete the relevant section from the .gitmodules file.
       2. Stage the .gitmodules changes git add .gitmodules
       3. Delete the relevant section from .git/config.
