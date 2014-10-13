@@ -1,5 +1,4 @@
-LOCALBASE = ../
-include $(LOCALBASE)Make.env
+BASEDIR = ../../
 include $(BASEDIR)Make.env
 
 CFLAGS += -rdynamic
