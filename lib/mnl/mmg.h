@@ -65,6 +65,45 @@ void mmg_set_callbackdata(mmg_conn *db, void *data);
 
 /*
  * dsn is the namespace, the database and collection name
+ * prefix: the prefix keyword db result will store
+ *         if (prefix == NULL && limit == 1)
+ *             outnode.colakey = colaval
+ *             outnode.colbkey = colbval
+ *             ^cnode passed to callback (qcbk)
+ *         if (prefix == NULL && !(flags & MMG_FLAG_MIXROWS) && limit > 1)
+ *             outnode.0.row1colakey = row1colaval
+ *             outnode.0.row1colbkey = row1colbval
+ *             outnode.1.row1colakey = row2colaval
+ *             outnode.1.row1colbkey = row2colbval
+ *                     ^cnode passed to callback (qcbk)
+ *         if (prefix != NULL && limit == 1)
+ *             outnode.prefix.colakey = colaval
+ *             outnode.prefix.colbkey = colbval
+ *                     ^cnode passed to callback (qcbk)
+ *         if (prefix != NULL && !(flags & MMG_FLAG_MIXROWS) && limit > 1)
+ *             outnode.prefix.0.row1colakey = row1colaval
+ *             outnode.prefix.0.row1colbkey = row1colbval
+ *             outnode.prefix.1.row1colakey = row2colaval
+ *             outnode.prefix.1.row1colbkey = row2colbval
+ *                            ^cnode passed to callback (qcbk)
+
+ *
+
+ *         '$' in prefix mostly used to sort query result. support multi '$' pair
+ *         if (strchr(prefix, '$'))
+ *             e.g. char *prefix = "$phone$";
+ *                  outnode.15111231681.0.row0colakey = row1colaval
+ *                  outnode.15111231681.0.row0colbkey = row1colbval
+ *                  outnode.15111231681.1.row1colakey = row2colaval
+ *                  outnode.15111231681.1.row1colbkey = row2colbval
+ *                                      ^cnode passed to callback (qcbk)
+ *                  char *prefix = "clientinfo.$age$.$phone$";
+ *                  outnode.clientinfo.29.15111231681.0.row0colakey = row1colaval
+ *                  outnode.clientinfo.29.15111231681.0.row0colbkey = row1colbval
+ *                  outnode.clientinfo.31.15111231681.1.row1colakey = row2colaval
+ *                  outnode.clientinfo.31.15111231681.1.row1colbkey = row2colbval
+ *                                     ^cnode passed to callback (qcbk)
+ *
  */
 NEOERR* mmg_query(mmg_conn *db, char *dsn, char *prefix, HDF *outnode);
 
