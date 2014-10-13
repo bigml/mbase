@@ -25,7 +25,7 @@ void mstr_rand_string_with_len(char *s, int len)
 void mstr_rand_digit_with_len(char *s, int len)
 {
     int x;
-    
+
     for (x = 0; x < len; x++) {
         s[x] = (char)(48 + neo_rand(10));
     }
@@ -36,7 +36,7 @@ void mstr_html_escape(HDF *node, char *name)
 {
     if (!node || !name) return;
     char *s, *os;
-    
+
     while (node) {
         s = hdf_get_value(node, name, NULL);
         if (s) {
@@ -44,7 +44,7 @@ void mstr_html_escape(HDF *node, char *name)
             hdf_set_value(node, name, os);
             free(os);
         }
-        
+
         node = hdf_obj_next(node);
     }
 }
@@ -53,7 +53,7 @@ void mstr_html_unescape(HDF *node, char *name)
 {
     if (!node || !name) return;
     char *s, *os;
-    
+
     while (node) {
         s = hdf_get_value(node, name, NULL);
         if (s && *s) {
@@ -66,7 +66,7 @@ void mstr_html_unescape(HDF *node, char *name)
                 free(os);
             }
         }
-        
+
         node = hdf_obj_next(node);
     }
 }
@@ -75,7 +75,7 @@ void mstr_script_escape(HDF *node, char *name)
 {
     if (!node || !name) return;
     char *s, *os;
-    
+
     while (node) {
         s = hdf_get_value(node, name, NULL);
         if (s && *s) {
@@ -87,7 +87,7 @@ void mstr_script_escape(HDF *node, char *name)
                 free(os);
             }
         }
-        
+
         node = hdf_obj_next(node);
     }
 }
@@ -95,7 +95,7 @@ void mstr_script_escape(HDF *node, char *name)
 void mstr_md5_buf(unsigned char *in, size_t len, char out[LEN_MD5])
 {
     if (!in) return;
-    
+
     md5_ctx my_md5;
     unsigned char hexres[16];
 
@@ -103,7 +103,7 @@ void mstr_md5_buf(unsigned char *in, size_t len, char out[LEN_MD5])
     MD5Update(&my_md5, in, (unsigned int)len);
     memset(hexres, 0x0, 16);
     MD5Final(hexres, &my_md5);
-    
+
     mstr_hex2str(hexres, 16, (unsigned char*)out);
 }
 
@@ -115,7 +115,7 @@ void mstr_md5_str(char *in, char out[LEN_MD5])
 bool mstr_isdigit(char *s)
 {
     if (s == NULL) return false;
-    
+
     char *p = s;
     while (*p != '\0') {
         if (!isdigit((int)*p))
@@ -145,7 +145,7 @@ bool mstr_israngen(char *buf, size_t len, int *left, int *right)
 
     size_t cnt = 0;
     int min = 0, max = 0;
-    
+
     while (cnt < len) {
         if (*(buf+cnt) == '-') {
             if (cnt == 0 || cnt == len-1) return false;
@@ -153,7 +153,7 @@ bool mstr_israngen(char *buf, size_t len, int *left, int *right)
             min = atoi(buf);
             max = atoi(buf+cnt+1);
             if (min >= max) return false;
-            
+
             if (left) *left = min;
             if (right) *right = max;
             return true;
@@ -167,7 +167,7 @@ bool mstr_israngen(char *buf, size_t len, int *left, int *right)
 void mstr_real_escape_string(char *to, char *from, size_t len)
 {
     char escape = 0;
-    
+
     for (size_t i = 0; i < len; i++) {
         escape = 0;
         switch (*(from+i)) {
@@ -218,14 +218,18 @@ char* mstr_real_escape_string_nalloc(char **to, char *from, size_t len)
     return s;
 }
 
-void mstr_repchr(char *s, char from, char to)
+char* mstr_repchr(char *s, char from, char to)
 {
-    if (!s) return;
+    char *r = s;
+
+    if (!s) return NULL;
 
     while (*s) {
         if (*s == from) *s = to;
         s++;
     }
+
+    return r;
 }
 
 char* mstr_repstr(int rep_count, char *s, ...)
@@ -240,7 +244,7 @@ char* mstr_repstr(int rep_count, char *s, ...)
     string_init(&tstr);
 
     string_set(&tstr, s);
-    
+
     va_list ap;
     va_start(ap, s);
     for (int i = 0; i < rep_count; i++) {
@@ -254,7 +258,7 @@ char* mstr_repstr(int rep_count, char *s, ...)
         while (p) {
             string_appendn(&str, q, p-q);
             string_append(&str, to);
-            
+
             q = p + len;
             p = strstr(q, from);
         }
@@ -274,11 +278,13 @@ char* mstr_strip(char *s, char n)
 {
     int x;
 
+    if (!s) return NULL;
+
     x = strlen(s) - 1;
     while (x>=0 && s[x]==n) s[x--] = '\0';
 
     while (*s && *s==n) s++;
-  
+
     return s;
 }
 
@@ -286,14 +292,14 @@ char* mstr_repvstr(char *src, char c, char *dst)
 {
     char *p;
     STRING str;
-    
+
     string_init(&str);
 
     if (!src) return NULL;
     if (!dst) return strdup(src);
 
     p = src;
-    
+
     while (*p) {
         if (*p != c) {
             string_append_char(&str, *p);
@@ -327,15 +333,15 @@ size_t mstr_ulen(const char *s)
     size_t len = 0;
 
     if (!s) return 0;
-    
+
     while (*s) {
         unsigned char fbyte = s[0];
         /* If greater than 0x7F (127) then it's not normal ASCII */
         if (fbyte > 0x7F) {
-            /* It's a 2-byte sequence if it's between 0xC0(192) 
+            /* It's a 2-byte sequence if it's between 0xC0(192)
                and 0xDF(223),
                It's a 3-byte sequence if it's between 0xE0(224)
-               and 0xEF(239) 
+               and 0xEF(239)
                It's a 4-byte sequence if it's between 0xF0(240)
                and 0xF4(244) */
             if (fbyte >= 0xC0 && fbyte <= 0xDF) {
@@ -358,11 +364,11 @@ size_t mstr_ulen(const char *s)
 size_t mstr_upos2len(const char *s, long int pos)
 {
     size_t len = 0, cnt = 0;
-    
+
     while (*s && cnt < pos) {
         unsigned char fbyte = s[0];
         int step = 1;
-        
+
         if (fbyte > 0x7F) {
             if (fbyte >= 0xC0 && fbyte <= 0xDF) {
                 step = 2;
@@ -382,15 +388,33 @@ size_t mstr_upos2len(const char *s, long int pos)
     return len;
 }
 
+char* mstr_tolower(char *s)
+{
+    if (!s) return NULL;
+
+    char *r = s;
+    for ( ; *s; ++s) *s = tolower(*s);
+    return r;
+}
+
+char* mstr_toupper(char *s)
+{
+    if (!s) return NULL;
+
+    char *r = s;
+    for ( ; *s; ++s) *s = toupper(*s);
+    return r;
+}
+
 unsigned int hash_string(const char *str)
 {
         int hash = 5381; // DJB Hash
         const char *s;
-    
+
         for (s = str; *s != '\0'; s++) {
                 hash = ((hash << 5) + hash) + tolower(*s);
         }
-    
+
         return (hash & 0x7FFFFFFF);
 }
 
@@ -398,10 +422,10 @@ unsigned int hash_string_rev(const char *str)
 {
     int hash = 5381;
     int x = strlen(str) - 1;
-    
+
     while (x >= 0 && str[x] != '\0')
         hash = ((hash << 5) + hash) + tolower(str[x--]);
-    
+
     return (hash & 0x7FFFFFFF);
 }
 
@@ -462,7 +486,7 @@ void mstr_str2hex(unsigned char *charin, unsigned int inlen, unsigned char *hexo
         s++;
         i++;
     }
-    
+
     for (i = 0, j = 0; i < inlen; i += 2, j++) {
         STR2HEX(charin[i], charin[i+1], hexout[j]);
     }

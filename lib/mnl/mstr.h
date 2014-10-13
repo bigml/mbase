@@ -8,6 +8,13 @@ __BEGIN_DECLS
 void mstr_rand_string(char *s, int max);
 void mstr_rand_string_with_len(char *s, int len);
 void mstr_rand_digit_with_len(char *s, int len);
+
+/*
+ * there are 3 web escape function sets:
+ * 1. mstr_xxx_[un]escape();
+ * 2. cgi_xxx[un]escape();
+ * 3. neos_xxx_[un]escape();
+ */
 void mstr_html_escape(HDF *hdf, char *name);
 void mstr_html_unescape(HDF *hdf, char *name);
 /*
@@ -32,7 +39,10 @@ void mstr_real_escape_string(char *buf, char *val, size_t len);
  */
 char* mstr_real_escape_string_nalloc(char **to, char *from, size_t len);
 
-void mstr_repchr(char *s, char from, char to);
+/*
+ * ATTENTION: repchr will modify input string. make sure s is modifiable (not const)
+ */
+char* mstr_repchr(char *s, char from, char to);
 /*
  * replace string with string
  * return an allocated string, remember to free it
@@ -52,11 +62,19 @@ char* mstr_repstr(int rep_count, char *s, ...);
  * foo, foofoo, name.foo.infoo, or name.foo
  */
 char* mstr_repvstr(char *src, char c, char *dst);
+/*
+ * ATTENTION: strip will modify input string. make sure s is modifiable (not const)
+ */
 char* mstr_strip (char *s, char n);
 /* string's utf-8 length */
 size_t mstr_ulen(const char *s);
 /* string's strlen(), to positon pos */
 size_t mstr_upos2len(const char *s, long int pos);
+/*
+ * ATTENTION: toxx will modify input string. make sure s is modifiable (not const)
+ */
+char* mstr_tolower(char *s);
+char* mstr_toupper(char *s);
 
 /* DJB Hash (left to right, ....abc)*/
 unsigned int hash_string(const char *str);
@@ -71,6 +89,8 @@ unsigned int hash_string_rev(const char *str);
 void mstr_hex2str(unsigned char *hexin, unsigned int inlen, unsigned char *charout);
 
 /*
+ * stringfy a hex data(ofen hex array or hex pointer)
+ * uint8_t in[4] = {12,5,6,15} ==> 0c05060f
  * make sure charout has inlen/2 len
  * charin: '0123456789abcdef'
  * hexout: usually uint8_t*, the value is 0~15
@@ -79,6 +99,7 @@ void mstr_str2hex(unsigned char *charin, unsigned int inlen, unsigned char *hexo
 
 /*
  * more wide rage bin converter
+ * mstr_hex2str()'s in should be 0~15, this can be 0~255
  */
 void mstr_bin2char(unsigned char *in, unsigned int inlen, unsigned char *out);
 
