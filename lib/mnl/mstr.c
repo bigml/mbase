@@ -138,7 +138,6 @@ bool mstr_isdigitn(char *buf, size_t len)
     return true;
 }
 
-/* 2 -28 */
 bool mstr_israngen(char *buf, size_t len, int *left, int *right)
 {
     if (buf == NULL || len <= 0) return false;
@@ -164,7 +163,7 @@ bool mstr_israngen(char *buf, size_t len, int *left, int *right)
     return false;
 }
 
-void mstr_real_escape_string(char *to, char *from, size_t len)
+void mstr_real_escape_string(char *tobuf, char *from, size_t len)
 {
     char escape = 0;
 

@@ -4,9 +4,12 @@ HDF *g_cfg = NULL;
 
 int main(int argc, char **argv, char **envp)
 {
-    const char *s = "haHA ";
+    char *s = calloc(1, 10);
 
-    printf("%s\n", mstr_repchr(s, 'a', ' '));
+    strncpy(s, "xxx", 9);
+
+    printf("%s\n", s);
+
 
     return 0;
 }
