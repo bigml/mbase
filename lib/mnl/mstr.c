@@ -104,7 +104,7 @@ void mstr_md5_buf(unsigned char *in, size_t len, char out[LEN_MD5])
     memset(hexres, 0x0, 16);
     MD5Final(hexres, &my_md5);
 
-    mstr_hex2str(hexres, 16, (unsigned char*)out);
+    mstr_bin2hexstr(hexres, 16, (unsigned char*)out);
 }
 
 void mstr_md5_str(char *in, char out[LEN_MD5])
@@ -196,10 +196,10 @@ void mstr_real_escape_string(char *tobuf, char *from, size_t len)
             break;
         }
         if (escape) {
-            *to++ = '\\';
-            *to++= escape;
+            *tobuf++ = '\\';
+            *tobuf++= escape;
         } else {
-            *to++= *(from+i);
+            *tobuf++= *(from+i);
         }
     }
 }
