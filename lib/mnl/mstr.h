@@ -105,6 +105,9 @@ unsigned int hash_string_rev(const char *str);
  * 1 hex need 2 char(FF), to present, so, memory size of charout MUST >= inlen * 2 + 1
  * hexin: usually uint8_t*, value range is 0~15
  * charout: '0123456789abcdef'
+ *
+ * what a fuck: after hours work, we can do it use sprintf(charout[i], "%x", hexin[j])
+ *
  */
 void mstr_bin2hexstr(unsigned char *hexin, unsigned int inlen, unsigned char *charout);
 
