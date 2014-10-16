@@ -431,7 +431,7 @@ unsigned int hash_string_rev(const char *str)
 /*
  * use < 10 judgement, or, you can use array ['0', '1', ..., 'e', 'f']
  */
-void mstr_hex2str(unsigned char *hexin, unsigned int inlen, unsigned char *charout)
+void mstr_bin2hexstr(unsigned char *hexin, unsigned int inlen, unsigned char *charout)
 {
     /* 48 '0' */
     /* 97 'a'  122 'z'  65 'A' */
@@ -440,8 +440,8 @@ void mstr_hex2str(unsigned char *hexin, unsigned int inlen, unsigned char *charo
         if (((in) & 0xf) < 10) {                \
             (out) = ((in)&0xf) + 48;            \
         } else {                                \
-            (out) = ((in)&0xf) - 10 + 97;        \
-        }                                        \
+            (out) = ((in)&0xf) - 10 + 97;       \
+        }                                       \
     } while (0)
 
     if (hexin == NULL || charout == NULL)
@@ -458,7 +458,7 @@ void mstr_hex2str(unsigned char *hexin, unsigned int inlen, unsigned char *charo
     charout[j+1] = '\0';
 }
 
-void mstr_str2hex(unsigned char *charin, unsigned int inlen, unsigned char *hexout)
+void mstr_hexstr2bin(unsigned char *charin, unsigned int inlen, unsigned char *hexout)
 {
 #define STR2HEX(in1, in2, out)                          \
     do {                                                \
@@ -489,42 +489,4 @@ void mstr_str2hex(unsigned char *charin, unsigned int inlen, unsigned char *hexo
     for (i = 0, j = 0; i < inlen; i += 2, j++) {
         STR2HEX(charin[i], charin[i+1], hexout[j]);
     }
-}
-
-void mstr_bin2char(unsigned char *in, unsigned int inlen, unsigned char *out)
-{
-    /* 48 '0' */
-    /* 97 'a'  122 'z'  65 'A' */
-#define HEX2STR(in, out)                        \
-    do {                                        \
-        if (((in) & 0xf) < 10) {                \
-            (out) = ((in)&0xf) + 48;            \
-        } else {                                \
-            (out) = ((in)&0xf) - 10 + 97;        \
-        }                                        \
-    } while (0)
-
-    if (in == NULL || out == NULL)
-        return;
-
-    unsigned int i, j;
-    memset(out, 0x0, inlen*2+1);
-
-    for (i = 0, j = 0; i < inlen; i++) {
-        if (in[i] == 9 || in[i] == 10 ||
-            (in[i] > 31 && in[i] < 127)) {
-            /*
-             * resolve printable charactors
-             * see man ascii
-             */
-            out[j] = in[i];
-            j++;
-        } else {
-            HEX2STR(in[i]>>4, out[j]);
-            HEX2STR(in[i], out[j+1]);
-            j += 2;
-        }
-    }
-
-    out[j+1] = '\0';
 }

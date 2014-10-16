@@ -76,10 +76,18 @@ char* mstr_repvstr(char *src, char c, char *dst);
  * strip will modify input string. make sure s is modifiable (not const)
  */
 char* mstr_strip (char *s, char n);
-/* string's utf-8 length */
+
+/*
+ * string's utf-8 length
+ * e.g. mstr_ulen("我爱你") return 3;
+ */
 size_t mstr_ulen(const char *s);
-/* string's strlen(), to positon pos */
+/*
+ * string's strlen(), at utf-8 positon
+ * e.g. mstr_upos2len("hi,我爱你", 5) return 9
+ */
 size_t mstr_upos2len(const char *s, long int pos);
+
 /*
  * toxx will modify input string. make sure s is modifiable (not const)
  */
@@ -92,26 +100,22 @@ unsigned int hash_string(const char *str);
 unsigned int hash_string_rev(const char *str);
 
 /*
- * make sure charout has inlen*2+1 len
- * hexin: usually uint8_t*, the value is 0~15
+ * stringfy a set of binary data as hex format output
+ * uint8_t in[4] = {12,5,6,15} ==> 0c05060f
+ * 1 hex need 2 char(FF), to present, so, memory size of charout MUST >= inlen * 2 + 1
+ * hexin: usually uint8_t*, value range is 0~15
  * charout: '0123456789abcdef'
  */
-void mstr_hex2str(unsigned char *hexin, unsigned int inlen, unsigned char *charout);
+void mstr_bin2hexstr(unsigned char *hexin, unsigned int inlen, unsigned char *charout);
 
 /*
- * stringfy a hex data(ofen hex array or hex pointer)
- * uint8_t in[4] = {12,5,6,15} ==> 0c05060f
- * make sure charout has inlen/2 len
+ * binarify a hex string
+ * memory size of hexout MUST == inlen/2
  * charin: '0123456789abcdef'
  * hexout: usually uint8_t*, the value is 0~15
  */
-void mstr_str2hex(unsigned char *charin, unsigned int inlen, unsigned char *hexout);
+void mstr_hexstr2bin(unsigned char *charin, unsigned int inlen, unsigned char *hexout);
 
-/*
- * more wide rage bin converter
- * mstr_hex2str()'s in should be 0~15, this can be 0~255
- */
-void mstr_bin2char(unsigned char *in, unsigned int inlen, unsigned char *out);
 
 __END_DECLS
 #endif    /* __MSTR_H__ */

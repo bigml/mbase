@@ -1,6 +1,7 @@
 mnl(moon's c library)
 =====================
 ├── mb64.h      base64 encode, decode
+├── mbinary.h   binary constant generator macro
 ├── mbson.h     bson <=> json, bson <=> hdf
 ├── mcfg.h      constant define macros
 ├── mcs.h       clearsilver wrapper

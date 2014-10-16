@@ -155,7 +155,7 @@ struct json_object* mbson_export_to_jsonobj(bson *doc, bool array)
             break;
         case BSON_TYPE_OID:
             bson_cursor_get_oid(c, (const guint8**)&vu8);
-            mstr_hex2str(vu8, BYTE_BSON_OID, (unsigned char*)oid);
+            mstr_bin2hexstr(vu8, BYTE_BSON_OID, (unsigned char*)oid);
             jso = json_object_new_string(oid);
             break;
         default:
@@ -367,7 +367,7 @@ NEOERR* mbson_export_to_hdf(HDF *node, bson *doc, char *setkey, int flag, bool d
             break;
         case BSON_TYPE_OID:
             bson_cursor_get_oid(c, (const guint8**)&vu8);
-            mstr_hex2str(vu8, BYTE_BSON_OID, (unsigned char*)oid);
+            mstr_bin2hexstr(vu8, BYTE_BSON_OID, (unsigned char*)oid);
             hdf_set_value(node, key, oid);
             if (flag & MBSON_EXPORT_TYPE)
                 MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_OID);

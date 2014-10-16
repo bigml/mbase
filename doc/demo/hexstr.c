@@ -8,11 +8,11 @@ int main(int argc, char **argv)
     uint8_t u[6];
     char outs[20];
 
-    mstr_str2hex(s, strlen(s), u);
+    mstr_hexstr2bin(s, strlen(s), u);
 
-    mstr_hex2str(u, 6, outs);
+    mstr_bin2hexstr(u, 6, outs);
 
     printf("ori: %s, convert: %s\n", s, outs);
-    
+
     return 0;
 }

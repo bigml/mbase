@@ -19,6 +19,7 @@
 #include "gdfontg.h"
 
 #include "mglobal.h"
+#include "mbinary.h"
 #include "mtimer.h"
 #include "mcfg.h"
 #include "md5.h"
