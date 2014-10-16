@@ -20,10 +20,3 @@ mnl(moon's c library)
 ├── mtimer.h    performance analyze tool
 ├── mtrace.h    log, trace operation
 └── mutil.h     util tools
-
-
-Other Library
-=============
-
-git clone git://c-algorithms.git.sourceforge.net/gitroot/c-algorithms/c-algorithms c-alg
-
