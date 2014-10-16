@@ -243,7 +243,7 @@ NEOERR* mbson_import_from_hdf(HDF *node, bson **out, bool finish)
                 bson_append_symbol(doc, key, val, -1);
                 break;
             case CNODE_TYPE_OID:
-                mstr_str2hex((unsigned char*)val, BYTE_BSON_OID, oid);
+                mstr_hexstr2bin((unsigned char*)val, BYTE_BSON_OID, oid);
                 bson_append_oid(doc, key, (const guint8*)oid);
             default:
                 bson_append_string(doc, key, val, -1);
