@@ -100,6 +100,14 @@ unsigned int hash_string(const char *str);
 unsigned int hash_string_rev(const char *str);
 
 /*
+ * stringfy a set of binary data
+ * usually used to make binary message printable
+ * 0 - 31, 127 - 256, except 9, 10 will convert to hex format
+ * so, 0 will convert to '0'
+ */
+void mstr_bin2str(unsigned char *in, unsigned int inlen, unsigned char *out);
+
+/*
  * stringfy a set of binary data as hex format output
  * uint8_t in[4] = {12,5,6,15} ==> 0c05060f
  * 1 hex need 2 char(FF), to present, so, memory size of charout MUST >= inlen * 2 + 1
