@@ -35,17 +35,19 @@ static void trace_shift_file()
     g_fp = fopen(g_fn, "a+");
 }
 
-void mtc_init(const char *fn, int level)
+bool mtc_init(const char *fn, int level)
 {
     if (level >= 0) m_dftlv = level;
-    
+
     strncpy(g_fn, fn, sizeof(g_fn)-4);
     strcat(g_fn, ".log");
     if (g_fp != NULL)
         fclose(g_fp);
     g_fp = fopen(g_fn, "a+");
     if (g_fp != NULL) setvbuf(g_fp, linebuf, _IOLBF, 2096);
+    else return false;
     atexit(mtc_leave);
+    return true;
 }
 void mtc_leave()
 {
@@ -60,7 +62,7 @@ bool mtc_msg(const char *func, const char *file, long line,
 {
     //int dftlv = hdf_get_int_value(g_cfg, PRE_CONFIG".trace_level", TC_DEFAULT_LEVEL);
     if (level > m_dftlv) return false;
-    
+
     if (g_fp == NULL) return false;
 
     va_list ap;

@@ -27,7 +27,7 @@ __BEGIN_DECLS
 #define TC_CFGSTR    "log_level"
 #define TC_MAX_SIZE  (10*1024*1024)
 #define TC_MAX_NUM   5
-    
+
 #if defined(USE_C99_VARARG_MACROS)
 #define mtc_die(f,...)                                                  \
     do {                                                                \
@@ -40,7 +40,7 @@ __BEGIN_DECLS
 #define mtc_dbg(f,...)  mtc_msg(__PRETTY_FUNCTION__,__FILE__,__LINE__,TC_DEBUG,f,##__VA_ARGS__)
 #define mtc_info(f,...) mtc_msg(__PRETTY_FUNCTION__,__FILE__,__LINE__,TC_INFO,f,##__VA_ARGS__)
 #define mtc_noise(f,...) mtc_msg(__PRETTY_FUNCTION__,__FILE__,__LINE__,TC_NOISE,f,##__VA_ARGS__)
-    
+
 #elif defined(USE_GNUC_VARARG_MACROS)
 #define mtc_die(f,a...)                                                 \
     do {                                                                \
@@ -55,7 +55,7 @@ __BEGIN_DECLS
 #define mtc_noise(f,a...) mtc_msg(__PRETTY_FUNCTION__,__FILE__,__LINE__,TC_NOISE,f,##a)
 #endif
 
-void mtc_init(const char *fn, int level);
+bool mtc_init(const char *fn, int level);
 void mtc_leave();
 bool mtc_msg(const char *func, const char *file, long line,
              int level, const char *format, ...)
