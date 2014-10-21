@@ -7,7 +7,7 @@ INCS	= $(INC_LOCAL) $(INC_MOON)
 LIBS	= $(LIB_LOCAL) $(LIB_MOON) -levent
 
 SOURCES = $(wildcard *.c)
-BINARY = $(patsubst %.c, %, $(SOURCES))
+BINARY = $(patsubst %.c, demo.%, $(SOURCES))
 DEPEND = .depend
 
 all: preload $(BINARY)
@@ -19,7 +19,7 @@ preload:
 	@$(MAKE) -C $(LIBBASE)
 
 -include $(DEPEND)
-%:%.c
+demo.%:%.c
 	@if [ "$<" = `ls *.c|awk '{print $1}'|sed -n '1p'` ]; then \
 		echo "=== "$(CFLAGS); \
 		echo "=== "$(INCS); \

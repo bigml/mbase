@@ -3,20 +3,23 @@
 /* global file name for trace info write to */
 static char m_fn[_POSIX_PATH_MAX] = "";
 static FILE *m_fp = NULL;
-static int m_dftlv = TC_DEFAULT_LEVEL;
+static int  m_dftlv = TC_DEFAULT_LEVEL;
 static char linebuf[2096];
 static char *m_trace_level[TC_LEVELS] = {"DIE", "MESSAGE", "ERROR", "WARNING", "INFO", "DEBUG", "NOISE"};
+#ifdef HAVE_PTHREADS
+static pthread_mutex_t m_lock = PTHREAD_MUTEX_INITIALIZER;
+#endif
 
 static void trace_shift_file()
 {
+    int i;
+    char ofn[_POSIX_PATH_MAX], nfn[_POSIX_PATH_MAX];
+
     struct stat fs;
     if (stat(m_fn, &fs) == -1)
         return;
     if (fs.st_size < TC_MAX_SIZE)
         return;
-
-    int i;
-    char ofn[_POSIX_PATH_MAX], nfn[_POSIX_PATH_MAX];
 
     if (m_fp != NULL)
         fclose(m_fp);
@@ -74,6 +77,10 @@ bool mtc_msg(const char *func, const char *file, long line,
     strftime(tm, 25, "%Y-%m-%d %H:%M:%S", stm);
     tm[24] = '\0';
 
+#ifdef HAVE_PTHREADS
+    mLock(&m_lock);
+#endif
+
     fprintf(m_fp, "[%s %f]", tm, usec);
     fprintf(m_fp, "[%s]", m_trace_level[level]);
     fprintf(m_fp, "[%s:%li %s] ", file, line, func);
@@ -85,5 +92,10 @@ bool mtc_msg(const char *func, const char *file, long line,
     fprintf(m_fp, "\n");
 
     trace_shift_file();
+
+#ifdef HAVE_PTHREADS
+    mUnlock(&m_lock);
+#endif
+
     return true;
 }
