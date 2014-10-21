@@ -1,7 +1,11 @@
 #include "mheads.h"
 
-static HDF *m_loadpath = NULL;
+static HDF  *m_loadnode = NULL;
 static char *m_tplpath = NULL;
+
+#ifdef HAVE_PTHREADS
+static pthread_mutex_t m_lock = PTHREAD_MUTEX_INITIALIZER;
+#endif
 
 #ifdef __MACH__
 static int mtpl_config(struct dirent *ent)
@@ -21,9 +25,9 @@ static NEOERR* mtpl_set_loadpath(CSPARSE *cs)
 
     MCS_NOT_NULLA(cs);
 
-    if (!m_loadpath) return STATUS_OK;
-    
-    node = hdf_obj_child(m_loadpath);
+    if (!m_loadnode) return STATUS_OK;
+
+    node = hdf_obj_child(m_loadnode);
     while (node) {
         hdf_set_valuef(cs->hdf, "hdf.loadpath.%s=%s",
                        hdf_obj_name(node), hdf_obj_value(node));
@@ -48,20 +52,28 @@ NEOERR* mtpl_append_loadpath(char *dir)
     NEOERR *err;
 
     MCS_NOT_NULLA(dir);
-    
-    if (!m_loadpath) {
-        err = hdf_init(&m_loadpath);
+
+#ifdef HAVE_PTHREADS
+    mLock(&m_lock);
+#endif
+
+    if (!m_loadnode) {
+        err = hdf_init(&m_loadnode);
         if (err != STATUS_OK) return nerr_pass(err);
     }
 
     cnt = 0;
-    node = hdf_obj_child(m_loadpath);
+    node = hdf_obj_child(m_loadnode);
     while (node) {
         cnt++;
         node = hdf_obj_next(node);
     }
 
-    hdf_set_valuef(m_loadpath, "%d=%s", cnt, dir);
+    hdf_set_valuef(m_loadnode, "%d=%s", cnt, dir);
+
+#ifdef HAVE_PTHREADS
+    mUnlock(&m_lock);
+#endif
 
     return STATUS_OK;
 }
@@ -138,7 +150,7 @@ static NEOERR* mtpl_InConfigRend_parse_file(char *dir, char *name,
 
         child = hdf_obj_next(child);
     }
-    
+
     return STATUS_OK;
 }
 
@@ -151,7 +163,7 @@ static NEOERR* mtpl_InConfigRend_parse_dir(char *dir,
 
     MCS_NOT_NULLA(dir);
     MCS_NOT_NULLC(valuen, layoutn, layouth);
-    
+
     n = scandir(dir, &eps, mtpl_config, alphasort);
     for (int i = 0; i < n; i++) {
         mtc_dbg("parse file %s", eps[i]->d_name);
@@ -190,12 +202,12 @@ NEOERR* mtpl_InConfigRend_init(char *dir, char *key, HASH **datah)
     if (err != STATUS_OK) return nerr_pass(err);
     err = hash_insertf(*datah, (void*)value_node, "icr_%s_value_node", key);
     if (err != STATUS_OK) return nerr_pass(err);
-    
+
     err = hdf_init(&layout_node);
     if (err != STATUS_OK) return nerr_pass(err);
     err = hash_insertf(*datah, (void*)layout_node, "icr_%s_layout_node", key);
     if (err != STATUS_OK) return nerr_pass(err);
-    
+
     err = hash_init(&layout_hash, hash_str_hash, hash_str_comp, NULL);
     if (err != STATUS_OK) return nerr_pass(err);
     err = hash_insertf(*datah, (void*)layout_hash, "icr_%s_layout_hash", key);
@@ -221,7 +233,7 @@ NEOERR* mtpl_InConfigRend_get(HDF *out, HDF *in, char *key, char *name, HASH *da
     value_node = hash_lookupf(datah, "icr_%s_value_node", key);
     layout_node = hash_lookupf(datah, "icr_%s_layout_node", key);
     layout_hash = hash_lookupf(datah, "icr_%s_layout_hash", key);
-    
+
     MCS_NOT_NULLC(value_node, layout_node, layout_hash);
 
     /*
@@ -262,7 +274,7 @@ NEOERR* mtpl_InConfigRend_get(HDF *out, HDF *in, char *key, char *name, HASH *da
         /* restore cs->hdf */
         cs->hdf = obj;
         string_clear(&str);
-        
+
         node = hdf_obj_next(node);
     }
 
@@ -274,9 +286,9 @@ void mtpl_InConfigRend_destroy(HASH *datah)
     char *key = NULL, *buf;
 
     if (!datah) return;
-    
+
     buf = (char*)hash_next(datah, (void**)&key);
-    
+
     while (buf != NULL) {
         /* TODO free them */
         //free(buf);

@@ -1,5 +1,9 @@
 #include "mheads.h"
 
+/*
+ * thread unsafe
+ */
+
 unsigned long elapsed = 0;
 
 static struct timeval tv_s[TIMER_NUM], tv_e[TIMER_NUM];
@@ -28,9 +32,9 @@ unsigned long mtimer_stop(char *fmt, ...)
         va_start(ap, fmt);
         vsnprintf(timer_msg, TIMER_MSG_LEN, fmt, ap);
         va_end(ap);
-        
+
         mtc_foo("%s : %lu usecs", timer_msg, elapsed);
     }
-    
+
     return elapsed;
 }

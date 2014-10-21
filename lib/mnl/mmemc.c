@@ -9,10 +9,10 @@ static memcached_st* mmc_create()
     HDF *node;
     char *ip;
     int port;
-    
+
     if (l_inited) return l_mc;
     l_inited = true;
-    
+
     l_mc = memcached_create(NULL);
     if (l_mc == NULL) {
         mtc_err("create memcached struct failure!");
@@ -28,7 +28,7 @@ static memcached_st* mmc_create()
         //l_mc = NULL;
         return NULL;
     }
-    
+
     while (node != NULL) {
         ip = hdf_get_value(node, "ip", "127.0.0.1");
         port = hdf_get_int_value(node, "port", 0);
@@ -182,7 +182,7 @@ bool mmc_get_int(const char *key, int *value, uint32_t *flags)
     }
 }
 
-memcached_return mmc_mget(const char **keys, char *vals[], int num,
+memcached_return mmc_mget(char **keys, char *vals[], int num,
                           size_t *val_len[], uint32_t *flags[])
 {
     memcached_st *mc;
@@ -207,7 +207,7 @@ memcached_return mmc_mget(const char **keys, char *vals[], int num,
             pflg[i] = &flg[i];
         }
     }
-    
+
     for (i = 0; i < num; i++) {
         keys_len[i] = strlen(keys[i]);
     }
@@ -339,4 +339,3 @@ memcached_return mmc_deletef(time_t exp, const char *keyfmt, ...)
 
     return rc;
 }
-

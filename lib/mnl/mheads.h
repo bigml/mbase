@@ -20,7 +20,7 @@
 
 #include "mglobal.h"
 #include "mbinary.h"
-#include "mtimer.h"
+#include "mtimer.h"             /* thread unsafe! */
 #include "mcfg.h"
 #include "md5.h"
 #include "mb64.h"

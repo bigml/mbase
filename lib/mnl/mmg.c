@@ -6,6 +6,11 @@
         m_errmsg = (char*) mongo_sync_conn_get_last_error(con);     \
     } while (0)
 
+/*
+ * m_errmsg will be assign value, won't be free
+ * so, in multi thread/process enviorment, mtc_err(m_errmsg) may trace errmsg of other's
+ * but, will not core dump, don't lock mutex currently.
+ */
 static char *m_errmsg = NULL;
 
 NEOERR* mmg_init(char *host, int port, int ms, mmg_conn **db)
