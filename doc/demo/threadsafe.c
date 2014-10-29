@@ -10,9 +10,13 @@ static void* log_routine(void *arg)
 {
     int cnum = *(int*)arg;
 
+    errno = cnum;
+
     while (1) {
-        mtc_dbg("/home/ml/miad/mevent/mbase/lib/mnl from child %d%d%d%d",
-                cnum, cnum, cnum, cnum);
+        mtc_dbg("errno from child %d %d%d%d%d %s ",
+                cnum, cnum, cnum, cnum, errno, strerror(errno));
+
+        //mtc_dbg("%d%d%d%d %s", cnum, cnum,  cnum, cnum, mongo_errno(cnum));
     }
 
     return NULL;
