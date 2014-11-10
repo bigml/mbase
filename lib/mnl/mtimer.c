@@ -1,7 +1,7 @@
 #include "mheads.h"
 
 /*
- * thread unsafe
+ * multi thread unsafe
  */
 
 unsigned long elapsed = 0;

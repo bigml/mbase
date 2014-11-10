@@ -39,15 +39,20 @@ int  mutil_compare_int(const void *a, const void *b);
 int  mutil_compare_inta(const void *a, const void *b);
 
 /*
- * get 'outlen' random different(unrepeat) numbers, from 'in' with 'inlen' length,
- * make sure 'out' have 'outlen' length
+ * get 'outlen' numbers into array 'out',
+ * random seed is array 'in' with 'inlen', can't repeat, so, inlen MUST >= outlen
+ * usually used interally
+ *
+ * ATTENTION: make sure 'out' have 'outlen' length
  */
 void mutil_rand_numbers_byarray(int in[], int inlen, int out[], int outlen);
 /*
- * get 'outlen' random different(unrepeat) numbers, with maxnumber 'max'
- * If you need zero, please -1 for every out[i]
- * don't pass a huge max, because it'll use many memory
- * make sure 'out' have 'outlen' length
+ * get 'outlen' unrepeat numbers into array 'out',
+ * the maxim value in out[] is 'max', so, max MUST >= outlen
+ * if you need value zero, please minus 1 for every out[]
+ * don't pass a HUGEEEE max, > 10000 0000, or, will destroy stack memory
+ *
+ * ATTENTION: make sure 'out' have 'outlen' length
  */
 void mutil_rand_numbers(int max, int out[], int outlen);
 

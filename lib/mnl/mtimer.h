@@ -3,15 +3,17 @@
  * Alberto Bertogli (albertito@blitiri.com.ar) - September/2006
  *
  * Use it like this:
- *     unsigned long elapsed;
  *     ...
  *     timer_start();
- *     ... [code] ...
- *     elapsed = timer_stop();
- *     ...
- *     printf("Time elapsed: %lu", elapsed);
+ *     ... [codea] ...
+ *       timer_start();
+ *       ... [codeb] ...
+ *       unsigned long elapsedb = timer_stop("codeb time elapsed");
+ *     ....[codec] ...
+ *     timer_stop("total time elapsed");
+ *     printf("total time elapsed: %lu, codeb time elapsed: %lu", elapsed, elapsedb);
  *
- * Nested timers are not supported. The result is in usecs.
+ * Nested timers are supported (max 64 nests). The result is in usecs.
  *
  * 1000000 usecs == 1 sec
  */
