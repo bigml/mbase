@@ -1,3 +1,7 @@
+#ifdef USE_FASTCGI
+#include "fcgi_stdio.h"
+#endif
+
 #include "mheads.h"
 
 NEOERR* mfile_makesure_dir(char *file)
@@ -24,7 +28,7 @@ NEOERR* mfile_makesure_dir(char *file)
 NEOERR* mfile_openf(FILE **fp, const char *mode, char *fmt, ...)
 {
 	NEOERR *err;
-    
+
     MCS_NOT_NULLC(fp, mode, fmt);
 
     char fname[LEN_FN];
@@ -33,7 +37,7 @@ NEOERR* mfile_openf(FILE **fp, const char *mode, char *fmt, ...)
     va_start(ap, fmt);
     vsnprintf(fname, sizeof(fname), fmt, ap);
     va_end(ap);
-    
+
     err = mfile_makesure_dir(fname);
     if (err != STATUS_OK) return nerr_pass(err);
 
@@ -49,7 +53,7 @@ NEOERR* mfile_copy(FILE *dst, FILE *src)
 {
     char buf[1048576];
     size_t len;
-    
+
     MCS_NOT_NULLB(dst, src);
 
     fseek(dst, 0, SEEK_SET);
@@ -67,7 +71,7 @@ FILE* mfile_get_safe_from_std(FILE *in)
     if (!in) return NULL;
 
     FILE *fp;
-    
+
 #ifdef USE_FASTCGI
     fp = malloc(sizeof(FILE));
     if (fp) {

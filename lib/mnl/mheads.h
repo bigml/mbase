@@ -7,9 +7,6 @@
 #include "libmemcached/memcached.h"
 #include "json.h"
 
-#ifdef USE_FASTCGI
-#include "fcgi_stdio.h"
-#endif
 #include "mkdio.h"
 #include "gd.h"
 #include "gdfontt.h"
