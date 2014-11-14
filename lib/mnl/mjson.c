@@ -158,13 +158,28 @@ NEOERR* mjson_export_to_hdf(HDF *node, struct json_object *obj, int flag, bool d
     //if (!obj || (int)obj < 0) return nerr_raise(NERR_ASSERT, "json object null");;
     if (!node || !obj) return nerr_raise(NERR_ASSERT, "paramter null");
 
-    if (json_object_get_type(obj) != json_type_object) {
+    enum json_type type;
+
+    type = json_object_get_type(obj);
+
+    if (type == json_type_object) {
+        json_object_object_foreach(obj, key, val) {
+            json_append_to_hdf(node, key, val, flag);
+        }
+        if (flag & MJSON_EXPORT_TYPE)
+            MCS_SET_INT_ATTR(node, NULL, "type", CNODE_TYPE_OBJECT);
+    } else if (type == json_type_array) {
+        struct array_list *list = json_object_get_array(obj);
+        char tok[64];
+        for (int i = 0; i < list->length; i++) {
+            sprintf(tok, "%d", i);
+            json_append_to_hdf(node, tok, (struct json_object*)list->array[i], flag);
+            if (flag & MJSON_EXPORT_TYPE)
+                MCS_SET_INT_ATTR(node, NULL, "type", CNODE_TYPE_ARRAY);
+        }
+    } else {
         if (drop) json_object_put(obj);
         return nerr_raise(NERR_ASSERT, "not a json object");
-    }
-
-    json_object_object_foreach(obj, key, val) {
-        json_append_to_hdf(node, key, val, flag);
     }
 
     if (drop) json_object_put(obj);
