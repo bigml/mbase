@@ -3,7 +3,6 @@ include $(BASEDIR)Make.env
 
 DEPS	= $(INC_MOON)
 
-UNAME := $(shell uname)
 CFLAGS += -fPIC -shared
 
 SOURCE1 = mcfg.c
