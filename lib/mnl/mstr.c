@@ -428,7 +428,7 @@ unsigned int hash_string_rev(const char *str)
     return (hash & 0x7FFFFFFF);
 }
 
-void mstr_bin2str(unsigned char *in, unsigned int inlen, unsigned char *out)
+void mstr_bin2str(uint8_t *in, unsigned int inlen, unsigned char *out)
 {
     /* 48 '0' */
     /* 97 'a'  122 'z'  65 'A' */
@@ -469,7 +469,7 @@ void mstr_bin2str(unsigned char *in, unsigned int inlen, unsigned char *out)
 /*
  * use < 10 judgement, or, you can use array ['0', '1', ..., 'e', 'f']
  */
-void mstr_bin2hexstr(unsigned char *hexin, unsigned int inlen, unsigned char *charout)
+void mstr_bin2hexstr(uint8_t *hexin, unsigned int inlen, unsigned char *charout)
 {
     /* 48 '0' */
     /* 97 'a'  122 'z'  65 'A' */
@@ -496,7 +496,7 @@ void mstr_bin2hexstr(unsigned char *hexin, unsigned int inlen, unsigned char *ch
     charout[j+1] = '\0';
 }
 
-void mstr_hexstr2bin(unsigned char *charin, unsigned int inlen, unsigned char *hexout)
+void mstr_hexstr2bin(unsigned char *charin, unsigned int inlen, uint8_t *hexout)
 {
 #define STR2HEX(in1, in2, out)                          \
     do {                                                \

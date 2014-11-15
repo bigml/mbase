@@ -105,7 +105,7 @@ unsigned int hash_string_rev(const char *str);
  * 0 - 31, 127 - 256, except 9, 10 will convert to hex format
  * so, 0 will convert to '0'
  */
-void mstr_bin2str(unsigned char *in, unsigned int inlen, unsigned char *out);
+void mstr_bin2str(uint8_t *in, unsigned int inlen, unsigned char *out);
 
 /*
  * stringfy a set of binary data as hex format output
@@ -117,7 +117,7 @@ void mstr_bin2str(unsigned char *in, unsigned int inlen, unsigned char *out);
  * what a fuck: after hours work, we can do it use sprintf(charout[i], "%x", hexin[j])
  *
  */
-void mstr_bin2hexstr(unsigned char *hexin, unsigned int inlen, unsigned char *charout);
+void mstr_bin2hexstr(uint8_t *hexin, unsigned int inlen, unsigned char *charout);
 
 /*
  * binarify a hex string
@@ -125,7 +125,7 @@ void mstr_bin2hexstr(unsigned char *hexin, unsigned int inlen, unsigned char *ch
  * charin: '0123456789abcdef'
  * hexout: usually uint8_t*, the value is 0~15
  */
-void mstr_hexstr2bin(unsigned char *charin, unsigned int inlen, unsigned char *hexout);
+void mstr_hexstr2bin(unsigned char *charin, unsigned int inlen, uint8_t *hexout);
 
 
 __END_DECLS

@@ -72,5 +72,36 @@ __BEGIN_DECLS
  * B64(00000000,11111111,11111111,11111111,10000000,11111111,10101010,01010101) = ?
  */
 
+/*
+ * convert 64 bit int (usually unsigned long) to 8bit array
+ * combine with mstr_bin2hexstr(u8, ...) equal to printf(%lx)
+ * u8 MUST be uint8_t u8[8]
+ */
+#define B642B8(u64, u8)                         \
+    do {                                        \
+        u8[0] = u64 >> 56 & 0xFF;               \
+        u8[1] = u64 >> 48 & 0xFF;               \
+        u8[2] = u64 >> 40 & 0xFF;               \
+        u8[3] = u64 >> 32 & 0xFF;               \
+        u8[4] = u64 >> 24 & 0xFF;               \
+        u8[5] = u64 >> 16 & 0xFF;               \
+        u8[6] = u64 >> 8 & 0xFF;                \
+        u8[7] = u64 & 0xFF;                     \
+    } while (0)
+
+/*
+ * convert 8 bit array back to 64bit int (usually unsigned long)
+ * u8 MUST be uint8_t u8[8]
+ */
+#define B82B64(u8, u64) (u64 = (((unsigned long)u8[0] << 56)   \
+                                + ((unsigned long)u8[1] << 48) \
+                                + ((unsigned long)u8[2] << 40) \
+                                + ((unsigned long)u8[3] << 32) \
+                                + ((unsigned long)u8[4] << 24) \
+                                + ((unsigned long)u8[5] << 16) \
+                                + ((unsigned long)u8[6] << 8)  \
+                                + (u8[7])))
+
+
 __END_DECLS
 #endif    /* __MBINARY_H__ */
