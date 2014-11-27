@@ -18,7 +18,7 @@ typedef enum {
     CNODE_TYPE_JS,
     CNODE_TYPE_SYMBOL,
     CNODE_TYPE_OID, /**< 12byte ObjectID (uint) */
-    
+
     CNODE_TYPE_POINT = 120,
     CNODE_TYPE_BOX,
     CNODE_TYPE_PATH,
@@ -149,6 +149,7 @@ NEOERR* mcs_hdf_copy_rep(HDF *dst, char *name, HDF *src, HDF *data);
  * out
  *
  * 100, 100test data, name.100.ina desc, or name.100
+ * return an allocated string, remember to free it
  */
 char* mcs_repvstr_byhdf(char *src, char c, HDF *data);
 

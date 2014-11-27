@@ -214,7 +214,8 @@ NEOERR* mmg_query(mmg_conn *db, char *dsn, char *prefix, HDF *outnode)
                     err = mbson_export_to_hdf(tnode, doc, NULL, MBSON_EXPORT_TYPE, true);
                     if (err != STATUS_OK) return nerr_pass(err);
 
-                    char *tkey = mcs_repvstr_byhdf(prefix, '$', tnode);
+                    char *tkeya = mcs_repvstr_byhdf(prefix, '$', tnode);
+                    char *tkey = mstr_repstr(1, tkeya, "..", ".");
 
                     if (!(db->flags & MMG_FLAG_MIXROWS) && db->limit > 1)
                         snprintf(key, sizeof(key), "%s.%d", tkey, count);
@@ -233,8 +234,10 @@ NEOERR* mmg_query(mmg_conn *db, char *dsn, char *prefix, HDF *outnode)
                     if (!cnode) {
                         char *lprefix = strdup(prefix);
                         char *p = lprefix;
-                        if (*p == '$') cnode = node;
-                        else {
+                        if (*p == '$') {
+                            if (db->limit > 1) cnode = hdf_obj_child(node);
+                            else cnode = node;
+                        } else {
                             while (*p) {
                                 if (*(p+1) == '$') {
                                     *p = '\0';
@@ -248,6 +251,7 @@ NEOERR* mmg_query(mmg_conn *db, char *dsn, char *prefix, HDF *outnode)
                     }
 
                     hdf_destroy(&tnode);
+                    SAFE_FREE(tkeya);
                     SAFE_FREE(tkey);
 
                     goto nextcursor;

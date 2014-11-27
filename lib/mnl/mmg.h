@@ -96,8 +96,8 @@ void mmg_set_callbackdata(mmg_conn *db, void *data);
  *                  outnode.15111231681.0.row0colbkey = row1colbval
  *                  outnode.15111231681.1.row1colakey = row2colaval
  *                  outnode.15111231681.1.row1colbkey = row2colbval
- *                                      ^cnode passed to callback (qcbk)
- *                  char *prefix = "clientinfo.$age$.$phone$";
+ *                          ^cnode passed to callback (qcbk)
+ *                  char *prefix = "clientinfo.$age$.$unexist$.$phone$";
  *                  outnode.clientinfo.29.15111231681.0.row0colakey = row1colaval
  *                  outnode.clientinfo.29.15111231681.0.row0colbkey = row1colbval
  *                  outnode.clientinfo.31.15111231681.1.row1colakey = row2colaval
