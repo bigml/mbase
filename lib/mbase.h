@@ -1,7 +1,10 @@
 #ifndef __MBASE_H__
 #define __MBASE_H__
 
+#ifndef USE_FASTCGI
 #include <stdio.h>
+#endif
+
 #include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
