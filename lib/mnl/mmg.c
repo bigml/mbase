@@ -221,6 +221,8 @@ NEOERR* mmg_query(mmg_conn *db, char *dsn, char *prefix, HDF *outnode)
                         snprintf(key, sizeof(key), "%s.%d", tkey, count);
                     else snprintf(key, sizeof(key), "%s", tkey);
 
+                    //mtc_dbg("export to %s", key);
+
                     hdf_copy(node, key, tnode);
 
                     /*
