@@ -17,7 +17,26 @@ int main(int argc, char **argv, char **envp)
     //strcpy(s, "ha我爱你 ");
 
     //printf("%d\n", mstr_upos2len(s, 2));
-    printf("%s\n", mstr_repchr(s, 'a', 'b'));
+    //printf("%s\n", mstr_repchr(s, 'a', 'b'));
+
+    printf("%d\n", mstr_version_compare(NULL, NULL));
+    printf("%d\n", mstr_version_compare(NULL, ""));
+    printf("%d\n", mstr_version_compare("", NULL));
+    printf("%d\n", mstr_version_compare("", ""));
+    printf("%d\n", mstr_version_compare("1", "1"));
+    printf("\n");
+
+    printf("%d\n", mstr_version_compare("1", "2"));
+    printf("%d\n", mstr_version_compare("1.1.3.27", "1.1.3.12"));
+    printf("%d\n", mstr_version_compare("4.1.2", "4.2"));
+    printf("%d\n", mstr_version_compare("4.2", "4.2.1"));
+    printf("%d\n", mstr_version_compare("4.2.1", "4.2"));
+    printf("%d\n", mstr_version_compare("1.1.3.27", "1.1.3.27"));
+
+    printf("\n");
+    printf("%d\n", mstr_version_compare("1..1.3.27", "1.1.3.27"));
+    printf("%d\n", mstr_version_compare("1.1.3.27", ".1.1.3.27"));
+    printf("%d\n", mstr_version_compare(".1.1.3.27", ".1.1.3.27"));
 
     return 0;
 }

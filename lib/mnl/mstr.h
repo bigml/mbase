@@ -127,6 +127,13 @@ void mstr_bin2hexstr(uint8_t *hexin, unsigned int inlen, unsigned char *charout)
  */
 void mstr_hexstr2bin(unsigned char *charin, unsigned int inlen, uint8_t *hexout);
 
+/*
+ * compare two string by version method
+ * return 1 if a > b, 0 if a == b, -1 if a < b
+ * e.g. "4.1.3" < "4.2"
+ */
+int mstr_version_compare(char *a, char *b);
+
 
 __END_DECLS
 #endif    /* __MSTR_H__ */

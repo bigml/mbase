@@ -58,6 +58,7 @@ NEOERR* mcs_register_bitop_functions(CSPARSE *cs);
 NEOERR* mcs_register_mkd_functions(CSPARSE *cs);
 NEOERR* mcs_register_string_uslice(CSPARSE *cs);
 NEOERR* mcs_register_upload_parse_cb(CGI *cgi, void *rock);
+/* TODO mcs_register_json_functions() to json stringfy a hdf object */
 
 int  mcs_get_child_num(HDF *hdf, char *name);
 /*
