@@ -33,8 +33,9 @@ NEOERR* mmg_auth(mmg_conn *db, char *dsn, char *user, char *pass)
     mtc_noise("authorize to %s use %s %s", dsn, user, pass);
 
     if (!mongo_sync_cmd_authenticate(db->con, dsn, user, pass)) {
-        return nerr_raise(NERR_DB, "auth: %s %d %s",
-                          GET_CONN_ERROR(db->con), errno, strerror(errno));
+        char *errstr = NULL; mongo_sync_cmd_get_last_error(db->con, dsn, &errstr);
+        return nerr_raise(NERR_DB, "auth: %d %s",
+                          errno, (errstr) ? errstr: strerror(errno));
     }
 
     return STATUS_OK;
@@ -186,8 +187,10 @@ NEOERR* mmg_query(mmg_conn *db, char *dsn, char *prefix, HDF *outnode)
             }
             return nerr_raise(NERR_NOT_FOUND, "%s 无此记录", dsn);
         }
-        return nerr_raise(NERR_DB, "query: %s %d %s",
-                          GET_CONN_ERROR(db->con), errno, strerror(errno));
+        /* TODO errst memory leak */
+        char *errstr = NULL; mongo_sync_cmd_get_last_error(db->con, dsn, &errstr);
+        return nerr_raise(NERR_DB, "query: %d %s",
+                          errno, (errstr) ? errstr: strerror(errno));
     }
 
     /*
@@ -415,6 +418,7 @@ NEOERR* mmg_hdf_insertl(mmg_conn *db, char *dsn, HDF *node, HDF *lnode)
         char *name = hdf_obj_name(cnode);
         char *key = hdf_obj_value(cnode);
         char *val = hdf_get_value(node, key, NULL);
+        HDF  *vnode = hdf_get_obj(node, key);
         char *require = mcs_obj_attr(cnode, "require");
         char *dft = mcs_obj_attr(cnode, "default");
         int type = mcs_get_int_attr(cnode, NULL, "type", CNODE_TYPE_STRING);
@@ -423,6 +427,10 @@ NEOERR* mmg_hdf_insertl(mmg_conn *db, char *dsn, HDF *node, HDF *lnode)
 
         if (type == CNODE_TYPE_TIMESTAMP && !strcmp(key, "_NOW")) {
             mcs_set_int64_value(inode, name, time(NULL));
+        } else if (type == CNODE_TYPE_ARRAY ||
+                   type == CNODE_TYPE_OBJECT ||
+                   hdf_obj_child(vnode)) {
+            if (vnode) hdf_copy(inode, name, vnode);
         } else if (val && *val) {
             hdf_set_value(inode, name, val);
         } else if (require && !strcmp(require, "true")) {
@@ -581,12 +589,18 @@ NEOERR* mmg_hdf_updatefl(mmg_conn *db, char *dsn, int flags, HDF *node, HDF *lno
         char *name = hdf_obj_name(cnode);
         char *key = hdf_obj_value(cnode);
         char *val = hdf_get_value(node, key, NULL);
+        HDF  *vnode = hdf_get_obj(node, key);
         char *require = mcs_obj_attr(cnode, "require");
         int type = mcs_get_int_attr(cnode, NULL, "type", CNODE_TYPE_STRING);
 
         if (type == CNODE_TYPE_TIMESTAMP && !strcmp(key, "_NOW")) {
             mcs_set_int64_value(unode, name, time(NULL));
             mcs_set_int_attr(unode, name, "type", type);
+        } else if (type == CNODE_TYPE_ARRAY ||
+                   type == CNODE_TYPE_OBJECT ||
+                   hdf_obj_child(vnode)) {
+            if (vnode) hdf_copy(unode, name, vnode);
+            mcs_set_int_attrr(unode, name, "type", type);
         } else if (val && *val) {
             hdf_set_value(unode, name, val);
             mcs_set_int_attr(unode, name, "type", type);
@@ -659,8 +673,9 @@ NEOERR* mmg_delete(mmg_conn *db, char *dsn, int flags, char *sel)
                                 sel, strerror(errno));
 
     if (!mongo_sync_cmd_delete(db->con, dsn, flags, doc)) {
-        return nerr_raise(NERR_DB, "sync_cmd_delete: %s %d %s",
-                          GET_CONN_ERROR(db->con), errno, strerror(errno));
+        char *errstr = NULL; mongo_sync_cmd_get_last_error(db->con, dsn, &errstr);
+        return nerr_raise(NERR_DB, "sync_cmd_delete: %d %s",
+                          errno, (errstr) ? errstr: strerror(errno));
     }
 
     bson_free(doc);
