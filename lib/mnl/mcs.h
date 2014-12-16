@@ -158,6 +158,10 @@ char* mcs_hdf_attr(HDF *hdf, char *name, char*key);
 char* mcs_obj_attr(HDF *hdf, char*key);
 NEOERR* mcs_set_int_attr(HDF *hdf, char *name, char *key, int val);
 NEOERR* mcs_set_int_attrr(HDF *hdf, char *name, char *key, int val);
+NEOERR* mcs_set_int_attrf(HDF *hdf, char *key, int val, char *fmt, ...)
+                          ATTRIBUTE_PRINTF(4, 5);
+NEOERR* mcs_set_int_attrrf(HDF *hdf, char *key, int val, char *fmt, ...)
+                           ATTRIBUTE_PRINTF(4, 5);
 int mcs_get_int_attr(HDF *hdf, char *name, char *key, int defval);
 
 NEOERR* mcs_err_valid(NEOERR *err);
