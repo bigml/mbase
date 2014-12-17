@@ -154,6 +154,90 @@ NEOERR* mcs_hdf_copy_rep(HDF *dst, char *name, HDF *src, HDF *data);
  */
 char* mcs_repvstr_byhdf(char *src, char c, HDF *data);
 
+/*
+ * merge two node(datanode, confignode), produce a node(outnode)
+ * mostly used to merge [type=xxx] attribute, with other modify
+ * e.g.
+ * datanode:
+ *     bid = 110
+ *     cids {
+ *         0 = 11
+ *         1 = 12
+ *     }
+ *     eids {
+ *         0 {
+ *             id = 31
+ *             name = one
+ *         }
+ *         1 {
+ *             id = 32
+ *             name = two
+ *         }
+ *     }
+ *     v {
+ *         rid = 2
+ *         title = 闺密争抢土豪现场痛苦
+ *         dids {
+ *             0 = 21
+ *             1 = 22
+ *         }
+ *     }
+ *
+ * confignode:
+ *     boardid [type=102, require=true] = bid
+ *     cardids [type=108, childtype=102] = cids
+ *     eggids [type=108] = eids
+ *     eggids {
+ *         __eachchild__ {
+ *             eid [type=102, default=0] = id
+ *         }
+ *     }
+ *     video [value=v] {
+ *         restid [type=102]  = rid
+ *         destids [type=108, childtype=102] = dids
+ *     }
+ *     inttime [type=106] = _NOW
+ *
+ * outnode
+ *     boardid [type="102"]  = 110
+ *     cardids [type="108"] {
+ *         0 [type="102"] = 11
+ *         1 [type="102"] = 12
+ *     }
+ *     eggids [type="107"] {
+ *         0 {
+ *             name = one
+ *             eid [type="102"] = 31
+ *         }
+ *         1 {
+ *             name = two
+ *             eid [type="102"] = 32
+ *         }
+ *     }
+ *     video [type="107"] {
+ *         title = 闺密争抢土豪现场痛苦
+ *         restid [type="102"] = 2
+ *         destids [type="108"] {
+ *             0 [type="102"] = 21
+ *             1 [type="102"] = 22
+ *         }
+ *     }
+ *     inttime [type="106"]  = 1418788103
+ *
+ * directions in config node:
+ * 1. attribute type, this node's data type, please refer CNODE_TYPE_INT...
+ * 2. attribute childtype, children node's data type,
+ *    only valid on this node's type is CNODE_TYPE_ARRAY
+ * 3. attribute require, return error if data key can't found in datanode
+ * 4. attribute default, default value if data key can't found in datanode,
+ *    overide by require
+ * 5. attribute value, appoint dataset's node key,
+ *    offen used on object, array node with child config
+ * 6. name __eachchild__, used on array node, refer the node's every child
+ * 7. value _NOW, current timestamp, used on node's type is CNOD_TYPE_TIMESTAMP
+ */
+NEOERR* mcs_merge_data_and_config(HDF *datanode, HDF *confignode, HDF *outnode);
+
 char* mcs_hdf_attr(HDF *hdf, char *name, char*key);
 char* mcs_obj_attr(HDF *hdf, char*key);
 NEOERR* mcs_set_int_attr(HDF *hdf, char *name, char *key, int val);

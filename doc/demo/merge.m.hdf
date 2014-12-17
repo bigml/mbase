@@ -1,0 +1,13 @@
+boardid [type=102, require=true] = bid
+cardids [type=108, childtype=102] = cids
+eggids [type=108] = eids
+eggids {
+    __eachchild__ {
+        eid [type=102, default=0] = id
+    }
+}
+video [value=v] {
+    restid [type=102]  = rid
+    destids [type=108, childtype=102] = dids
+}
+inttime [type=106] = _NOW

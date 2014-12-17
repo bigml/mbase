@@ -188,6 +188,7 @@ NEOERR* mmg_query(mmg_conn *db, char *dsn, char *prefix, HDF *outnode)
             return nerr_raise(NERR_NOT_FOUND, "%s 无此记录", dsn);
         }
         /* TODO errst memory leak */
+        /* TODO GET_CONN_ERROR will cause query failed(0, 22), libmongodb-client's bug? */
         char *errstr = NULL; mongo_sync_cmd_get_last_error(db->con, dsn, &errstr);
         return nerr_raise(NERR_DB, "query: %d %s",
                           errno, (errstr) ? errstr: strerror(errno));
@@ -405,7 +406,7 @@ NEOERR* mmg_hdf_insert(mmg_conn *db, char *dsn, HDF *node)
 
 NEOERR* mmg_hdf_insertl(mmg_conn *db, char *dsn, HDF *node, HDF *lnode)
 {
-    HDF *inode, *cnode;
+    HDF *inode;
     NEOERR *err;
 
     MCS_NOT_NULLB(db, dsn);
@@ -413,39 +414,8 @@ NEOERR* mmg_hdf_insertl(mmg_conn *db, char *dsn, HDF *node, HDF *lnode)
 
     hdf_init(&inode);
 
-    cnode = hdf_obj_child(lnode);
-    while (cnode) {
-        char *name = hdf_obj_name(cnode);
-        char *key = hdf_obj_value(cnode);
-        char *val = hdf_get_value(node, key, NULL);
-        HDF  *vnode = hdf_get_obj(node, key);
-        char *require = mcs_obj_attr(cnode, "require");
-        char *dft = mcs_obj_attr(cnode, "default");
-        int type = mcs_get_int_attr(cnode, NULL, "type", CNODE_TYPE_STRING);
-
-        mcs_set_int_attrr(inode, name, "type", type);
-
-        if (type == CNODE_TYPE_TIMESTAMP && !strcmp(key, "_NOW")) {
-            mcs_set_int64_value(inode, name, time(NULL));
-        } else if (type == CNODE_TYPE_ARRAY ||
-                   type == CNODE_TYPE_OBJECT ||
-                   hdf_obj_child(vnode)) {
-            if (vnode) hdf_copy(inode, name, vnode);
-        } else if (val && *val) {
-            hdf_set_value(inode, name, val);
-        } else if (require && !strcmp(require, "true")) {
-            err = nerr_raise(NERR_ASSERT, "需要 %s %d 参数", name, type);
-            goto done;
-        } else {
-            /*
-             * set default value for inserted record
-             */
-            if (!dft) dft = "";
-            hdf_set_value(inode, name, dft);
-        }
-
-        cnode = hdf_obj_next(cnode);
-    }
+    err = mcs_merge_data_and_config(node, lnode, inode);
+    JUMP_NOK(err, done);
 
     err = mmg_hdf_insert(db, dsn, inode);
 
@@ -568,14 +538,12 @@ NEOERR* mmg_hdf_updatefl(mmg_conn *db, char *dsn, int flags, HDF *node, HDF *lno
                          char *selfmt, ...)
 {
     char *qa = NULL;
-    HDF *unode, *cnode;
+    HDF *unode;
     va_list ap;
     NEOERR *err;
 
     MCS_NOT_NULLB(db, dsn);
     MCS_NOT_NULLB(node, lnode);
-
-    hdf_init(&unode);
 
     if (selfmt) {
         va_start(ap, selfmt);
@@ -584,33 +552,10 @@ NEOERR* mmg_hdf_updatefl(mmg_conn *db, char *dsn, int flags, HDF *node, HDF *lno
         if (!qa) return nerr_raise(NERR_NOMEM, "Unable to allocate mem for string");
     }
 
-    cnode = hdf_obj_child(lnode);
-    while (cnode) {
-        char *name = hdf_obj_name(cnode);
-        char *key = hdf_obj_value(cnode);
-        char *val = hdf_get_value(node, key, NULL);
-        HDF  *vnode = hdf_get_obj(node, key);
-        char *require = mcs_obj_attr(cnode, "require");
-        int type = mcs_get_int_attr(cnode, NULL, "type", CNODE_TYPE_STRING);
+    hdf_init(&unode);
 
-        if (type == CNODE_TYPE_TIMESTAMP && !strcmp(key, "_NOW")) {
-            mcs_set_int64_value(unode, name, time(NULL));
-            mcs_set_int_attr(unode, name, "type", type);
-        } else if (type == CNODE_TYPE_ARRAY ||
-                   type == CNODE_TYPE_OBJECT ||
-                   hdf_obj_child(vnode)) {
-            if (vnode) hdf_copy(unode, name, vnode);
-            mcs_set_int_attrr(unode, name, "type", type);
-        } else if (val && *val) {
-            hdf_set_value(unode, name, val);
-            mcs_set_int_attr(unode, name, "type", type);
-        } else if (require && !strcmp(require, "true")) {
-            err = nerr_raise(NERR_ASSERT, "需要 %s %d 参数", name, type);
-            goto done;
-        }
-
-        cnode = hdf_obj_next(cnode);
-    }
+    err = mcs_merge_data_and_config(node, lnode, unode);
+    JUMP_NOK(err, done);
 
     err = mmg_hdf_update(db, dsn, flags, unode, qa);
 

@@ -654,6 +654,109 @@ char* mcs_repvstr_byhdf(char *src, char c, HDF *data)
     return str.buf;
 }
 
+NEOERR* mcs_merge_data_and_config(HDF *datanode, HDF *confignode, HDF *outnode)
+{
+    HDF *cnode;
+    NEOERR *err;
+
+    MCS_NOT_NULLB(confignode, outnode);
+
+    if (!datanode) return STATUS_OK;
+
+    cnode = hdf_obj_child(confignode);
+    while (cnode) {
+        char *name = hdf_obj_name(cnode);
+        char *key = hdf_obj_value(cnode); if (!key) key = mcs_obj_attr(cnode, "value");
+        char *val = hdf_get_value(datanode, key, NULL);
+        HDF  *vnode = hdf_get_obj(datanode, key);
+        char *require = mcs_obj_attr(cnode, "require");
+        char *dft = mcs_obj_attr(cnode, "default");
+        int type = mcs_get_int_attr(cnode, NULL, "type", CNODE_TYPE_STRING);
+
+        if (!key) {
+            val = NULL;
+            vnode = NULL;
+        }
+
+        /*
+         * variable name
+         */
+        if (!strcmp(name, "__eachchild__")) {
+            HDF *xnode = hdf_obj_child(datanode);
+            while (xnode) {
+                HDF *ynode;
+                name = hdf_obj_name(xnode);
+                hdf_get_node(outnode, name, &ynode);
+                err = mcs_merge_data_and_config(xnode, cnode, ynode);
+                if (err != STATUS_OK) return nerr_pass(err);
+
+                xnode = hdf_obj_next(xnode);
+            }
+
+            return STATUS_OK;
+        }
+
+        /*
+         * raw string name
+         */
+        mcs_set_int_attrr(outnode, name, "type", type);
+
+        if (type == CNODE_TYPE_TIMESTAMP && !strcmp(key, "_NOW")) {
+            mcs_set_int64_value(outnode, name, time(NULL));
+        } else if (type == CNODE_TYPE_ARRAY ||
+                   type == CNODE_TYPE_OBJECT ||
+                   hdf_obj_child(vnode)) {
+
+            if (vnode) hdf_copy(outnode, name, vnode);
+
+            /*
+             * merge type of array node's children
+             */
+            if (type == CNODE_TYPE_ARRAY) {
+                int ctype = mcs_get_int_attr(cnode, NULL, "childtype", CNODE_TYPE_STRING);
+                if (ctype != CNODE_TYPE_STRING) {
+                    HDF *xnode = hdf_get_child(outnode, name);
+                    while (xnode) {
+                        mcs_set_int_attr(xnode, NULL, "type", ctype);
+                        xnode = hdf_obj_next(xnode);
+                    }
+                }
+            }
+        } else if (val && *val) {
+            hdf_set_value(outnode, name, val);
+        } else if (require && !strcmp(require, "true")) {
+            err = nerr_raise(NERR_ASSERT, "need %s %d", name, type);
+            if (err != STATUS_OK) return nerr_pass(err);
+        } else {
+            /*
+             * set default value for inserted record
+             */
+            if (!dft) dft = "";
+            hdf_set_value(outnode, name, dft);
+        }
+
+        /*
+         * merge confignode's child declaration
+         */
+        if (hdf_obj_child(cnode)) {
+            err = mcs_merge_data_and_config(vnode, cnode, hdf_get_obj(outnode, name));
+            if (err != STATUS_OK) return nerr_pass(err);
+        }
+
+        /*
+         * confignode declared keyname different with datanode,
+         * remove dirty key (which copied on object, or, array type) from outnode
+         */
+        if (key && strcmp(name, key)) {
+            hdf_remove_tree(outnode, key);
+        }
+
+        cnode = hdf_obj_next(cnode);
+    }
+
+    return STATUS_OK;
+}
+
 char* mcs_hdf_attr(HDF *hdf, char *name, char*key)
 {
     if (hdf == NULL || key == NULL)

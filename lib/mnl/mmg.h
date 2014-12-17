@@ -114,37 +114,7 @@ NEOERR* mmg_hdf_insert(mmg_conn *db, char *dsn, HDF *node);
 /*
  * limit insert node(securer)
  * all key from lnode's key, value from node
- * with a little config syntax:
- *      node {
- *          bid = 110
- *          cids {
- *              0 = 11
- *              1 = 12
- *          }
- *          v {
- *              rid = 2
- *              title = 风中奇缘 第36集
- *          }
- *      }
- *
- *      lnode {
- *          boardid [type=102, require=true] = bid
- *          cardids [type=108, default=0] = cids
- *          video [type=107] = v
- *          inttime [type=106] = _NOW
- *      }
- *
- *      mongoresult {
- *          "boardid": 110,
- *          "cardids": ["11", "12"],
- *          "video": {
- *              "rid": "2",
- *              "title": "风中奇缘 第36集"
- *          },
- *          "intime": NumberLong(1418712138)
- *      }
- * TODO: just support 1st level key, node type in array and object is complex, so,
- * if you want "cardids": [11, 12], you need call set_attr() for each node currently
+ * with a little config syntax, please refer mcs_merge_data_and_config header
  */
 NEOERR* mmg_hdf_insertl(mmg_conn *db, char *dsn, HDF *node, HDF *lnode);
 
@@ -154,7 +124,7 @@ NEOERR* mmg_string_updatef(mmg_conn *db, char *dsn, int flags, char *up, char *s
 NEOERR* mmg_hdf_update(mmg_conn *db, char *dsn, int flags, HDF *node, char *sel);
 NEOERR* mmg_hdf_updatef(mmg_conn *db, char *dsn, int flags, HDF *node, char *selfmt, ...)
                         ATTRIBUTE_PRINTF(5, 6);
-/* same as mmg_hdf_insertl(), except lnode hasn't [default=x] attribute */
+/* same as mmg_hdf_insertl() */
 NEOERR* mmg_hdf_updatefl(mmg_conn *db, char *dsn, int flags, HDF *node, HDF *lnode,
                          char *selfmt, ...)
                          ATTRIBUTE_PRINTF(6, 7);
