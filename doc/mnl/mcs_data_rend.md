@@ -73,6 +73,7 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode);
 ```
     boardid [type=102, require=true] = bid
     p [type=107] = Query.p
+    intime [type=106] = _NOW
 ```
 
 * datanode
@@ -85,7 +86,6 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode);
         u.id = 222
       }
     }
-    intime [type=106] = _NOW
 ```
 * outnode
 
