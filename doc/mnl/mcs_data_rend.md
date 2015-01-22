@@ -1,6 +1,6 @@
 ### mcs_data_rend, moon's data render
 
-we need to produce new data from one data exist, according some application logic usually. 
+we need to produce new data from one data exist, according some application logic usually.
 
 e.g. we queried some database data, store them in a hdf node name "datanode"
 and we need to produce application hdf node called "outnode"
@@ -11,6 +11,58 @@ so, there is mcs_data_rend(), which can do this through config file,
 you can read ldml_render() of mgate's pub/ directory for it's useage.
 
 
+### function detail
+
+* prototype
+
+```c
+NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode);
+```
+
+* parameter confignode
+    config node, usally exist in config file
+
+* parameter datanode
+    data node, usually queried from database
+
+* parameter outnode
+    out node, which you wanted
+
+### directions in confignode
+
+#### confignode's attribute
+ * type
+      data type(int, string, object, array, etc) of this outnode
+      refer CnodeType of mcs.h for detail value
+
+ * value(equal to confignode's value)
+      outnode's value = hdf_get_value(datanode, value)
+      value=__value__ for the whole datanode
+
+ * require=true
+      return error if hdf_get_value(datanode, value) == NULL
+
+ * default
+      default value if hdf_get_value(datanode, value) == NULL
+
+ * valuenode=true
+      outnode's value = hdf_obj_value(confignode)
+
+ * childtype=__single__
+      don't iteral datanode, appeared in array node only
+
+#### confignode's name
+ * __arraynode__
+     array node's child name MUST be __arraynode__,
+     and, __arrynode__ just can appeare as arraynode's child name
+
+ * __datanode__
+     outnode's name = hdf_obj_name(datanode)
+
+#### confignode's value
+ * .$.
+     if ".$." exist in confignode's value, and this node type is array
+     we will iteral two datanodes before and after ".$."
 
 ### example
 
