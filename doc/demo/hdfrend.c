@@ -12,13 +12,13 @@ int main(int argc, char **argv, char **envp)
     hdf_init(&confignode);
     hdf_init(&outnode);
 
-    hdf_read_file(datanode, "merge.data.hdf");
-    hdf_read_file(confignode, "merge.m.hdf");
+    hdf_read_file(datanode, "rend.data.hdf");
+    hdf_read_file(confignode, "rend.config.hdf");
 
-    err = mcs_merge_data_and_config(datanode, confignode, outnode);
+    err = mcs_data_rend(confignode, datanode, outnode);
     OUTPUT_NOK(err);
 
-    hdf_dump(outnode, NULL);
+    hdf_dump_format(outnode, 0, stdout);
 
     hdf_destroy(&datanode);
     hdf_destroy(&confignode);

@@ -249,7 +249,10 @@ NEOERR* mtpl_InConfigRend_get(HDF *out, HDF *in, char *key, char *name, HASH *da
      */
     node = hdf_get_obj(value_node, name);
     if (node) {
-        err = mcs_hdf_copy_rep(out, NULL, node, hdf_get_obj(in, PRE_VALUEREP));
+        err = hdf_copy(out, NULL, node);
+        if (err != STATUS_OK) return nerr_pass(err);
+
+        mcs_hdf_rep(hdf_get_obj(in, PRE_VALUEREP), hdf_get_obj(out, NULL));
         if (err != STATUS_OK) return nerr_pass(err);
     }
 

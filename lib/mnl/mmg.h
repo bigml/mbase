@@ -114,7 +114,7 @@ NEOERR* mmg_hdf_insert(mmg_conn *db, char *dsn, HDF *node);
 /*
  * limit insert node(securer)
  * all key from lnode's key, value from node
- * with a little config syntax, please refer mcs_merge_data_and_config header
+ * with a little config syntax, please refer mcs_data_rend header
  */
 NEOERR* mmg_hdf_insertl(mmg_conn *db, char *dsn, HDF *node, HDF *lnode);
 

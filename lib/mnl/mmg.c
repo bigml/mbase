@@ -414,7 +414,7 @@ NEOERR* mmg_hdf_insertl(mmg_conn *db, char *dsn, HDF *node, HDF *lnode)
 
     hdf_init(&inode);
 
-    err = mcs_merge_data_and_config(node, lnode, inode);
+    err = mcs_data_rend(lnode, node, inode);
     JUMP_NOK(err, done);
 
     err = mmg_hdf_insert(db, dsn, inode);
@@ -554,7 +554,7 @@ NEOERR* mmg_hdf_updatefl(mmg_conn *db, char *dsn, int flags, HDF *node, HDF *lno
 
     hdf_init(&unode);
 
-    err = mcs_merge_data_and_config(node, lnode, unode);
+    err = mcs_data_rend(lnode, node, unode);
     JUMP_NOK(err, done);
 
     err = mmg_hdf_update(db, dsn, flags, unode, qa);

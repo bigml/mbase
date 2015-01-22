@@ -225,6 +225,20 @@ int  mcs_get_child_num(HDF *hdf, char *name)
     return count;
 }
 
+HDF* mcs_obj_nth_child(HDF *hdf, int n)
+{
+    HDF *node;
+
+    if (!hdf || n < 0) return NULL;
+
+    node = hdf_obj_child(hdf);
+    while (node && --n > 0) {
+        node = hdf_obj_next(node);
+    }
+
+    return node;
+}
+
 HDF* mcs_get_nth_child(HDF *hdf, char *name, int n)
 {
     HDF *node;
@@ -239,18 +253,28 @@ HDF* mcs_get_nth_child(HDF *hdf, char *name, int n)
     return node;
 }
 
-HDF* mcs_obj_nth_child(HDF *hdf, int n)
+HDF* mcs_get_nth_childf(HDF *hdf, int n, char *fmt, ...)
 {
-    HDF *node;
+    char key[LEN_HDF_KEY];
+    va_list ap;
 
-    if (!hdf || n < 0) return NULL;
+    va_start(ap, fmt);
+    vsnprintf(key, sizeof(key), fmt, ap);
+    va_end(ap);
 
-    node = hdf_obj_child(hdf);
-    while (node && --n > 0) {
-        node = hdf_obj_next(node);
-    }
+    return mcs_get_nth_child(hdf, key, n);
+}
 
-    return node;
+int mcs_get_child_numf(HDF *hdf, char *fmt, ...)
+{
+    char key[LEN_HDF_KEY];
+    va_list ap;
+
+    va_start(ap, fmt);
+    vsnprintf(key, sizeof(key), fmt, ap);
+    va_end(ap);
+
+    return mcs_get_child_num(hdf, key);
 }
 
 HDF* mcs_get_objf(HDF *hdf, char *fmt, ...)
@@ -277,6 +301,23 @@ NEOERR* mcs_get_nodef(HDF *hdf, HDF **rnode, char *fmt, ...)
     return hdf_get_node(hdf, key, rnode);
 }
 
+HDF* mcs_fetch_nodef(HDF *hdf, char *fmt, ...)
+{
+    HDF *rnode = NULL;
+    char key[LEN_HDF_KEY];
+    va_list ap;
+    NEOERR *err;
+
+    va_start(ap, fmt);
+    vsnprintf(key, sizeof(key), fmt, ap);
+    va_end(ap);
+
+    err = hdf_get_node(hdf, key, &rnode);
+    TRACE_NOK(err);
+
+    return rnode;
+}
+
 NEOERR* mcs_copyf(HDF *dst, HDF *src, char *fmt, ...)
 {
     char key[LEN_HDF_KEY];
@@ -299,29 +340,6 @@ NEOERR* mcs_remove_treef(HDF *hdf, char *fmt, ...)
     va_end(ap);
 
     return nerr_pass(hdf_remove_tree(hdf, key));
-}
-int mcs_get_child_numf(HDF *hdf, char *fmt, ...)
-{
-    char key[LEN_HDF_KEY];
-    va_list ap;
-
-    va_start(ap, fmt);
-    vsnprintf(key, sizeof(key), fmt, ap);
-    va_end(ap);
-
-    return mcs_get_child_num(hdf, key);
-}
-
-HDF* mcs_get_nth_childf(HDF *hdf, int n, char *fmt, ...)
-{
-    char key[LEN_HDF_KEY];
-    va_list ap;
-
-    va_start(ap, fmt);
-    vsnprintf(key, sizeof(key), fmt, ap);
-    va_end(ap);
-
-    return mcs_get_nth_child(hdf, key, n);
 }
 
 
@@ -594,20 +612,6 @@ void mcs_hdf_rep(HDF *data, HDF *dst)
     }
 }
 
-NEOERR* mcs_hdf_copy_rep(HDF *dst, char *name, HDF *src, HDF *data)
-{
-    NEOERR *err;
-
-    MCS_NOT_NULLB(dst, src);
-
-    err = hdf_copy(dst, name, src);
-	if (err != STATUS_OK) return nerr_pass(err);
-
-    mcs_hdf_rep(data, hdf_get_obj(dst, name));
-
-    return STATUS_OK;
-}
-
 char* mcs_repvstr_byhdf(char *src, char c, HDF *data)
 {
     char *p, key[LEN_HDF_KEY], *val;
@@ -654,104 +658,144 @@ char* mcs_repvstr_byhdf(char *src, char c, HDF *data)
     return str.buf;
 }
 
-NEOERR* mcs_merge_data_and_config(HDF *datanode, HDF *confignode, HDF *outnode)
+NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
 {
-    HDF *cnode;
+    HDF *childconfignode, *xnode, *ynode;
+    char *keyp, *keyq;
+    int cnum;
+    bool singlechild;
     NEOERR *err;
 
     MCS_NOT_NULLB(confignode, outnode);
 
-    if (!datanode) return STATUS_OK;
+    childconfignode = hdf_obj_child(confignode);
+    while (childconfignode) {
+        char *name = hdf_obj_name(childconfignode);
+        char *datakey = hdf_obj_value(childconfignode);
+        if (!datakey) datakey = mcs_obj_attr(childconfignode, "value");
+        char *valuestr = hdf_get_value(datanode, datakey, NULL);
+        HDF  *valuenode = hdf_get_obj(datanode, datakey);
+        char *require = mcs_obj_attr(childconfignode, "require");
+        char *defaultval = mcs_obj_attr(childconfignode, "default");
+        char *nodevalue = mcs_obj_attr(childconfignode, "valuenode");
+        int type = mcs_get_int_attr(childconfignode, NULL, "type", CNODE_TYPE_STRING);
+        char *childtype = mcs_obj_attr(childconfignode, "childtype");
+        char tok[64];
 
-    cnode = hdf_obj_child(confignode);
-    while (cnode) {
-        char *name = hdf_obj_name(cnode);
-        char *key = hdf_obj_value(cnode); if (!key) key = mcs_obj_attr(cnode, "value");
-        char *val = hdf_get_value(datanode, key, NULL);
-        HDF  *vnode = hdf_get_obj(datanode, key);
-        char *require = mcs_obj_attr(cnode, "require");
-        char *dft = mcs_obj_attr(cnode, "default");
-        int type = mcs_get_int_attr(cnode, NULL, "type", CNODE_TYPE_STRING);
+        singlechild = false;
 
-        if (!key) {
-            val = NULL;
-            vnode = NULL;
+        if (!datakey) {
+            valuestr = NULL;
+            valuenode = NULL;
+        } else if (!strcmp(datakey, "__value__")) {
+            valuestr = hdf_obj_value(datanode);
+            valuenode = datanode;
         }
 
-        /*
-         * variable name
-         */
-        if (!strcmp(name, "__eachchild__")) {
-            HDF *xnode = hdf_obj_child(datanode);
-            while (xnode) {
-                HDF *ynode;
-                name = hdf_obj_name(xnode);
-                hdf_get_node(outnode, name, &ynode);
-                err = mcs_merge_data_and_config(xnode, cnode, ynode);
-                if (err != STATUS_OK) return nerr_pass(err);
+        if (nodevalue && !strcmp(nodevalue, "true")) {
+            valuestr = hdf_obj_value(childconfignode);
+            valuenode = NULL;
+        }
 
-                xnode = hdf_obj_next(xnode);
+        if (childtype && !strcmp(childtype, "__single__"))  singlechild = true;
+
+        if (!strcmp(name, "__arraynode__")) name = NULL;
+        else if (!strcmp(name, "__datanode__")) name = hdf_obj_name(datanode);
+
+        switch (type) {
+        case CNODE_TYPE_INT:
+        case CNODE_TYPE_INT64:
+        case CNODE_TYPE_DATETIME:
+        case CNODE_TYPE_TIMESTAMP:
+            if (!strcmp(datakey, "_NOW")) {
+                snprintf(tok, sizeof(tok), "%ld", time(NULL));
+                valuestr = tok;
             }
+        case CNODE_TYPE_STRING:
+        case CNODE_TYPE_BOOL:
+        case CNODE_TYPE_FLOAT:
+            if (valuestr && *valuestr) {
+                hdf_set_value(outnode, name, valuestr);
+            } else if (require && !strcmp(require, "true")) {
+                return nerr_raise(NERR_ASSERT, "need %s %d", name, type);
+            } else {
+                if (!defaultval) defaultval = "";
+                hdf_set_value(outnode, name, defaultval);
+            }
+            break;
 
-            return STATUS_OK;
-        }
+        case CNODE_TYPE_OBJECT:
+            if (hdf_obj_child(childconfignode)) {
+                /* appoint object key from confignode */
+                err = mcs_data_rend(childconfignode, valuenode,
+                                    mcs_fetch_nodef(outnode, name));
+                if (err != STATUS_OK) return nerr_pass(err);
+            } else if (valuenode) {
+                /* use object key from datanode */
+                hdf_copy(outnode, name, valuenode);
+            }
+            break;
 
-        /*
-         * raw string name
-         */
-        mcs_set_int_attrr(outnode, name, "type", type);
+        case CNODE_TYPE_ARRAY:
+            if (datakey && (keyp = strstr(datakey, ".$.")) != NULL) {
+                cnum = 0;
 
-        if (type == CNODE_TYPE_TIMESTAMP && !strcmp(key, "_NOW")) {
-            mcs_set_int64_value(outnode, name, time(NULL));
-        } else if (type == CNODE_TYPE_ARRAY ||
-                   type == CNODE_TYPE_OBJECT ||
-                   hdf_obj_child(vnode)) {
+                /*
+                 * only support one $
+                 * adgroups.$.spots
+                 * keyp = adgroups
+                 * keyq = spots
+                 */
+                keyq = keyp + 3;
+                *keyp = '\0';
+                keyp = datakey;
 
-            if (vnode) hdf_copy(outnode, name, vnode);
+                valuenode = hdf_get_obj(datanode, keyp);
+                if (!valuenode) return nerr_raise(NERR_ASSERT, "key %s illgal", datakey);
 
-            /*
-             * merge type of array node's children
-             */
-            if (type == CNODE_TYPE_ARRAY) {
-                int ctype = mcs_get_int_attr(cnode, NULL, "childtype", CNODE_TYPE_STRING);
-                if (ctype != CNODE_TYPE_STRING) {
-                    HDF *xnode = hdf_get_child(outnode, name);
+                xnode = hdf_obj_child(valuenode);
+                while (xnode) {
+                    ynode = hdf_get_child(xnode, keyq);
+                    while (ynode) {
+                        err = mcs_data_rend(childconfignode, ynode,
+                                            mcs_fetch_nodef(outnode, "%s.%d",
+                                                            name, cnum++));
+                        if (err != STATUS_OK) return nerr_pass(err);
+
+                        ynode = hdf_obj_next(ynode);
+                    }
+
+                    xnode = hdf_obj_next(xnode);
+                }
+            } else {
+                /* static array value from datanode */
+                if (singlechild) {
+                    err = mcs_data_rend(childconfignode, valuenode,
+                                        mcs_fetch_nodef(outnode, "%s.0", name));
+                    if (err != STATUS_OK) return nerr_pass(err);
+                } else if (valuenode && hdf_obj_child(valuenode)) {
+                    cnum = 0;
+                    xnode = hdf_obj_child(valuenode);
                     while (xnode) {
-                        mcs_set_int_attr(xnode, NULL, "type", ctype);
+                        err = mcs_data_rend(childconfignode, xnode,
+                                            mcs_fetch_nodef(outnode, "%s.%d",
+                                                            name, cnum++));
+                        if (err != STATUS_OK) return nerr_pass(err);
+
                         xnode = hdf_obj_next(xnode);
                     }
                 }
             }
-        } else if (val && *val) {
-            hdf_set_value(outnode, name, val);
-        } else if (require && !strcmp(require, "true")) {
-            err = nerr_raise(NERR_ASSERT, "need %s %d", name, type);
-            if (err != STATUS_OK) return nerr_pass(err);
-        } else {
-            /*
-             * set default value for inserted record
-             */
-            if (!dft) dft = "";
-            hdf_set_value(outnode, name, dft);
+
+            break;
+
+        default:
+            break;
         }
 
-        /*
-         * merge confignode's child declaration
-         */
-        if (hdf_obj_child(cnode)) {
-            err = mcs_merge_data_and_config(vnode, cnode, hdf_get_obj(outnode, name));
-            if (err != STATUS_OK) return nerr_pass(err);
-        }
+        mcs_set_int_attrr(outnode, name, "type", type);
 
-        /*
-         * confignode declared keyname different with datanode,
-         * remove dirty key (which copied on object, or, array type) from outnode
-         */
-        if (key && strcmp(name, key)) {
-            hdf_remove_tree(outnode, key);
-        }
-
-        cnode = hdf_obj_next(cnode);
+        childconfignode = hdf_obj_next(childconfignode);
     }
 
     return STATUS_OK;

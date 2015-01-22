@@ -7,14 +7,14 @@ __BEGIN_DECLS
 
 typedef enum {
     CNODE_TYPE_STRING = 100,
-    CNODE_TYPE_BOOL,
-    CNODE_TYPE_INT,
-    CNODE_TYPE_INT64,
-    CNODE_TYPE_FLOAT,
+    CNODE_TYPE_BOOL,            /* 101 */
+    CNODE_TYPE_INT,             /* 102 */
+    CNODE_TYPE_INT64,           /* 103 */
+    CNODE_TYPE_FLOAT,           /* 104 */
     CNODE_TYPE_DATETIME, /**< 8byte timestamp; milliseconds since Unix epoch */
     CNODE_TYPE_TIMESTAMP, /**< 4bytes increment + 4bytes timestamp */
-    CNODE_TYPE_OBJECT,
-    CNODE_TYPE_ARRAY,
+    CNODE_TYPE_OBJECT,          /* 107 */
+    CNODE_TYPE_ARRAY,           /* 108 */
     CNODE_TYPE_JS,
     CNODE_TYPE_SYMBOL,
     CNODE_TYPE_OID, /**< 12byte ObjectID (uint) */
@@ -64,20 +64,27 @@ int  mcs_get_child_num(HDF *hdf, char *name);
 /*
  * n = 1 for 1st child
  */
-HDF* mcs_get_nth_child(HDF *hdf, char *name, int n);
 HDF* mcs_obj_nth_child(HDF *hdf, int n);
+HDF* mcs_get_nth_child(HDF *hdf, char *name, int n);
+HDF* mcs_get_nth_childf(HDF *hdf, int n, char *fmt, ...)
+                        ATTRIBUTE_PRINTF(3, 4);
+int  mcs_get_child_numf(HDF *hdf, char *fmt, ...)
+                        ATTRIBUTE_PRINTF(2, 3);
+
+/* return node, if key don't exist, return NULL */
 HDF* mcs_get_objf(HDF *hdf, char *fmt, ...)
                   ATTRIBUTE_PRINTF(2, 3);
+/* create node if key don't exist, and return NEOERR */
 NEOERR* mcs_get_nodef(HDF *hdf, HDF **rnode, char *fmt, ...)
                       ATTRIBUTE_PRINTF(3, 4);
+/* create node if key don't exist, and return this node */
+HDF*    mcs_fetch_nodef(HDF *hdf, char *fmt, ...)
+                        ATTRIBUTE_PRINTF(2, 3);
+
 NEOERR* mcs_copyf(HDF *dst, HDF *src, char *fmt, ...)
                       ATTRIBUTE_PRINTF(3, 4);
 NEOERR* mcs_remove_treef(HDF *hdf, char *fmt, ...)
                          ATTRIBUTE_PRINTF(2, 3);
-int mcs_get_child_numf(HDF *hdf, char *fmt, ...)
-                       ATTRIBUTE_PRINTF(2, 3);
-HDF* mcs_get_nth_childf(HDF *hdf, int n, char *fmt, ...)
-                        ATTRIBUTE_PRINTF(3, 4);
 
 
 unsigned int mcs_get_uint_value(HDF *hdf, char *name, unsigned int defval);
@@ -108,8 +115,8 @@ char* mcs_prepend_string_value(HDF *node, char *key, char *str);
 char* mcs_prepend_string_valuef(HDF *node, char *key, char *sfmt, ...)
                                 ATTRIBUTE_PRINTF(3, 4);
 /*
+ * modify dst hdf node, according data node
  * in:
- *
  * data {
  *    NeedReplaceA = foo
  *    NeedReplaceB = bar
@@ -123,7 +130,6 @@ char* mcs_prepend_string_valuef(HDF *node, char *key, char *sfmt, ...)
  * }
  *
  * out:
- *
  * dst {
  *    class = senior
  *    comment {
@@ -132,13 +138,11 @@ char* mcs_prepend_string_valuef(HDF *node, char *key, char *sfmt, ...)
  *    remark = when you are in bar...
  * }
  */
-void    mcs_hdf_rep(HDF *data, HDF *dst);
-/* copy src hdf to dst.name hdf, and replace dst.name use data hdf */
-NEOERR* mcs_hdf_copy_rep(HDF *dst, char *name, HDF *src, HDF *data);
+void mcs_hdf_rep(HDF *data, HDF *dst);
 
 /*
+ * modify string, according data node
  * in:
- *
  * src = $level$, $level$$name$,  name.$level$.in$desc$,  or name.$level$
  * data {
  *     level = 100
@@ -148,32 +152,27 @@ NEOERR* mcs_hdf_copy_rep(HDF *dst, char *name, HDF *src, HDF *data);
  * c = $
  *
  * out
- *
  * 100, 100test data, name.100.ina desc, or name.100
  * return an allocated string, remember to free it
  */
 char* mcs_repvstr_byhdf(char *src, char c, HDF *data);
 
 /*
- * merge two node(datanode, confignode), produce a node(outnode)
- * mostly used to merge [type=xxx] attribute, with other modify
+ * merge two node(confignode, datanode), produce a node(outnode)
+ * we call it data render (or, data modifier)
  * e.g.
+ * confignode:
+ *    boardid [type=102, require=true] = bid
+ *    cardid [type=102, valuenode=true] = 12
+ *    video [type=107, value=v] {
+ *        restid [type=102]  = rid
+ *        destids [type=108, value=dids] {
+ *            __arraynode__ [type=102] = __value__
+ *        }
+ *    }
+ *
  * datanode:
  *     bid = 110
- *     cids {
- *         0 = 11
- *         1 = 12
- *     }
- *     eids {
- *         0 {
- *             id = 31
- *             name = one
- *         }
- *         1 {
- *             id = 32
- *             name = two
- *         }
- *     }
  *     v {
  *         rid = 2
  *         title = 闺密争抢土豪现场痛苦
@@ -183,60 +182,55 @@ char* mcs_repvstr_byhdf(char *src, char c, HDF *data);
  *         }
  *     }
  *
- * confignode:
- *     boardid [type=102, require=true] = bid
- *     cardids [type=108, childtype=102] = cids
- *     eggids [type=108] = eids
- *     eggids {
- *         __eachchild__ {
- *             eid [type=102, default=0] = id
- *         }
- *     }
- *     video [value=v] {
- *         restid [type=102]  = rid
- *         destids [type=108, childtype=102] = dids
- *     }
- *     inttime [type=106] = _NOW
- *
  * outnode
- *     boardid [type="102"]  = 110
- *     cardids [type="108"] {
- *         0 [type="102"] = 11
- *         1 [type="102"] = 12
- *     }
- *     eggids [type="107"] {
- *         0 {
- *             name = one
- *             eid [type="102"] = 31
- *         }
- *         1 {
- *             name = two
- *             eid [type="102"] = 32
- *         }
- *     }
- *     video [type="107"] {
- *         title = 闺密争抢土豪现场痛苦
- *         restid [type="102"] = 2
- *         destids [type="108"] {
- *             0 [type="102"] = 21
- *             1 [type="102"] = 22
- *         }
- *     }
- *     inttime [type="106"]  = 1418788103
+ *    boardid [type="102"]  = 110
+ *    cardids [type="102"] = 12
+ *    video {
+ *      restid [type="102"]  = 2
+ *      destids {
+ *        0 [type="102"]  = 21
+ *        1 [type="102"]  = 22
+ *      }
+ *    }
  *
- * directions in config node:
- * 1. attribute type, this node's data type, please refer CNODE_TYPE_INT...
- * 2. attribute childtype, children node's data type,
- *    only valid on this node's type is CNODE_TYPE_ARRAY
- * 3. attribute require, return error if data key can't found in datanode
- * 4. attribute default, default value if data key can't found in datanode,
- *    overide by require
- * 5. attribute value, appoint dataset's node key,
- *    offen used on object, array node with child config
- * 6. name __eachchild__, used on array node, refer the node's every child
- * 7. value _NOW, current timestamp, used on node's type is CNOD_TYPE_TIMESTAMP
+ * directions in confignode:
+ * A: attribute
+ *    type
+ *      data type(int, string, object, array, etc) of this outnode
+ *      refer CnodeType of mcs.h for detail value
+ *
+ *    value(equal to confignode's value)
+ *      outnode's value = hdf_get_value(datanode, value)
+ *      value=__value__ for the whole datanode
+ *
+ *    require=true
+ *      return error if hdf_get_value(datanode, value) == NULL
+ *
+ *    default
+ *      default value if hdf_get_value(datanode, value) == NULL
+ *
+ *    valuenode=true
+ *      outnode's value = hdf_obj_value(confignode)
+ *
+ *    childtype=__single__
+ *      don't iteral datanode, appeared in array node only
+ *
+ * B: name
+ *    __arraynode__
+ *      array node's child name MUST be __arraynode__,
+ *      and, __arrynode__ just can appeare as arraynode's child name
+ *
+ *    __datanode__
+ *      outnode's name = hdf_obj_name(datanode)
+ *
+ * C: value
+ *    .$.
+ *      if ".$." exist in confignode's value, and this node type is array
+ *      we will iteral two datanodes before and after ".$."
+ * please refer doc/mnl/mcs_data_rend.md for more detail
  */
-NEOERR* mcs_merge_data_and_config(HDF *datanode, HDF *confignode, HDF *outnode);
+NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode);
+
 
 char* mcs_hdf_attr(HDF *hdf, char *name, char*key);
 char* mcs_obj_attr(HDF *hdf, char*key);
