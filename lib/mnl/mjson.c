@@ -193,6 +193,8 @@ NEOERR* mjson_string_to_hdf(HDF *node, char *str, int flag)
 
     if (!str) str = hdf_obj_value(node);
 
+    if (!str) return nerr_raise(NERR_ASSERT, "string null");
+
     struct json_object *obj;
 
     obj = json_tokener_parse(str);
