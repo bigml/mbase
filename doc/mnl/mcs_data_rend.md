@@ -1,12 +1,13 @@
 ### mcs_data_rend, moon's data render
 
-we need to produce new data from one data exist, according some application logic usually.
-e.g. we queried some database data, store them in a hdf node name "datanode"
+we need to produce new data from one data exist, according some application logic usually. 
 
+e.g. we queried some database data, store them in a hdf node name "datanode"
 and we need to produce application hdf node called "outnode"
 we need to change the datanode's key name, or, remove some key useless.
 
 so, there is mcs_data_rend(), which can do this through config file,
+
 you can read ldml_render() of mgate's pub/ directory for it's useage.
 
 
@@ -15,6 +16,7 @@ you can read ldml_render() of mgate's pub/ directory for it's useage.
 
 * confignode
 
+```
     boardid [type=102, require=true] = bid
     cardids [type=108, value=cids] {
         __arraynode__ [type=102] = __value__
@@ -39,10 +41,11 @@ you can read ldml_render() of mgate's pub/ directory for it's useage.
     slotid [type=108, value=adgroups.$.spots] {
         __arraynode__ [type=102] = spot_id
     }
-
+```
 
 * datanode
 
+```
     bid = 110
     cids {
         0 = 11
@@ -186,10 +189,12 @@ you can read ldml_render() of mgate's pub/ directory for it's useage.
         u.id = 222
       }
     }
+```
 
 
 * outnode
 
+```
     boardid [type="102"]  = 110
     cardids {
       0 [type="102"]  = 11
@@ -224,6 +229,6 @@ you can read ldml_render() of mgate's pub/ directory for it's useage.
       1 [type="102"]  = 120
       2 [type="102"]  = 121
     }
-
+```
 
 ### demo in /doc/demo/hdfrend
