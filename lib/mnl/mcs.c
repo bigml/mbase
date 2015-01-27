@@ -737,54 +737,60 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
             break;
 
         case CNODE_TYPE_ARRAY:
-            if (datakey && (keyp = strstr(datakey, ".$.")) != NULL) {
-                cnum = 0;
-
-                /*
-                 * only support one $
-                 * adgroups.$.spots
-                 * keyp = adgroups
-                 * keyq = spots
-                 */
-                keyq = keyp + 3;
-                *keyp = '\0';
-                keyp = datakey;
-
-                valuenode = hdf_get_obj(datanode, keyp);
-                if (!valuenode) return nerr_raise(NERR_ASSERT, "key %s illgal", datakey);
-
-                xnode = hdf_obj_child(valuenode);
-                while (xnode) {
-                    ynode = hdf_get_child(xnode, keyq);
-                    while (ynode) {
-                        err = mcs_data_rend(childconfignode, ynode,
-                                            mcs_fetch_nodef(outnode, "%s.%d",
-                                                            name, cnum++));
-                        if (err != STATUS_OK) return nerr_pass(err);
-
-                        ynode = hdf_obj_next(ynode);
-                    }
-
-                    xnode = hdf_obj_next(xnode);
-                }
-            } else {
-                /* static array value from datanode */
-                if (singlechild) {
-                    err = mcs_data_rend(childconfignode, valuenode,
-                                        mcs_fetch_nodef(outnode, "%s.0", name));
-                    if (err != STATUS_OK) return nerr_pass(err);
-                } else if (valuenode && hdf_obj_child(valuenode)) {
+            if (hdf_obj_child(childconfignode)) {
+                /* appoint array from confignode */
+                if (datakey && (keyp = strstr(datakey, ".$.")) != NULL) {
                     cnum = 0;
+
+                    /*
+                     * only support one $
+                     * adgroups.$.spots
+                     * keyp = adgroups
+                     * keyq = spots
+                     */
+                    keyq = keyp + 3;
+                    *keyp = '\0';
+                    keyp = datakey;
+
+                    valuenode = hdf_get_obj(datanode, keyp);
+                    if (!valuenode) return nerr_raise(NERR_ASSERT, "%s illgal", datakey);
+
                     xnode = hdf_obj_child(valuenode);
                     while (xnode) {
-                        err = mcs_data_rend(childconfignode, xnode,
-                                            mcs_fetch_nodef(outnode, "%s.%d",
-                                                            name, cnum++));
-                        if (err != STATUS_OK) return nerr_pass(err);
+                        ynode = hdf_get_child(xnode, keyq);
+                        while (ynode) {
+                            err = mcs_data_rend(childconfignode, ynode,
+                                                mcs_fetch_nodef(outnode, "%s.%d",
+                                                                name, cnum++));
+                            if (err != STATUS_OK) return nerr_pass(err);
+
+                            ynode = hdf_obj_next(ynode);
+                        }
 
                         xnode = hdf_obj_next(xnode);
                     }
+                } else {
+                    /* static array value from datanode */
+                    if (singlechild) {
+                        err = mcs_data_rend(childconfignode, valuenode,
+                                            mcs_fetch_nodef(outnode, "%s.0", name));
+                        if (err != STATUS_OK) return nerr_pass(err);
+                    } else if (valuenode && hdf_obj_child(valuenode)) {
+                        cnum = 0;
+                        xnode = hdf_obj_child(valuenode);
+                        while (xnode) {
+                            err = mcs_data_rend(childconfignode, xnode,
+                                                mcs_fetch_nodef(outnode, "%s.%d",
+                                                                name, cnum++));
+                            if (err != STATUS_OK) return nerr_pass(err);
+
+                            xnode = hdf_obj_next(xnode);
+                        }
+                    }
                 }
+            } else if (valuenode) {
+                /* use object key from datanode */
+                hdf_copy(outnode, name, valuenode);
             }
 
             break;
