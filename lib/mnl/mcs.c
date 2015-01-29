@@ -739,21 +739,23 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
         case CNODE_TYPE_ARRAY:
             if (hdf_obj_child(childconfignode)) {
                 /* appoint array from confignode */
-                if (datakey && (keyp = strstr(datakey, ".$.")) != NULL) {
-                    cnum = 0;
-
+                if (datakey && strstr(datakey, ".$.")) {
                     /*
                      * only support one $
                      * adgroups.$.spots
                      * keyp = adgroups
                      * keyq = spots
                      */
+                    char *safekey = strdup(datakey);
+                    keyp = strstr(safekey, ".$.");
                     keyq = keyp + 3;
                     *keyp = '\0';
-                    keyp = datakey;
+                    keyp = safekey;
+
+                    cnum = 0;
 
                     valuenode = hdf_get_obj(datanode, keyp);
-                    if (!valuenode) return nerr_raise(NERR_ASSERT, "%s illgal", datakey);
+                    if (!valuenode) return nerr_raise(NERR_ASSERT, "%s illgal", safekey);
 
                     xnode = hdf_obj_child(valuenode);
                     while (xnode) {
@@ -769,6 +771,7 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
 
                         xnode = hdf_obj_next(xnode);
                     }
+                    SAFE_FREE(safekey);
                 } else {
                     /* static array value from datanode */
                     if (singlechild) {

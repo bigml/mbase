@@ -10,15 +10,18 @@ int main(int argc, char **argv, char **envp)
 
     hdf_init(&datanode);
     hdf_init(&confignode);
-    hdf_init(&outnode);
 
     hdf_read_file(datanode, "rend.data.hdf");
     hdf_read_file(confignode, "rend.config.hdf");
 
-    err = mcs_data_rend(confignode, datanode, outnode);
-    OUTPUT_NOK(err);
+    for (int i = 0; i < 2; i++) {
+        hdf_init(&outnode);
+        err = mcs_data_rend(confignode, datanode, outnode);
+        OUTPUT_NOK(err);
 
-    hdf_dump_format(outnode, 0, stdout);
+        hdf_dump_format(outnode, 0, stdout);
+        printf("\n\n");
+    }
 
     hdf_destroy(&datanode);
     hdf_destroy(&confignode);
