@@ -1,6 +1,11 @@
 #include "mheads.h"
 #ifndef DROP_MONGO
 
+/*
+ * mongo_sync_update(), and mongo_sync_insert() will verify_result,
+ * use mongo_sync_cmd_get_last_error() internal.
+ * so, we just return conn->last_error use conn_get_last_error()
+ */
 #define GET_CONN_ERROR(con) (const char*) mongo_sync_conn_get_last_error(con)
 
 NEOERR* mmg_init(char *host, int port, int ms, mmg_conn **db)
@@ -187,9 +192,15 @@ NEOERR* mmg_query(mmg_conn *db, char *dsn, char *prefix, HDF *outnode)
             }
             return nerr_raise(NERR_NOT_FOUND, "%s 无此记录", dsn);
         }
-        /* TODO errst memory leak */
-        /* TODO GET_CONN_ERROR will cause query failed(0, 22), libmongodb-client's bug? */
-        char *errstr = NULL; mongo_sync_cmd_get_last_error(db->con, dsn, &errstr);
+        /* TODO errstr memory leak */
+        char *errstr = NULL;
+        char dbname[64], *sdbname = dbname;
+        sdbname = strchr(dsn, '.');
+        snprintf(dbname, sizeof(dbname), "%.*s", (int)(sdbname - dsn), dsn);
+        if (mongo_sync_cmd_get_last_error(db->con, dbname, &errstr))
+            mtc_dbg("query %s failure(don't ENOENT), server telled me %s", dbname, errstr);
+        else
+            mtc_dbg("query %s failure(don't ENOENT), server don't know why", dbname);
         return nerr_raise(NERR_DB, "query: %d %s",
                           errno, (errstr) ? errstr: strerror(errno));
     }
@@ -618,7 +629,14 @@ NEOERR* mmg_delete(mmg_conn *db, char *dsn, int flags, char *sel)
                                 sel, strerror(errno));
 
     if (!mongo_sync_cmd_delete(db->con, dsn, flags, doc)) {
-        char *errstr = NULL; mongo_sync_cmd_get_last_error(db->con, dsn, &errstr);
+        char *errstr = NULL;
+        char dbname[64], *sdbname = dbname;
+        sdbname = strchr(dsn, '.');
+        snprintf(dbname, sizeof(dbname), "%.*s", (int)(sdbname - dsn), dsn);
+        if (mongo_sync_cmd_get_last_error(db->con, dsn, &errstr))
+            mtc_warn("delete %s %s failure, server telled me %s", dsn, sel, errstr);
+        else
+            mtc_warn("delete %s %s failure, server don't know why", dsn, sel);
         return nerr_raise(NERR_DB, "sync_cmd_delete: %d %s",
                           errno, (errstr) ? errstr: strerror(errno));
     }
