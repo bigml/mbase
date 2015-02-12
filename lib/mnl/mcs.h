@@ -202,6 +202,8 @@ char* mcs_repvstr_byhdf(char *src, char c, HDF *data);
  *    value(equal to confignode's value)
  *      outnode's value = hdf_get_value(datanode, value)
  *      value=__value__ for the whole datanode
+ *      value=__1stc__.xxx to get value from datanode's first child's xxx
+ *          xxx can be NULL, and each value have only one of it at most
  *
  *    require=true
  *      return error if hdf_get_value(datanode, value) == NULL

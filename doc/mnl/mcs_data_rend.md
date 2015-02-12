@@ -38,6 +38,8 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode);
  * value(equal to confignode's value)
       outnode's value = hdf_get_value(datanode, value)
       value=__value__ for the whole datanode
+      value=__1stc__.xxx to get value from datanode's first child's xxx
+          xxx can be NULL, and each value have only one of it at most
 
  * require=true
       return error if hdf_get_value(datanode, value) == NULL
@@ -115,6 +117,11 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode);
         __arraynode__ [type=107, value=__value__] {
             eid [type=102, default=0] = id
         }
+    }
+    eggchild [type=102] = eids.__1stc__.id
+    eggchild2 [type=102] = eids.1.__1stc__
+    eggchild3 [type=108, value=eids, childtype=__single__] {
+        __arraynode__ = __1stc__.name
     }
 
     video [type=107, value=v] {
@@ -196,6 +203,11 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode);
       1 {
         eid [type="102"]  = 32
       }
+    }
+    eggchild [type="102"]  = 31
+    eggchild2 [type="102"]  = 32
+    eggchild3 {
+      0 [type="100"]  = one
     }
     video {
       restid [type="102"]  = 2

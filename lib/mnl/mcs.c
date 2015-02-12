@@ -690,6 +690,27 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
         } else if (!strcmp(datakey, "__value__")) {
             valuestr = hdf_obj_value(datanode);
             valuenode = datanode;
+        } else if (strstr(datakey, "__1stc__")) {
+            /*
+             * TODO __[n,x,z]stc__ support
+             */
+            /*
+             * eids.__1stc__.id
+             * keyp = eids
+             * keyq = id
+             */
+            char *safekey = strdup(datakey);
+            keyp = strstr(safekey, "__1stc__");
+            keyq = keyp + 8;
+
+            if (*keyq && *(keyq) == '.') keyq = keyq + 1;
+            if (keyp != safekey && *(keyp - 1) == '.') keyp = keyp - 1;
+
+            *keyp = '\0';
+            keyp = safekey;
+
+            valuestr = hdf_get_value(hdf_get_child(datanode, keyp), keyq, NULL);
+            valuenode = hdf_get_obj(hdf_get_child(datanode, keyp), keyq);
         }
 
         if (nodevalue && !strcmp(nodevalue, "true")) {

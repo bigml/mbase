@@ -1,24 +1,25 @@
-boardid [type=102, require=true] = bid
-cardids [type=108, value=cids] {
-    __arraynode__ [type=102] = __value__
-}
-eggids [type=108] = eids
-eggids {
-    __arraynode__ [type=107, value=__value__] {
-        eid [type=102, default=0] = id
-    }
-}
-
-video [type=107, value=v] {
-    restid [type=102]  = rid
-    destids [type=108, value=dids] {
+    cardids [type=108, value=cids] {
         __arraynode__ [type=102] = __value__
     }
-}
+    eggids [type=108] = eids
+    eggids {
+        __arraynode__ [type=107, value=__value__] {
+            eid [type=102, default=0] = id
+        }
+    }
+    eggchild [type=102] = eids.__1stc__.id
+    eggchild2 [type=102] = eids.1.__1stc__
+    eggchild3 [type=108, value=eids, childtype=__single__] {
+        __arraynode__ = __1stc__.name
+    }
 
-p [type=107] = Query.p
-intime [type=106] = _NOW
+    video [type=107, value=v] {
+        restid [type=102]  = rid
+        destids [type=108, value=dids] {
+            __arraynode__ [type=102] = __value__
+        }
+    }
 
-slotid [type=108, value=adgroups.$.spots] {
-    __arraynode__ [type=102] = spot_id
-}
+    slotid [type=108, value=adgroups.$.spots] {
+        __arraynode__ [type=102] = spot_id
+    }
