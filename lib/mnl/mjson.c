@@ -100,12 +100,14 @@ void mjson_execute_hdf(HDF *hdf, char *cb, time_t second)
     json_object_put(out);
 }
 
-static inline void json_append_to_hdf(HDF *node, char *key, struct json_object *obj, int flag)
+static inline void json_append_to_hdf(HDF *node, char *key, struct json_object *obj,
+                                      int flag)
 {
     if (!node || !key || !obj) return;
 
     struct array_list *list;
     enum json_type type;
+    int nodetype = CNODE_TYPE_STRING;
     char tok[64];
     HDF *cnode;
 
@@ -114,21 +116,19 @@ static inline void json_append_to_hdf(HDF *node, char *key, struct json_object *
     switch (type) {
     case json_type_boolean:
         hdf_set_int_value(node, key, json_object_get_boolean(obj));
-        if (flag & MJSON_EXPORT_TYPE) MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_BOOL);
+        nodetype = CNODE_TYPE_BOOL;
         break;
     case json_type_int:
         hdf_set_int_value(node, key, json_object_get_int(obj));
-        if (flag & MJSON_EXPORT_TYPE) MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_INT);
+        nodetype = CNODE_TYPE_INT;
         break;
     case json_type_double:
         mcs_set_float_value(node, key, json_object_get_double(obj));
-        if (flag & MJSON_EXPORT_TYPE)
-            MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_FLOAT);
+        nodetype = CNODE_TYPE_FLOAT;
         break;
     case json_type_string:
         hdf_set_value(node, key, json_object_get_string(obj));
-        if (flag & MJSON_EXPORT_TYPE)
-            MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_STRING);
+        nodetype = CNODE_TYPE_STRING;
         break;
     case json_type_array:
         hdf_get_node(node, key, &cnode);
@@ -137,20 +137,20 @@ static inline void json_append_to_hdf(HDF *node, char *key, struct json_object *
             sprintf(tok, "%d", i);
             json_append_to_hdf(cnode, tok, (struct json_object*)list->array[i], flag);
         }
-        if (flag & MJSON_EXPORT_TYPE)
-            MCS_SET_INT_ATTRR(cnode, NULL, "type", CNODE_TYPE_ARRAY);
+        nodetype = CNODE_TYPE_ARRAY;
         break;
     case json_type_object:
         hdf_get_node(node, key, &cnode);
         json_object_object_foreach(obj, key, val) {
             json_append_to_hdf(cnode, key, val, flag);
         }
-        if (flag & MJSON_EXPORT_TYPE)
-            MCS_SET_INT_ATTR(cnode, NULL, "type", CNODE_TYPE_OBJECT);
+        nodetype = CNODE_TYPE_OBJECT;
         break;
     default:
         break;
     }
+
+    if (flag & MJSON_EXPORT_TYPE) MCS_SET_INT_ATTR(node, key, "type", nodetype);
 }
 
 NEOERR* mjson_export_to_hdf(HDF *node, struct json_object *obj, int flag, bool drop)

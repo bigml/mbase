@@ -237,11 +237,8 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode);
 char* mcs_hdf_attr(HDF *hdf, char *name, char*key);
 char* mcs_obj_attr(HDF *hdf, char*key);
 NEOERR* mcs_set_int_attr(HDF *hdf, char *name, char *key, int val);
-NEOERR* mcs_set_int_attrr(HDF *hdf, char *name, char *key, int val);
 NEOERR* mcs_set_int_attrf(HDF *hdf, char *key, int val, char *fmt, ...)
                           ATTRIBUTE_PRINTF(4, 5);
-NEOERR* mcs_set_int_attrrf(HDF *hdf, char *key, int val, char *fmt, ...)
-                           ATTRIBUTE_PRINTF(4, 5);
 int mcs_get_int_attr(HDF *hdf, char *name, char *key, int defval);
 
 NEOERR* mcs_err_valid(NEOERR *err);
@@ -360,14 +357,6 @@ NEOERR* mcs_err_valid(NEOERR *err);
     do {                                        \
         char ztoka[64];                         \
         snprintf(ztoka, 64, "%d", val);         \
-        hdf_set_attr(hdf, name, key, ztoka);    \
-    } while (0)
-#define MCS_SET_INT_ATTRR(hdf, name, key, val)  \
-    do {                                        \
-        char ztoka[64];                         \
-        snprintf(ztoka, 64, "%d", val);         \
-        if (!hdf_get_value(hdf, name, NULL))    \
-            hdf_set_value(hdf, name, "foo");    \
         hdf_set_attr(hdf, name, key, ztoka);    \
     } while (0)
 #define MCS_GET_INT_ATTR(hdf, name, key, defval, v) \

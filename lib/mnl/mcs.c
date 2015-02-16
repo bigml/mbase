@@ -823,7 +823,7 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
             break;
         }
 
-        mcs_set_int_attrr(outnode, name, "type", type);
+        mcs_set_int_attr(outnode, name, "type", type);
 
         childconfignode = hdf_obj_next(childconfignode);
     }
@@ -869,18 +869,6 @@ NEOERR* mcs_set_int_attr(HDF *hdf, char *name, char *key, int val)
     return nerr_pass(hdf_set_attr(hdf, name, key, tok));
 }
 
-NEOERR* mcs_set_int_attrr(HDF *hdf, char *name, char *key, int val)
-{
-    char tok[64] = {0};
-
-    snprintf(tok, sizeof(tok), "%d", val);
-
-    /* can't set node's attr if node have no value */
-    if (!hdf_get_value(hdf, name, NULL)) hdf_set_value(hdf, name, NULL);
-
-    return nerr_pass(hdf_set_attr(hdf, name, key, tok));
-}
-
 NEOERR* mcs_set_int_attrf(HDF *hdf, char *key, int val, char *fmt, ...)
 {
     char name[LEN_HASH_KEY];
@@ -891,18 +879,6 @@ NEOERR* mcs_set_int_attrf(HDF *hdf, char *key, int val, char *fmt, ...)
     va_end(ap);
 
     return nerr_pass(mcs_set_int_attr(hdf, name, key, val));
-}
-
-NEOERR* mcs_set_int_attrrf(HDF *hdf, char *key, int val, char *fmt, ...)
-{
-    char name[LEN_HASH_KEY];
-    va_list ap;
-
-    va_start(ap, fmt);
-    vsnprintf(name, sizeof(name), fmt, ap);
-    va_end(ap);
-
-    return nerr_pass(mcs_set_int_attrr(hdf, name, key, val));
 }
 
 int mcs_get_int_attr(HDF *hdf, char *name, char *key, int defval)

@@ -277,20 +277,15 @@ NEOERR* mbson_export_to_hdf(HDF *node, bson *doc, char *setkey, int flag, bool d
     uint8_t *vu8;
     char oid[LEN_BSON_OID];
     bool vbl;
+    int nodetype;
     NEOERR *err;
-
-    if (flag & MBSON_EXPORT_TYPE) {
-        if (flag & MBSON_EXPORT_ARRAY)
-            MCS_SET_INT_ATTRR(node, NULL, "type", CNODE_TYPE_ARRAY);
-        else
-            MCS_SET_INT_ATTRR(node, NULL, "type", CNODE_TYPE_OBJECT);
-    }
 
     c = bson_cursor_new(doc);
 
     while (bson_cursor_next(c)) {
         bkey = (char*)bson_cursor_key(c);
         type = bson_cursor_type(c);
+        nodetype = CNODE_TYPE_STRING;
 
         if (setkey && setkey[0] != '\0') snprintf(key, LEN_HDF_KEY, "%s.%s", setkey, bkey);
         else snprintf(key, LEN_HDF_KEY, "%s", bkey);
@@ -299,87 +294,84 @@ NEOERR* mbson_export_to_hdf(HDF *node, bson *doc, char *setkey, int flag, bool d
         case BSON_TYPE_DOUBLE:
             bson_cursor_get_double(c, &vd);
             mcs_set_float_value(node, key, vd);
-            if (flag & MBSON_EXPORT_TYPE)
-                MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_FLOAT);
+            nodetype = CNODE_TYPE_FLOAT;
             break;
         case BSON_TYPE_STRING:
             bson_cursor_get_string(c, (const gchar**)&vs);
             hdf_set_value(node, key, vs);
-            if (flag & MBSON_EXPORT_TYPE)
-                MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_STRING);
+            nodetype = CNODE_TYPE_STRING;
             break;
         case BSON_TYPE_DOCUMENT:
             bson_cursor_get_document(c, &vb);
             hdf_get_node(node, key, &cnode);
-            if (flag & MBSON_EXPORT_TYPE)
-                MCS_SET_INT_ATTRR(cnode, NULL, "type", CNODE_TYPE_OBJECT);
             err = mbson_export_to_hdf(cnode, vb, NULL, flag & ~MBSON_EXPORT_ARRAY, true);
             if (err != STATUS_OK) return nerr_pass(err);
+            nodetype = CNODE_TYPE_OBJECT;
             break;
         case BSON_TYPE_ARRAY:
             bson_cursor_get_array(c, &vb);
             hdf_get_node(node, key, &cnode);
-            if (flag & MBSON_EXPORT_TYPE)
-                MCS_SET_INT_ATTRR(cnode, NULL, "type", CNODE_TYPE_ARRAY);
             err = mbson_export_to_hdf(cnode, vb, NULL, flag | MBSON_EXPORT_ARRAY, true);
             if (err != STATUS_OK) return nerr_pass(err);
+            nodetype = CNODE_TYPE_ARRAY;
             break;
         case BSON_TYPE_BOOLEAN:
             bson_cursor_get_boolean(c, (gboolean*)&vbl);
             hdf_set_int_value(node, key, vbl);
-            if (flag & MBSON_EXPORT_TYPE)
-                MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_BOOL);
+            nodetype = CNODE_TYPE_BOOL;
             break;
         case BSON_TYPE_INT32:
             bson_cursor_get_int32(c, &vi);
             hdf_set_int_value(node, key, vi);
-            if (flag & MBSON_EXPORT_TYPE)
-                MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_INT);
+            nodetype = CNODE_TYPE_INT;
             break;
         case BSON_TYPE_JS_CODE:
             bson_cursor_get_javascript(c, (const gchar**)&vs);
             hdf_set_value(node, key, vs);
-            if (flag & MBSON_EXPORT_TYPE)
-                MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_JS);
+            nodetype = CNODE_TYPE_JS;
             break;
         case BSON_TYPE_SYMBOL:
             bson_cursor_get_symbol(c, (const gchar**)&vs);
             hdf_set_value(node, key, vs);
-            if (flag & MBSON_EXPORT_TYPE)
-                MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_SYMBOL);
+            nodetype = CNODE_TYPE_SYMBOL;
         case BSON_TYPE_UTC_DATETIME:
             bson_cursor_get_utc_datetime(c, (gint64*)&vi64);
             mcs_set_int64_value(node, key, vi64);
-            if (flag & MBSON_EXPORT_TYPE)
-                MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_DATETIME);
+            nodetype = CNODE_TYPE_DATETIME;
             break;
         case BSON_TYPE_TIMESTAMP:
             bson_cursor_get_timestamp(c, (gint64*)&vi64);
             mcs_set_int64_value(node, key, vi64);
-            if (flag & MBSON_EXPORT_TYPE)
-                MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_TIMESTAMP);
+            nodetype = CNODE_TYPE_TIMESTAMP;
             break;
         case BSON_TYPE_INT64:
             bson_cursor_get_int64(c, (gint64*)&vi64);
             mcs_set_int64_value(node, key, vi64);
-            if (flag & MBSON_EXPORT_TYPE)
-                MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_INT64);
+            nodetype = CNODE_TYPE_INT64;
             break;
         case BSON_TYPE_OID:
             bson_cursor_get_oid(c, (const guint8**)&vu8);
             mstr_bin2hexstr(vu8, BYTE_BSON_OID, (unsigned char*)oid);
             hdf_set_value(node, key, oid);
-            if (flag & MBSON_EXPORT_TYPE)
-                MCS_SET_INT_ATTR(node, key, "type", CNODE_TYPE_OID);
+            nodetype = CNODE_TYPE_OID;
             break;
         default:
             break;
         }
+
+        if (flag & MBSON_EXPORT_TYPE) MCS_SET_INT_ATTR(node, key, "type", nodetype);
     }
 
     bson_cursor_free(c);
 
     if (drop) bson_free(doc);
+
+    if (flag & MBSON_EXPORT_TYPE) {
+        if (flag & MBSON_EXPORT_ARRAY)
+            MCS_SET_INT_ATTR(node, NULL, "type", CNODE_TYPE_ARRAY);
+        else
+            MCS_SET_INT_ATTR(node, NULL, "type", CNODE_TYPE_OBJECT);
+    }
 
     return STATUS_OK;
 }
