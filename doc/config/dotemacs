@@ -136,6 +136,16 @@
   (interactive)
   (insert (format-time-string "[%a %Y-%m-%d %H:%M:%S]")))
 
+(defun fullscreen (&optional f)
+  (interactive)
+  (modify-frame-parameters f `((fullscreen . maximized))))
+
+(when (and (eq window-system 'x)
+           (not (is-presentingp)))
+  (fullscreen))
+
+(global-set-key [f11] 'fullscreen)
+
 
 ;;;========== KEY BINDING ==========
 (global-set-key [delete] 'delete-char)

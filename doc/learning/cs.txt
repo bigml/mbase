@@ -1,11 +1,10 @@
 扩展 cs 功能
 ==========
 
-只能扩展 expression <?cs if/var...: xxxxxxxx() ?>
-(
-Commands if/var... 无法扩展
+<?cs if/var...: xxx() ?>
+function: xxx() 可以扩展
+Commands: if/var... 无法扩展
 EscapeModes <? escape: "html/js/url..." 无法扩展
-)
 -------------------
 
     cs_register_function(cs, "bitop.and", 2, _builtin_bitop_and);
@@ -33,21 +32,21 @@ register[_xxx]_func() 系列函数的区别：
                                     CSSTRFUNC str_func)
     {
       NEOERR *err;
-    
+
       err = cs_register_strfunc(parse, funcname, str_func);
       if (err) return nerr_pass(err);
       parse->functions->escape = NEOS_ESCAPE_FUNCTION;
-    
+
       return STATUS_OK;
     }
     NEOERR *cs_register_strfunc(CSPARSE *parse, char *funcname, CSSTRFUNC str_func)
     {
       NEOERR *err;
-    
+
       err = cs_register_function(parse, funcname, 1, _str_func_wrapper);
       if (err) return nerr_pass(err);
       parse->functions->str_func = str_func;
-    
+
       return STATUS_OK;
     }
 
@@ -64,14 +63,14 @@ register[_xxx]_func() 仅接受两类函数指针：
         NEOERR *err;
         long int n1 = 0;
         long int n2 = 0;
-    
+
         result->op_type = CS_TYPE_NUM;
         result->n = 0;
-    
+
         err = cs_arg_parse(parse, args, "ii", &n1, &n2);
         if (err) return nerr_pass(err);
         result->n = n1 | n2;
-    
+
         return STATUS_OK;
     }
 

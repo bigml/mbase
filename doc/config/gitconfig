@@ -1,6 +1,7 @@
 [user]
     name = bigml
     email = bigmaliang@gmail.com
+
 [alias]
     co = checkout
     br = branch
@@ -11,3 +12,19 @@
     logl = log --pretty=oneline
     logf = log --pretty=format:'%h - %an, %ad : %s' --date=iso
     pulla = pull --recurse-submodules
+
+[color]
+        ui     = true
+        branch = auto
+        diff   = auto
+        grep   = auto
+        interactive = auto
+        status = auto
+
+[branch]
+        # see also: http://ihower.tw/blog/archives/3843
+        #           http://gitready.com/advanced/2009/02/11/pull-with-rebase.html
+#        autosetuprebase = always
+
+[alias]
+        pr = pull --rebase
