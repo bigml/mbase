@@ -36,8 +36,12 @@ enum {
     MMG_FLAG_MIXROWS = 1 << 12,
     /* we need mongo's _id */
     MMG_FLAG_GETOID = 1 << 13,
-    /* wrap node by $set on hdf_update */
-    MMG_FLAG_UPSET = 1 << 14,
+    /* when mmg_hdf_update(), you can wrap the value you need to update by '$set' key */
+    MMG_FLAG_HDFUPSET = 1 << 14,
+    /** When set, inserts if no matching document was found. */
+    MMG_FLAG_UPDATE_UPSERT = 0x01,
+    /** When set, all matching documents will be updated, not just the first. */
+    MMG_FLAG_UPDATE_MULTI = 0x2
 };
 /*
  * flags: reused flags with mongo_wire_cmd_query().
