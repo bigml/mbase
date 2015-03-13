@@ -494,7 +494,7 @@ NEOERR* mmg_hdf_update(mmg_conn *db, char *dsn, int flags, HDF *node, char *sel)
     MCS_NOT_NULLB(node, sel);
 
     tnode = node;
-    if (flags && MMG_FLAG_UPSET) {
+    if (flags && MMG_FLAG_HDFUPSET) {
         hdf_init(&tnode);
         hdf_copy(tnode, "$set", node);
     }
@@ -520,7 +520,7 @@ NEOERR* mmg_hdf_update(mmg_conn *db, char *dsn, int flags, HDF *node, char *sel)
     bson_free(doca);
     bson_free(docb);
 
-    if (flags && MMG_FLAG_UPSET) hdf_destroy(&tnode);
+    if (flags && MMG_FLAG_HDFUPSET) hdf_destroy(&tnode);
 
     return STATUS_OK;
 }
