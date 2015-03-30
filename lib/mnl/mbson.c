@@ -7,6 +7,7 @@ static void json_append_to_bson(bson* b, char *key, struct json_object *val)
 
     struct array_list *list;
     enum json_type type;
+    int64_t ival;
     bson *sub;
     char tok[64];
 
@@ -17,7 +18,9 @@ static void json_append_to_bson(bson* b, char *key, struct json_object *val)
         bson_append_boolean(b, key, json_object_get_boolean(val));
         break;
     case json_type_int:
-        bson_append_int32(b, key, json_object_get_int(val));
+        ival = json_object_get_int64(val);
+        if (ival <= INT_MAX) bson_append_int32(b, key, ival);
+        else bson_append_int64(b, key, ival);
         break;
     case json_type_double:
         bson_append_double(b, key, json_object_get_double(val));

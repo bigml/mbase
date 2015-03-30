@@ -776,7 +776,8 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
                     cnum = 0;
 
                     valuenode = hdf_get_obj(datanode, keyp);
-                    if (!valuenode) return nerr_raise(NERR_ASSERT, "%s illgal", safekey);
+                    if (!valuenode)
+                        return nerr_raise(NERR_ASSERT, "%s don't exist", safekey);
 
                     xnode = hdf_obj_child(valuenode);
                     while (xnode) {
