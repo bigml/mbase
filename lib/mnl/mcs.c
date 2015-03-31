@@ -824,7 +824,8 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
             break;
         }
 
-        mcs_set_int_attr(outnode, name, "type", type);
+        err = mcs_set_int_attr(outnode, name, "type", type);
+        if (err != STATUS_OK) nerr_ignore(&err);
 
         childconfignode = hdf_obj_next(childconfignode);
     }
