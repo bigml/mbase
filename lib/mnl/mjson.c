@@ -199,7 +199,7 @@ NEOERR* mjson_string_to_hdf(HDF *node, char *str, int flag)
 
     obj = json_tokener_parse(str);
 
-    if (!obj) return nerr_raise(NERR_ASSERT, "json object null");
+    if (!obj) return nerr_raise(NERR_ASSERT, "json object null %s", str);
 
     return mjson_export_to_hdf(node, obj, flag, true);
 }
