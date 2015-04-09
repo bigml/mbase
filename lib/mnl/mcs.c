@@ -711,6 +711,7 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
 
             valuestr = hdf_get_value(hdf_get_child(datanode, keyp), keyq, NULL);
             valuenode = hdf_get_obj(hdf_get_child(datanode, keyp), keyq);
+            SAFE_FREE(safekey);
         }
 
         if (nodevalue && !strcmp(nodevalue, "true")) {
