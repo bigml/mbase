@@ -46,6 +46,8 @@ static NEOERR* function_namef(EventEntry *entry, OpCode op,
     if (!getter) {
         mtc_err("getter null %d %s", op, fmt);
         return nerr_raise(NERR_NOTFOUND, "getter null %d %s", op, fmt);
+    } else {
+        new_val = m_err_inited + 60 * 60;
     }
 
     for (int i = 0; i < new_val; i++) {
