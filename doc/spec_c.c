@@ -43,12 +43,24 @@ static NEOERR* function_namef(EventEntry *entry, OpCode op,
 
     if (!p) return nerr_raise(NERR_ASSERT, "param null");
 
+
     if (!getter) {
         mtc_err("getter null %d %s", op, fmt);
         return nerr_raise(NERR_NOTFOUND, "getter null %d %s", op, fmt);
     } else {
         new_val = m_err_inited + 60 * 60;
+
+        if (expression_a) short_expression_b;
+
+        if (expression_a)
+            long_long_long_long_long_expression_b;
+
+        if (expression_a) {
+            multi_expression_b;
+            multi_expression_c;
+        }
     }
+
 
     for (int i = 0; i < new_val; i++) {
         switch(op) {
@@ -59,6 +71,21 @@ static NEOERR* function_namef(EventEntry *entry, OpCode op,
             break;
         }
     }
+
+
+    /*
+     * 逻辑A
+     */
+    logic_a_expression_1;
+    logic_a_expression_2;
+    logic_a_expression_3;
+
+    /*
+     * 逻辑B
+     */
+    logic_b_expression_1;
+    logic_b_expression_2;
+
 
     return nerr_pass(func_bar(x, y));
     return err;
