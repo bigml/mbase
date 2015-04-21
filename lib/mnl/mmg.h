@@ -1,6 +1,11 @@
 #ifndef __MMG_H__
 #define __MMG_H__
 
+/*
+ * mmg - moon mongodb operation API
+ *       api tutorial: doc/tut/mnl/mmg.c
+ */
+
 #include "mheads.h"
 
 __BEGIN_DECLS
@@ -22,6 +27,7 @@ typedef struct _mmg_conn {
 
 /*
  * timeout in microsecond, 1000ms = 1s
+ * dsn is the collection name
  */
 NEOERR* mmg_init(char *host, int port, int timeout, mmg_conn **db);
 NEOERR* mmg_auth(mmg_conn *db, char *dsn, char *user, char *pass);
@@ -30,16 +36,22 @@ void mmg_destroy(mmg_conn *db);
 
 enum {
     MMG_FLAG_Z = 0,
+
     /* allow entry result. don't return error if no result found */
     MMG_FLAG_EMPTY = 1 << 11,
+
     /* don't add number as key for each result row */
     MMG_FLAG_MIXROWS = 1 << 12,
+
     /* we need mongo's _id */
     MMG_FLAG_GETOID = 1 << 13,
+
     /* when mmg_hdf_update(), you can wrap the value you need to update by '$set' key */
     MMG_FLAG_HDFUPSET = 1 << 14,
+
     /** When set, inserts if no matching document was found. */
     MMG_FLAG_UPDATE_UPSERT = 0x01,
+
     /** When set, all matching documents will be updated, not just the first. */
     MMG_FLAG_UPDATE_MULTI = 0x2
 };
@@ -141,6 +153,9 @@ NEOERR* mmg_delete(mmg_conn *db, char *dsn, int flags, char *sel);
 NEOERR* mmg_deletef(mmg_conn *db, char *dsn, int flags, char *selfmt, ...)
                    ATTRIBUTE_PRINTF(4, 5);
 
+/*
+ * dbname: just dbname, without collection name
+ */
 NEOERR* mmg_custom(mmg_conn *db, char *dbname,
                    char *prefix, HDF *outnode, char *command);
 NEOERR* mmg_customf(mmg_conn *db, char *dbname,
