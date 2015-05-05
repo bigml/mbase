@@ -11,6 +11,10 @@ int main(int argc, char **argv, char **envp)
 
     printf("%s %d %d %.2f\n", s, (int)( (50946) / 3600), (int)(50946 % 3600), f);
 
+    for (int i = 0; i < 100; i++) {
+        printf("%d\n", neo_rand(1));
+    }
+
 
     return 0;
 }

@@ -6,6 +6,10 @@
 __BEGIN_DECLS
 
 /*
+ * neo_rand(max) return rand integer between [0, max)
+ */
+
+/*
  * meory size of s MUST >= max, or len
  */
 void mstr_rand_string(char *s, int max);
