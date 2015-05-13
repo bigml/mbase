@@ -1,0 +1,177 @@
+areas [type="108"] {
+  0 [type="107"] {
+    areaid [type="100"]  = 3
+    areatype [type="100"]  = 4
+    slots [type="108"] {
+      0 [type="107"] {
+        slotid [type="102"]  = 5
+        slottitle [type="100"]  = OTT 电视暂停位
+        sequence [type="100"]  = 
+        card{
+          cardid [type="100"]  = 124
+          orderid [type="100"]  = 1
+          report [type="107"] {
+            impression [type="108"] {
+              99{
+                url = http://y.da.hunantv.com/json/cst/ip?d=mgtvmac0066CE02E7EC&v=1116403&ct=4&cd=124&s=5&b=4820
+                time [type="102"]  = 0
+              }
+            }
+            click [type="108"] {
+              99 = http://y.da.hunantv.com/json/cst/ck?d=mgtvmac0066CE02E7EC&v=1116403&ct=4&cd=124&s=5&b=4820
+            }
+          }
+          ttz{
+            ttzid [type="100"]  = 4
+            weight [type="100"]  = 0
+            name [type="100"]  = 美人制造暂停
+            type [type="100"]  = 57
+            width [type="100"]  = 1024
+            height [type="100"]  = 576
+            url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+            clickurl [type="100"]  = http://github.com
+            duration [type="100"]  = 0
+            dateswitch [type="100"]  = off
+            ondate [type="108"]  = 
+          }
+        }
+      }
+    }
+  }
+  1 [type="107"] {
+    areaid [type="100"]  = 2
+    areatype [type="100"]  = 1
+    slots [type="108"] {
+      0 [type="107"] {
+        slotid [type="102"]  = 1
+        slottitle [type="100"]  = OTT 电视前贴正一位
+        sequence [type="100"]  = 1
+        card{
+          cardid [type="100"]  = 119
+          orderid [type="100"]  = 1
+          report [type="107"] {
+            impression [type="108"] {
+              99{
+                url = http://y.da.hunantv.com/json/cst/ip?d=mgtvmac0066CE02E7EC&v=1116403&ct=1&cd=119&s=1&b=4820
+                time [type="102"]  = 0
+              }
+            }
+            click [type="108"] {
+              99 = http://y.da.hunantv.com/json/cst/ck?d=mgtvmac0066CE02E7EC&v=1116403&ct=1&cd=119&s=1&b=4820
+            }
+          }
+          ttz{
+            ttzid [type="100"]  = 1
+            weight [type="100"]  = 0
+            name [type="100"]  = 莫斯利安贴片
+            type [type="100"]  = 56
+            width [type="100"]  = 1024
+            height [type="100"]  = 576
+            url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+            clickurl [type="100"]  = http://m.hunantv.com
+            duration [type="100"]  = 15
+            dateswitch [type="100"]  = 
+          }
+        }
+      }
+      1 [type="107"] {
+        slotid [type="102"]  = 2
+        slottitle [type="100"]  = OTT 电视前贴正二位
+        sequence [type="100"]  = 2
+        card{
+          cardid [type="100"]  = 121
+          orderid [type="100"]  = 1
+          report [type="107"] {
+            impression [type="108"] {
+              99{
+                url = http://y.da.hunantv.com/json/cst/ip?d=mgtvmac0066CE02E7EC&v=1116403&ct=2&cd=121&s=2&b=4820
+                time [type="102"]  = 0
+              }
+            }
+            click [type="108"] {
+              99 = http://y.da.hunantv.com/json/cst/ck?d=mgtvmac0066CE02E7EC&v=1116403&ct=2&cd=121&s=2&b=4820
+            }
+          }
+          ttz{
+            ttzid [type="100"]  = 2
+            weight [type="100"]  = 0
+            name [type="100"]  = 容园美贴片
+            type [type="100"]  = 56
+            width [type="100"]  = 1024
+            height [type="100"]  = 576
+            url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+            clickurl [type="100"]  = http://github.com
+            duration [type="100"]  = 15
+            dateswitch [type="100"]  = 
+          }
+        }
+      }
+      2 [type="107"] {
+        slotid [type="102"]  = 3
+        slottitle [type="100"]  = OTT 电视前贴正三位
+        sequence [type="100"]  = 3
+        card{
+          cardid [type="100"]  = 122
+          orderid [type="100"]  = 1
+          report [type="107"] {
+            impression [type="108"] {
+              99{
+                url = http://y.da.hunantv.com/json/cst/ip?d=mgtvmac0066CE02E7EC&v=1116403&ct=15&cd=122&s=3&b=4820
+                time [type="102"]  = 0
+              }
+            }
+            click [type="108"] {
+              99 = http://y.da.hunantv.com/json/cst/ck?d=mgtvmac0066CE02E7EC&v=1116403&ct=15&cd=122&s=3&b=4820
+            }
+          }
+          ttz{
+            ttzid [type="100"]  = 15
+            weight [type="100"]  = 0
+            name [type="100"]  = 电视贴片_伊利 QQ 星
+            type [type="100"]  = 56
+            width [type="100"]  = 1024
+            height [type="100"]  = 576
+            url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+            clickurl [type="100"]  = http://
+            duration [type="100"]  = 15
+            dateswitch [type="100"]  = off
+            ondate [type="108"]  = 
+          }
+        }
+      }
+      3 [type="107"] {
+        slotid [type="102"]  = 4
+        slottitle [type="100"]  = OTT 电视前贴正四位
+        sequence [type="100"]  = 4
+        card{
+          cardid [type="100"]  = 123
+          orderid [type="100"]  = 1
+          report [type="107"] {
+            impression [type="108"] {
+              99{
+                url = http://y.da.hunantv.com/json/cst/ip?d=mgtvmac0066CE02E7EC&v=1116403&ct=24&cd=123&s=4&b=4820
+                time [type="102"]  = 0
+              }
+            }
+            click [type="108"] {
+              99 = http://y.da.hunantv.com/json/cst/ck?d=mgtvmac0066CE02E7EC&v=1116403&ct=24&cd=123&s=4&b=4820
+            }
+          }
+          ttz{
+            ttzid [type="100"]  = 24
+            weight [type="100"]  = 0
+            name [type="100"]  = 电视创意_统一
+            type [type="100"]  = 56
+            width [type="100"]  = 1024
+            height [type="100"]  = 576
+            url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+            clickurl [type="100"]  = http://
+            duration [type="100"]  = 15
+            dateswitch [type="100"]  = off
+            ondate [type="108"]  = 
+          }
+        }
+      }
+    }
+  }
+}

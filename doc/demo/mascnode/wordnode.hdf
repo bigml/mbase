@@ -1,0 +1,272 @@
+areas [type="108"] {
+  0 [type="107"] {
+    areaid [type="100"]  = 3
+    areatype [type="100"]  = 4
+    slots [type="108"] {
+      0 [type="107"] {
+        slotid [type="102"]  = 5
+        slottitle [type="100"]  = OTT 电视暂停位
+        sequence [type="100"]  = 
+        cards [type="108"] {
+          0 [type="107"] {
+            cardid [type="100"]  = 124
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+        }
+      }
+    }
+  }
+  1 [type="107"] {
+    areaid [type="100"]  = 2
+    areatype [type="100"]  = 1
+    slots [type="108"] {
+      0 [type="107"] {
+        slotid [type="102"]  = 1
+        slottitle [type="100"]  = OTT 电视前贴正一位
+        sequence [type="100"]  = 1
+        cards [type="108"] {
+          0 [type="107"] {
+            cardid [type="100"]  = 119
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://m.hunantv.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+        }
+      }
+      1 [type="107"] {
+        slotid [type="102"]  = 2
+        slottitle [type="100"]  = OTT 电视前贴正二位
+        sequence [type="100"]  = 2
+        cards [type="108"] {
+          0 [type="107"] {
+            cardid [type="100"]  = 121
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+        }
+      }
+      2 [type="107"] {
+        slotid [type="102"]  = 3
+        slottitle [type="100"]  = OTT 电视前贴正三位
+        sequence [type="100"]  = 3
+        cards [type="108"] {
+          0 [type="107"] {
+            cardid [type="100"]  = 122
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+        }
+      }
+      3 [type="107"] {
+        slotid [type="102"]  = 4
+        slottitle [type="100"]  = OTT 电视前贴正四位
+        sequence [type="100"]  = 4
+        cards [type="108"] {
+          0 [type="107"] {
+            cardid [type="100"]  = 123
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+        }
+      }
+    }
+  }
+}

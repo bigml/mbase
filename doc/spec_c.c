@@ -48,6 +48,7 @@ static NEOERR* function_namef(EventEntry *entry, OpCode op,
         mtc_err("getter null %d %s", op, fmt);
         return nerr_raise(NERR_NOTFOUND, "getter null %d %s", op, fmt);
     } else {
+        new_val = new_val < 0 ? 0 : new_val;
         new_val = m_err_inited + 60 * 60;
 
         if (expression_a) short_expression_b;

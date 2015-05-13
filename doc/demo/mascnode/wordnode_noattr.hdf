@@ -1,0 +1,272 @@
+areas {
+  0 {
+    areaid  = 3
+    areatype  = 4
+    slots {
+      0 {
+        slotid  = 5
+        slottitle  = OTT 电视暂停位
+        sequence  =
+        cards {
+          0 {
+            cardid  = 124
+            orderid  = 1
+            ttzs {
+              0 {
+                ttzid  = 4
+                weight  = 0
+                name  = 美人制造暂停
+                type  = 57
+                width  = 1024
+                height  = 576
+                url  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl  = http://github.com
+                duration  = 0
+                dateswitch  = off
+                ondate  =
+              }
+            }
+            report {
+              impression  =
+              click  =
+            }
+            extdata {
+              billtype  = 1
+              billpercent  =
+              priority  = 8
+              ondate {
+                0 {
+                  min  = 1431273600
+                  max  = 1433865599
+                }
+              }
+              flowtype  = 1
+              flows {
+                type  = 0
+                count  =
+                countperday  =
+                speed  =
+                weight  = 0
+              }
+              freqon  = 0
+              freqtrack  = 0
+              direction  =
+            }
+          }
+        }
+      }
+    }
+  }
+  1 {
+    areaid  = 2
+    areatype  = 1
+    slots {
+      0 {
+        slotid  = 1
+        slottitle  = OTT 电视前贴正一位
+        sequence  = 1
+        cards {
+          0 {
+            cardid  = 119
+            orderid  = 1
+            ttzs {
+              0 {
+                ttzid  = 1
+                weight  = 0
+                name  = 莫斯利安贴片
+                type  = 56
+                width  = 1024
+                height  = 576
+                url  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl  = http://m.hunantv.com
+                duration  = 15
+                dateswitch  =
+              }
+            }
+            report {
+              impression  =
+              click  =
+            }
+            extdata {
+              billtype  = 1
+              billpercent  =
+              priority  = 8
+              ondate {
+                0 {
+                  min  = 1431273600
+                  max  = 1433865599
+                }
+              }
+              flowtype  = 1
+              flows {
+                type  = 0
+                count  =
+                countperday  =
+                speed  =
+                weight  = 0
+              }
+              freqon  = 0
+              freqtrack  = 0
+              direction  =
+            }
+          }
+        }
+      }
+      1 {
+        slotid  = 2
+        slottitle  = OTT 电视前贴正二位
+        sequence  = 2
+        cards {
+          0 {
+            cardid  = 121
+            orderid  = 1
+            ttzs {
+              0 {
+                ttzid  = 2
+                weight  = 0
+                name  = 容园美贴片
+                type  = 56
+                width  = 1024
+                height  = 576
+                url  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl  = http://github.com
+                duration  = 15
+                dateswitch  =
+              }
+            }
+            report {
+              impression  =
+              click  =
+            }
+            extdata {
+              billtype  = 1
+              billpercent  =
+              priority  = 8
+              ondate {
+                0 {
+                  min  = 1431273600
+                  max  = 1433865599
+                }
+              }
+              flowtype  = 1
+              flows {
+                type  = 0
+                count  =
+                countperday  =
+                speed  =
+                weight  = 0
+              }
+              freqon  = 0
+              freqtrack  = 0
+              direction  =
+            }
+          }
+        }
+      }
+      2 {
+        slotid  = 3
+        slottitle  = OTT 电视前贴正三位
+        sequence  = 3
+        cards {
+          0 {
+            cardid  = 122
+            orderid  = 1
+            ttzs {
+              0 {
+                ttzid  = 15
+                weight  = 0
+                name  = 电视贴片_伊利 QQ 星
+                type  = 56
+                width  = 1024
+                height  = 576
+                url  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl  = http://
+                duration  = 15
+                dateswitch  = off
+                ondate  =
+              }
+            }
+            report {
+              impression  =
+              click  =
+            }
+            extdata {
+              billtype  = 1
+              billpercent  =
+              priority  = 8
+              ondate {
+                0 {
+                  min  = 1431273600
+                  max  = 1433865599
+                }
+              }
+              flowtype  = 1
+              flows {
+                type  = 0
+                count  =
+                countperday  =
+                speed  =
+                weight  = 0
+              }
+              freqon  = 0
+              freqtrack  = 0
+              direction  =
+            }
+          }
+        }
+      }
+      3 {
+        slotid  = 4
+        slottitle  = OTT 电视前贴正四位
+        sequence  = 4
+        cards {
+          0 {
+            cardid  = 123
+            orderid  = 1
+            ttzs {
+              0 {
+                ttzid  = 24
+                weight  = 0
+                name  = 电视创意_统一
+                type  = 56
+                width  = 1024
+                height  = 576
+                url  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl  = http://
+                duration  = 15
+                dateswitch  = off
+                ondate  =
+              }
+            }
+            report {
+              impression  =
+              click  =
+            }
+            extdata {
+              billtype  = 1
+              billpercent  =
+              priority  = 8
+              ondate {
+                0 {
+                  min  = 1431273600
+                  max  = 1433865599
+                }
+              }
+              flowtype  = 1
+              flows {
+                type  = 0
+                count  =
+                countperday  =
+                speed  =
+                weight  = 0
+              }
+              freqon  = 0
+              freqtrack  = 0
+              direction  =
+            }
+          }
+        }
+      }
+    }
+  }
+}
