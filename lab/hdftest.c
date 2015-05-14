@@ -16,8 +16,8 @@ int main(int argc, char **argv, char **envp)
     HDF *node;
     bson *doc;
     NEOERR *err;
-    
-    mtc_init("hdftest");
+
+    mtc_init("hdftest", 7);
 
     mtimer_start();
     for (int i = 0; i < NUM_TOTAL_TEST; i++) {
@@ -41,13 +41,13 @@ int main(int argc, char **argv, char **envp)
     mtc_foo("%d per second", (int)(NUM_TOTAL_TEST/(elapsed/1000000.0f)));
 
 
-    
+
 
     hdf_init(&node);
     hdf_set_value(node, NULL, bdatam);
     //err = mjson_string_to_hdf(node, bdatam);
     OUTPUT_NOK(err);
-    
+
     mtimer_start();
     for (int i = 0; i < NUM_TOTAL_TEST; i++) {
         err = mjson_import_from_hdf(node, &jso);
@@ -99,4 +99,3 @@ int main(int argc, char **argv, char **envp)
 
     return 0;
 }
-    

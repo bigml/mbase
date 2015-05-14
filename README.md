@@ -27,7 +27,33 @@ On fresh system, You need to excute premake.sh before mbase can compile ok.
 This script just tested on Linux platform (currently, mbase also works on OSX, but not the premake.sh).
 
 
+#### directories ####
+    mbase
+    |-- doc                    documentation about programming and system
+    |   `-- spec_c.c           moon's c code style guidline
+    |
+    |   |-- mnl                moon's library document
+    |   |-- book               books
+    |   |-- config             config files
+    |   |-- learning           notes and summary for programming
+    |   |-- pic                picturs of moon's document
+    |   |-- script             shell script
+    |   `-- webbench           web loadtest results
+    |-- lib
+    |   |-- js                 javascript modlues
+    |   |-- mnl                moon's c library
+    |   `-- patches            patches for other libraries
+    |
+    |-- maketool               tools to build mbase
+    |
+    |-- lab                    pre coding laboratory
+    |
+    |-- test                   unit test
+    |
+    `-- tut                    tutorial
+
+
 #### attention ####
 
-1. code guideline is in doc/spec.c (ident with 4 space, not tab)
+1. code style guideline is in doc/spe_c.c (ident with 4 space, not tab)
    (setq-default indent-tabs-mode nil) in ~/.emacs

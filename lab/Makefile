@@ -1,4 +1,4 @@
-BASEDIR = ../../
+BASEDIR = ../
 include $(BASEDIR)Make.env
 
 CFLAGS += -rdynamic
@@ -7,7 +7,7 @@ INCS	= $(INC_LOCAL) $(INC_MOON)
 LIBS	= $(LIB_LOCAL) $(LIB_MOON) -levent
 
 SOURCES = $(wildcard *.c)
-BINARY = $(patsubst %.c, demo.%, $(SOURCES))
+BINARY = $(patsubst %.c, lab.%, $(SOURCES))
 DEPEND = .depend
 
 all: preload $(BINARY)
@@ -19,7 +19,7 @@ preload:
 	@$(MAKE) -C $(LIBBASE)
 
 -include $(DEPEND)
-demo.%:%.c
+lab.%:%.c
 	@if [ "$<" = `ls *.c|awk '{print $1}'|sed -n '1p'` ]; then \
 		echo "=== "$(CFLAGS); \
 		echo "=== "$(INCS); \

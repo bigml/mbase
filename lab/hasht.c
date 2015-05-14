@@ -15,7 +15,7 @@ int main()
     HASH *etbl = NULL;
     void *p;
 
-    hash_init(&etbl, hash_str_hash, hash_str_comp);
+    hash_init(&etbl, hash_str_hash, hash_str_comp, NULL);
 
     list = calloc(1, sizeof(struct elist));
 
@@ -29,7 +29,7 @@ int main()
     nl->next = list;
 
     list = nl;
-    
+
     hash_insert(etbl, "ape_ext_a", "ape_ext_a");
     hash_insert(etbl, "ape_ext_b", "ape_ext_b");
 
