@@ -1,0 +1,17 @@
+[2015-05-14 16:36:57 1431592617.581366][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] hdf copy simulator : 325 usecs
+[2015-05-14 16:36:57 1431592617.581661][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] mdf copy simulator : 161 usecs
+[2015-05-14 16:37:43 1431592663.312682][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] hdf copy simulator : 35504 usecs
+[2015-05-14 16:37:52 1431592672.706921][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] hdf copy simulator : 36340 usecs
+[2015-05-14 16:38:32 1431592712.220889][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] hdf copy simulator : 31684 usecs
+[2015-05-14 16:38:37 1431592717.759058][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] hdf copy simulator : 31763 usecs
+[2015-05-14 16:39:48 1431592788.446391][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] hdf copy simulator : 31304 usecs
+[2015-05-14 16:39:55 1431592795.272386][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] hdf copy simulator : 31357 usecs
+[2015-05-14 16:40:49 1431592849.624290][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] hdf copy simulator : 31487 usecs
+[2015-05-14 16:41:19 1431592879.256416][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] hdf copy simulator : 37477 usecs
+[2015-05-14 16:42:22 1431592942.422671][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] hdf copy simulator : 31315 usecs
+[2015-05-14 16:43:41 1431593021.163829][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] hdf copy simulator : 31824 usecs
+[2015-05-14 16:43:41 1431593021.175583][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] mdf copy simulator : 11606 usecs
+[2015-05-14 16:49:11 1431593351.693995][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] hdf copy simulator : 2410302 usecs
+[2015-05-14 16:49:12 1431593352.444708][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] mdf copy simulator : 750565 usecs
+[2015-05-14 16:52:14 1431593534.915488][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] hdf copy simulator : 2596013 usecs
+[2015-05-14 16:52:15 1431593535.662544][34m[MESSAGE] [0m[mtimer.c:36 mtimer_stop] mdf copy simulator : 746907 usecs

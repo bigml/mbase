@@ -1,0 +1,19 @@
+
+[2015-05-15 11:35:01 1431660901.378789][DEBUG] [0m[mdf.c:121 mdf_import_from_hdf] hdf node 2, hdf attr 2, hsh_tble 0, hsh_node 0, len 299
+[2015-05-15 11:35:01 1431660901.378903][34m[MESSAGE] [0m[mdf_test.c:56 test_import] 
+[2015-05-15 11:35:01 1431660901.378929][DEBUG] [0m[mdf.c:121 mdf_import_from_hdf] hdf node 4, hdf attr 4, hsh_tble 0, hsh_node 0, len 598
+[2015-05-15 11:35:01 1431660901.379474][DEBUG] [0m[mdf.c:121 mdf_import_from_hdf] hdf node 1, hdf attr 1, hsh_tble 0, hsh_node 0, len 151
+[2015-05-15 11:35:01 1431660901.379998][DEBUG] [0m[mdf.c:121 mdf_import_from_hdf] hdf node 2, hdf attr 1, hsh_tble 0, hsh_node 0, len 266
+[2015-05-15 11:35:01 1431660901.380050][DEBUG] [0m[mdf.c:121 mdf_import_from_hdf] hdf node 2, hdf attr 0, hsh_tble 0, hsh_node 0, len 234
+[2015-05-15 11:47:40 1431661660.994211][DEBUG] [0m[mdf.c:132 mdf_import_from_hdf] hdf node 2, hdf attr 2, hash table 0, hash element 0, len 299
+[2015-05-15 11:47:40 1431661660.994321][34m[MESSAGE] [0m[mdf_test.c:56 test_import] 
+[2015-05-15 11:47:40 1431661660.994346][DEBUG] [0m[mdf.c:132 mdf_import_from_hdf] hdf node 2, hdf attr 2, hash table 0, hash element 0, len 710
+[2015-05-15 11:47:40 1431661660.994886][DEBUG] [0m[mdf.c:132 mdf_import_from_hdf] hdf node 1, hdf attr 1, hash table 0, hash element 0, len 151
+[2015-05-15 11:47:40 1431661660.995408][DEBUG] [0m[mdf.c:132 mdf_import_from_hdf] hdf node 2, hdf attr 1, hash table 0, hash element 0, len 266
+[2015-05-15 11:47:40 1431661660.995479][DEBUG] [0m[mdf.c:132 mdf_import_from_hdf] hdf node 2, hdf attr 0, hash table 0, hash element 0, len 234
+[2015-05-15 11:49:09 1431661749.251500][DEBUG] [0m[mdf.c:132 mdf_import_from_hdf] hdf node 2, hdf attr 2, hash table 0, hash element 0, len 299
+[2015-05-15 11:49:09 1431661749.251608][34m[MESSAGE] [0m[mdf_test.c:56 test_import] 
+[2015-05-15 11:49:09 1431661749.251633][DEBUG] [0m[mdf.c:132 mdf_import_from_hdf] hdf node 2, hdf attr 2, hash table 0, hash element 0, len 710
+[2015-05-15 11:49:09 1431661749.252174][DEBUG] [0m[mdf.c:132 mdf_import_from_hdf] hdf node 1, hdf attr 1, hash table 0, hash element 0, len 151
+[2015-05-15 11:49:09 1431661749.252703][DEBUG] [0m[mdf.c:132 mdf_import_from_hdf] hdf node 2, hdf attr 1, hash table 0, hash element 0, len 266
+[2015-05-15 11:49:09 1431661749.252766][DEBUG] [0m[mdf.c:132 mdf_import_from_hdf] hdf node 2, hdf attr 0, hash table 0, hash element 0, len 234

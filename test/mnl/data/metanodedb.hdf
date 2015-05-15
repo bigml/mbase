@@ -1,0 +1,289 @@
+3{
+  5{
+    adgroup_id [type="102"]  = 3
+    adspace_id [type="102"]  = 5
+    adspace_name [type="100"]  = OTT 电视暂停位
+    adspace_type [type="102"]  = 4
+    location_type [type="102"]  = 4
+    mbs{
+      124{
+        campaign_id [type="102"]  = 1
+        creatives [type="108"] {
+          0 [type="107"] {
+            creative_id [type="102"]  = 4
+            creative_format [type="102"]  = 57
+            creative_weight [type="102"]  = 0
+            creative_name [type="100"]  = 美人制造暂停
+            monitor_urls [type="107"] {
+              5 [type="107"] {
+                creative_self_impression [type="100"]  = http://y.da.hunantv.com/json/cst/ip?s=$_sid$&d=$deviceid$&v=$videoid$&cd=124&s=5&b=4820&ct=4
+                creative_self_click [type="100"]  = http://y.da.hunantv.com/json/cst/ck?s=$_sid$&d=$deviceid$&v=$videoid$&cd=124&s=5&b=4820&ct=4
+              }
+            }
+            PlayerUrl [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+            cClickUrl [type="100"]  = http://github.com
+            cHeight [type="100"]  = 576
+            cPlayTime [type="102"]  = 0
+            cWidth [type="100"]  = 1024
+            dateRange [type="108"]  = 
+            enableCreativePartialDate [type="100"]  = off
+          }
+        }
+        directions [type="108"]  = 
+        flow [type="107"] {
+          flow_number_type [type="102"]  = 0
+          flow_priority [type="102"]  = 0
+        }
+        frequency [type="108"]  = 
+        is_addon_frequency [type="102"]  = 0
+        is_use_frequency [type="102"]  = 0
+        launch_type [type="102"]  = 1
+        mediabuy_id [type="102"]  = 124
+        partial_date [type="108"] {
+          0 [type="107"] {
+            min [type="102"]  = 1431273600
+            max [type="102"]  = 1433865599
+          }
+        }
+        primary [type="102"]  = 8
+        select_mediatype [type="102"]  = 1
+        adspace{
+          adspace_id [type="102"]  = 5
+          adspace_name [type="100"]  = OTT 电视暂停位
+          adspace_thirdpartyparamclick [type="108"]  = 
+          adspace_thirdpartyparam [type="108"]  = 
+        }
+      }
+    }
+  }
+}
+2{
+  1{
+    adgroup_id [type="102"]  = 2
+    adspace_id [type="102"]  = 1
+    adspace_name [type="100"]  = OTT 电视前贴正一位
+    adspace_type [type="102"]  = 4
+    location_type [type="102"]  = 1
+    priority [type="102"]  = 1
+    mbs{
+      119{
+        campaign_id [type="102"]  = 1
+        creatives [type="108"] {
+          0 [type="107"] {
+            creative_id [type="102"]  = 1
+            creative_format [type="102"]  = 56
+            creative_weight [type="102"]  = 0
+            creative_name [type="100"]  = 莫斯利安贴片
+            monitor_urls [type="107"] {
+              1 [type="107"] {
+                creative_self_impression [type="100"]  = http://y.da.hunantv.com/json/cst/ip?s=$_sid$&d=$deviceid$&v=$videoid$&cd=119&s=1&b=4820&ct=1
+                creative_self_click [type="100"]  = http://y.da.hunantv.com/json/cst/ck?s=$_sid$&d=$deviceid$&v=$videoid$&cd=119&s=1&b=4820&ct=1
+              }
+            }
+            PlayerUrl [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+            cClickUrl [type="100"]  = http://m.hunantv.com
+            cHeight [type="100"]  = 576
+            cPlayTime [type="100"]  = 15
+            cWidth [type="100"]  = 1024
+          }
+        }
+        directions [type="108"]  = 
+        flow [type="107"] {
+          flow_number_type [type="102"]  = 0
+          flow_priority [type="102"]  = 0
+        }
+        frequency [type="108"]  = 
+        is_addon_frequency [type="102"]  = 0
+        is_use_frequency [type="102"]  = 0
+        launch_type [type="102"]  = 1
+        mediabuy_id [type="102"]  = 119
+        partial_date [type="108"] {
+          0 [type="107"] {
+            min [type="102"]  = 1431273600
+            max [type="102"]  = 1433865599
+          }
+        }
+        primary [type="102"]  = 8
+        select_mediatype [type="102"]  = 1
+        adspace{
+          adspace_id [type="102"]  = 1
+          adspace_name [type="100"]  = OTT 电视前贴正一位
+          adspace_thirdpartyparamclick [type="108"]  = 
+          adspace_thirdpartyparam [type="108"]  = 
+        }
+      }
+    }
+  }
+  2{
+    adgroup_id [type="102"]  = 2
+    adspace_id [type="102"]  = 2
+    adspace_name [type="100"]  = OTT 电视前贴正二位
+    adspace_type [type="102"]  = 4
+    location_type [type="102"]  = 1
+    priority [type="102"]  = 2
+    mbs{
+      121{
+        campaign_id [type="102"]  = 1
+        creatives [type="108"] {
+          0 [type="107"] {
+            creative_id [type="102"]  = 2
+            creative_format [type="102"]  = 56
+            creative_weight [type="102"]  = 0
+            creative_name [type="100"]  = 容园美贴片
+            monitor_urls [type="107"] {
+              2 [type="107"] {
+                creative_self_impression [type="100"]  = http://y.da.hunantv.com/json/cst/ip?s=$_sid$&d=$deviceid$&v=$videoid$&cd=121&s=2&b=4820&ct=2
+                creative_self_click [type="100"]  = http://y.da.hunantv.com/json/cst/ck?s=$_sid$&d=$deviceid$&v=$videoid$&cd=121&s=2&b=4820&ct=2
+              }
+            }
+            PlayerUrl [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+            cClickUrl [type="100"]  = http://github.com
+            cHeight [type="100"]  = 576
+            cPlayTime [type="100"]  = 15
+            cWidth [type="100"]  = 1024
+          }
+        }
+        directions [type="108"]  = 
+        flow [type="107"] {
+          flow_number_type [type="102"]  = 0
+          flow_priority [type="102"]  = 0
+        }
+        frequency [type="108"]  = 
+        is_addon_frequency [type="102"]  = 0
+        is_use_frequency [type="102"]  = 0
+        launch_type [type="102"]  = 1
+        mediabuy_id [type="102"]  = 121
+        partial_date [type="108"] {
+          0 [type="107"] {
+            min [type="102"]  = 1431273600
+            max [type="102"]  = 1433865599
+          }
+        }
+        primary [type="102"]  = 8
+        select_mediatype [type="102"]  = 1
+        adspace{
+          adspace_id [type="102"]  = 2
+          adspace_name [type="100"]  = OTT 电视前贴正二位
+          adspace_thirdpartyparamclick [type="108"]  = 
+          adspace_thirdpartyparam [type="108"]  = 
+        }
+      }
+    }
+  }
+  3{
+    adgroup_id [type="102"]  = 2
+    adspace_id [type="102"]  = 3
+    adspace_name [type="100"]  = OTT 电视前贴正三位
+    adspace_type [type="102"]  = 4
+    location_type [type="102"]  = 1
+    priority [type="102"]  = 3
+    mbs{
+      122{
+        campaign_id [type="102"]  = 1
+        creatives [type="108"] {
+          0 [type="107"] {
+            creative_id [type="102"]  = 15
+            creative_format [type="102"]  = 56
+            creative_weight [type="102"]  = 0
+            creative_name [type="100"]  = 电视贴片_伊利 QQ 星
+            monitor_urls [type="107"] {
+              3 [type="107"] {
+                creative_self_impression [type="100"]  = http://y.da.hunantv.com/json/cst/ip?s=$_sid$&d=$deviceid$&v=$videoid$&cd=122&s=3&b=4820&ct=15
+                creative_self_click [type="100"]  = http://y.da.hunantv.com/json/cst/ck?s=$_sid$&d=$deviceid$&v=$videoid$&cd=122&s=3&b=4820&ct=15
+              }
+            }
+            PlayerUrl [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+            cClickUrl [type="100"]  = http://
+            cHeight [type="100"]  = 576
+            cPlayTime [type="100"]  = 15
+            cWidth [type="100"]  = 1024
+            dateRange [type="108"]  = 
+            enableCreativePartialDate [type="100"]  = off
+          }
+        }
+        directions [type="108"]  = 
+        flow [type="107"] {
+          flow_number_type [type="102"]  = 0
+          flow_priority [type="102"]  = 0
+        }
+        frequency [type="108"]  = 
+        is_addon_frequency [type="102"]  = 0
+        is_use_frequency [type="102"]  = 0
+        launch_type [type="102"]  = 1
+        mediabuy_id [type="102"]  = 122
+        partial_date [type="108"] {
+          0 [type="107"] {
+            min [type="102"]  = 1431273600
+            max [type="102"]  = 1433865599
+          }
+        }
+        primary [type="102"]  = 8
+        select_mediatype [type="102"]  = 1
+        adspace{
+          adspace_id [type="102"]  = 3
+          adspace_name [type="100"]  = OTT 电视前贴正三位
+          adspace_thirdpartyparamclick [type="108"]  = 
+          adspace_thirdpartyparam [type="108"]  = 
+        }
+      }
+    }
+  }
+  4{
+    adgroup_id [type="102"]  = 2
+    adspace_id [type="102"]  = 4
+    adspace_name [type="100"]  = OTT 电视前贴正四位
+    adspace_type [type="102"]  = 4
+    location_type [type="102"]  = 1
+    priority [type="102"]  = 4
+    mbs{
+      123{
+        campaign_id [type="102"]  = 1
+        creatives [type="108"] {
+          0 [type="107"] {
+            creative_id [type="102"]  = 24
+            creative_format [type="102"]  = 56
+            creative_weight [type="102"]  = 0
+            creative_name [type="100"]  = 电视创意_统一
+            monitor_urls [type="107"] {
+              4 [type="107"] {
+                creative_self_impression [type="100"]  = http://y.da.hunantv.com/json/cst/ip?s=$_sid$&d=$deviceid$&v=$videoid$&cd=123&s=4&b=4820&ct=24
+                creative_self_click [type="100"]  = http://y.da.hunantv.com/json/cst/ck?s=$_sid$&d=$deviceid$&v=$videoid$&cd=123&s=4&b=4820&ct=24
+              }
+            }
+            cHeight [type="100"]  = 576
+            cWidth [type="100"]  = 1024
+            enableCreativePartialDate [type="100"]  = off
+            PlayerUrl [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+            cClickUrl [type="100"]  = http://
+            cPlayTime [type="100"]  = 15
+            dateRange [type="108"]  = 
+          }
+        }
+        directions [type="108"]  = 
+        flow [type="107"] {
+          flow_number_type [type="102"]  = 0
+          flow_priority [type="102"]  = 0
+        }
+        frequency [type="108"]  = 
+        is_addon_frequency [type="102"]  = 0
+        is_use_frequency [type="102"]  = 0
+        launch_type [type="102"]  = 1
+        mediabuy_id [type="102"]  = 123
+        partial_date [type="108"] {
+          0 [type="107"] {
+            min [type="102"]  = 1431273600
+            max [type="102"]  = 1433865599
+          }
+        }
+        primary [type="102"]  = 8
+        select_mediatype [type="102"]  = 1
+        adspace{
+          adspace_id [type="102"]  = 4
+          adspace_name [type="100"]  = OTT 电视前贴正四位
+          adspace_thirdpartyparamclick [type="108"]  = 
+          adspace_thirdpartyparam [type="108"]  = 
+        }
+      }
+    }
+  }
+}

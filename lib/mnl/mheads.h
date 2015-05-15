@@ -34,6 +34,7 @@
 #include "mjson.h"
 #include "mhttp.h"
 #include "mdb.h"
+#include "mdf.h"
 
 #ifndef DROP_MONGO
 #include "mongo.h"
