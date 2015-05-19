@@ -8,8 +8,23 @@ int main(int argc, char **argv, char **envp)
     unsigned char buf[2048];
     int blen = 2048, len;
     char *s;
-    HDF *hdf;
+    HDF *hdf, *ohdf = NULL;
 
+    hdf = calloc(10, sizeof(HDF));
+    memset(hdf, 0xee, 10*sizeof(HDF));
+
+    printf("%d %d %d %d %d %d\n", sizeof(HDF), sizeof(HDF*), sizeof(void*),
+	sizeof(uint32_t*), sizeof(uint16_t*), sizeof(char*));
+
+    void *p = hdf;
+
+    //*((HDF*)p) = 0x0;
+    //memset(p, 0x0, sizeof(HDF));
+    * (char*) p = &ohdf;
+    printf("%d %d\n", p, (int)*(int*)p);
+    p += sizeof(HDF);
+    printf("%d %d\n", p, (int)*(int*)p);
+    
     //mconfig_parse_file("/tpl/oms.hdf", &g_cfg);
 
 #if 0

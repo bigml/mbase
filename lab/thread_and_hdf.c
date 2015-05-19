@@ -21,7 +21,7 @@ static void* hdf_routine(void *arg)
 
     errno = cnum;
 
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 200000; i++) {
         hdf_init(&nodea);
         //mtimer_start();
         //hdf_read_string(nodea, m_str);
@@ -50,7 +50,7 @@ int main(int argc, char **argv, char **envp)
 
     mtimer_start();
 
-#if 0
+#if 1
     for (int i = 0; i < m_thread_size; i++) {
         m_thread[i] = calloc(1, sizeof(pthread_t));
         pthread_create(m_thread[i], NULL, hdf_routine, (void*)&m_num[i]);
@@ -61,7 +61,7 @@ int main(int argc, char **argv, char **envp)
     }
 #endif
 
-    hdf_routine(&m_num[1]);
+    //hdf_routine(&m_num[1]);
 
     elapsed = mtimer_stop("finish");
 

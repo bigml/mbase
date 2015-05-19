@@ -17,7 +17,8 @@ typedef struct {
     int num_tble;               /* hash table number */
     int num_elem;               /* hash node number */
 
-    size_t len;
+    size_t len;                 /* all length */
+    size_t len_str;             /* string buffer length */
     bool dirty;                 /* safe to copy, if dirty == false */
 
     HDF *node;

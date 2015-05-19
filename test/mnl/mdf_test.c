@@ -42,40 +42,65 @@ void test_import()
 
     hdf_set_value(node, "aa", "bb");
     hdf_set_value(node, "xx", "yy");
+    hdf_set_value(node, "aa1", "bb");
+    hdf_set_value(node, "aa2", "bb");
+    hdf_set_value(node, "aa3", "bb");
+    hdf_set_value(node, "aa4", "bb");
+    hdf_set_value(node, "aa5", "bb");
+    hdf_set_value(node, "aa6", "bb");
+    hdf_set_value(node, "aa7", "bb");
+    hdf_set_value(node, "aa8", "bb");
+    hdf_set_value(node, "aa9", "bb");
+    hdf_set_value(node, "aa10", "bb");
     hdf_set_attr(node, "aa", "type", "");
     hdf_set_attr(node, "xx", "type", "108");
 
     err = mdf_import_from_hdf(mode, node);
     PT_ASSERT(err == STATUS_OK);
+    TRACE_NOK(err);
 
-    PT_ASSERT(mode->num_node == 2);
     PT_ASSERT(mode->num_attr == 2);
     PT_ASSERT(mode->dirty == false);
 
     hdf_write_string(mode->node, &stra);
-    mtc_foo("%s", stra);
-    PT_ASSERT_STR_EQ(stra, "aa = bb \n xx = yy");
+    hdf_write_string(node, &strb);
+    //mtc_foo("%s", stra);
+    //mtc_foo("%s", strb);
+    PT_ASSERT_STR_EQ(stra, strb);
+
+    free(strb);
+    hdf_destroy(&node);
+    hdf_write_string(mode->node, &strb);
+    PT_ASSERT_STR_EQ(stra, strb);
 
     free(stra);
+    free(strb);
 
     /*
-     * import with node not empty
+     * TODO import with node not empty?
      */
-#if 0
     hdf_destroy(&node);
     hdf_init(&node);
 
     hdf_read_file(node, "data/wordnode.hdf");
+    hdf_set_value(node, "areas.0.slots.0.cards.0.ttzs.newk", "newv");
+    hdf_set_attr(node, "areas.0.slots.0.cards.0.ttzs.newk", "foo", "bar");
+    hdf_set_value(node, "areas.1.slots.0.cards.0.ttzs.0.newk", "newv");
+    hdf_set_value(node, "areas.1.slots.0.cards.0.ttzs.0.newkk", "newvv");
     err = mdf_import_from_hdf(mode, node);
     PT_ASSERT(err == STATUS_OK);
 
+    PT_ASSERT_STR_EQ(hdf_get_value(mode->node,
+                                   "areas.1.slots.0.cards.0.ttzs.0.newk", "aa"),
+                     "newv");
+
     hdf_write_string(mode->node, &stra);
     hdf_write_string(node, &strb);
-
-    PT_ASSERT(strcmp(stra, strb));
+    //mtc_foo("%s", stra);
+    //mtc_foo("%s", strb);
+    PT_ASSERT(!strcmp(stra, strb));
 
     free(stra);
-#endif
 
     /*
      * import with node empty
@@ -106,6 +131,7 @@ void test_copy()
     mdf_init(&modeb);
 
     hdf_read_file(node, "data/wordnode.hdf");
+    hdf_set_value(node, "aa", "bb");
     mdf_import_from_hdf(modea, node);
 
     err = mdf_copy(modeb, modea);
@@ -189,8 +215,8 @@ void test_set()
     free(stra);
     free(strb);
 
-    mdf_destroy(&mode);
-    hdf_destroy(&node);
+    //mdf_destroy(&mode);
+    //hdf_destroy(&node);
 }
 
 void test_remove()
