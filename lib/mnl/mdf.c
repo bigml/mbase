@@ -1,4 +1,5 @@
 #include "mheads.h"
+#include "_cs_hdf.h"
 
 #define PACK_STR(s) do {                                                \
         if (s) {                                                        \
@@ -29,30 +30,6 @@
             *pos_attr += sz_attr;                                       \
             pattr = *pos_attr;                                          \
             attr = attr->next;                                          \
-        }                                                               \
-    } while (0)
-
-#define PACK_ELEMENTSS(hash) do {                                       \
-        if (hash) {                                                     \
-            * (unsigned char**)pos = pelem;                             \
-            for (int x = 0; x < hash->size; x++) {                      \
-                NE_HASHNODE *elem = hash->nodes[x];                     \
-                while (elem) {                                          \
-                    *len_elem -= sz_elem;                               \
-                    if (*len_elem < 0) return nerr_raise(NERR_ASSERT, "elem error"); \
-                    pos = pelem;                                        \
-                    memcpy(pos, elem, sz_elem);                         \
-                    pos = pelem + sz_int * 2;                           \
-                    PACK_STR((char*)elem->key);                         \
-                    if (elem->next) {                                   \
-                        pos = pos + sz_int * 2 + sz_pointer * 2;        \
-                        * (unsigned char**)pos = pelem + sz_elem;       \
-                    }                                                   \
-                    *pos_elem += sz_elem;                               \
-                    pelem = *pos_elem;                                  \
-                    elem = elem->next;                                  \
-                }                                                       \
-            }                                                           \
         }                                                               \
     } while (0)
 
@@ -304,6 +281,7 @@ NEOERR* _mdf_pack_top_node(HDF *node, unsigned char *pos_top,
     if (node->hash) {
         /* hash */
         pos = pnode + sz_int * 4 + sz_pointer * 8;
+        /* TODO hash insert memory leak */
         PACK_HASH(node->hash);
 
     }
@@ -401,6 +379,7 @@ NEOERR* _mdf_pack_hdf_node(HDF *node, unsigned char *pos_top,
         if (cnode->hash) {
             /* hash */
             pos = pnode + sz_int * 4 + sz_pointer * 8;
+            /* TODO memory leak */
             PACK_HASH(cnode->hash);
         }
 
@@ -622,6 +601,9 @@ NEOERR* mdf_init(MDF **mode)
     rnode->num_elem = 0;
 
     rnode->len = 0;
+    rnode->len_str = 0;
+
+    uListInit(&rnode->memlist, 10, 0);
     rnode->dirty = false;
 
     rnode->node = NULL;
@@ -635,6 +617,8 @@ void mdf_destroy(MDF **mode)
 {
     if (*mode == NULL) return;
 
+    uListDestroy(&((*mode)->memlist), ULIST_FREE);
+
     free((*mode)->node);
     free(*mode);
     *mode = NULL;
@@ -642,11 +626,23 @@ void mdf_destroy(MDF **mode)
 
 void mdf_empty(MDF *mode)
 {
-    if (!mode || mode->num_node <= 0) return;
+    if (!mode) return;
 
-    free(mode->node);
+    if (mode->memlist) {
+        uListDestroy(&mode->memlist, ULIST_FREE);
+        mode->memlist = NULL;
+    }
+
+    if (mode->node && mode->num_node > 0) free(mode->node);
     mode->node = NULL;
-    memset(mode, 0x0, sizeof(MDF));
+
+    mode->num_node = 0;
+    mode->num_attr = 0;
+    mode->num_tble = 0;
+    mode->num_elem = 0;
+    mode->len = 0;
+    mode->len_str = 0;
+    mode->dirty = false;
 }
 
 
@@ -659,6 +655,8 @@ NEOERR* mdf_import_from_hdf(MDF *mode, HDF *node)
     if (!node) return STATUS_OK;
 
     mdf_empty(mode);
+
+    uListInit(&mode->memlist, 10, 0);
 
     err = _mdf_calculate_top_len(mode, node);
     if (err) return nerr_pass(err);
@@ -691,6 +689,8 @@ NEOERR* mdf_copy(MDF *dst, MDF *src)
 
     memcpy(dst, src, sizeof(MDF));
 
+    uListInit(&dst->memlist, 10, 0);
+
     dst->node = calloc(1, dst->len);
     if (!dst->node) return nerr_raise(NERR_NOMEM, "unable to allocate node");
 
@@ -705,17 +705,89 @@ NEOERR* mdf_copy(MDF *dst, MDF *src)
 }
 
 
+NEOERR* mdf_get_node(MDF *mode, const char *name, HDF **ret)
+{
+    if (!mode) return nerr_raise(NERR_ASSERT, "param null");
+    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't get node from empty mode");
+
+    return nerr_pass(_cshdf_get_node(mode->node, name, ret, mode));
+}
+
 NEOERR* mdf_set_value(MDF *mode, const char *name, const char *value)
 {
-    return STATUS_OK;
+    if (!mode) return nerr_raise(NERR_ASSERT, "param null");
+    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+
+    return nerr_pass(_cshdf_set_value(mode->node, name, value, mode));
+}
+
+NEOERR* mdf_set_value_attr(MDF *mode, const char *name, const char *value, HDF_ATTR *attr)
+{
+    if (!mode) return nerr_raise(NERR_ASSERT, "param null");
+    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+
+    return nerr_pass(_cshdf_set_value_attr(mode->node, name, value, attr, mode));
+}
+
+NEOERR* mdf_set_symlink(MDF *mode, const char *src, const char *dest)
+{
+    if (!mode) return nerr_raise(NERR_ASSERT, "param null");
+    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+
+    return nerr_pass(_cshdf_set_symlink(mode->node, src, dest, mode));
+}
+
+NEOERR* mdf_set_int_value(MDF *mode, const char *name, int value)
+{
+    if (!mode) return nerr_raise(NERR_ASSERT, "param null");
+    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+
+    return nerr_pass(_cshdf_set_int_value(mode->node, name, value, mode));
+}
+
+NEOERR* mdf_set_buf(MDF *mode, const char *name, char *value)
+{
+    if (!mode) return nerr_raise(NERR_ASSERT, "param null");
+    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+
+    return nerr_pass(_cshdf_set_buf(mode->node, name, value, mode));
+}
+
+NEOERR* mdf_set_copy(MDF *mode, const char *dst, const char *src)
+{
+    if (!mode) return nerr_raise(NERR_ASSERT, "param null");
+    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+
+    return nerr_pass(_cshdf_set_copy(mode->node, dst, src, mode));
+}
+
+NEOERR* mdf_set_valuef(MDF *mode, const char *fmt, ...)
+{
+    NEOERR *err;
+    va_list ap;
+
+    if (!mode) return nerr_raise(NERR_ASSERT, "param null");
+    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+
+    va_start(ap, fmt);
+    err = _cshdf_set_valuevf(mode->node, mode, fmt, ap);
+    va_end(ap);
+
+    return nerr_pass(err);
 }
 
 NEOERR* mdf_set_attr(MDF *mode, const char *name, const char *key, const char *value)
 {
-    return STATUS_OK;
+    if (!mode) return nerr_raise(NERR_ASSERT, "param null");
+    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+
+    return nerr_pass(_cshdf_set_attr(mode->node, name, key, value, mode));
 }
 
 NEOERR* mdf_remove_tree(MDF *mode, const char *name)
 {
-    return STATUS_OK;
+    if (!mode) return nerr_raise(NERR_ASSERT, "param null");
+    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't remove with empty mode");
+
+    return nerr_pass(_cshdf_remove_tree(mode->node, name, mode));
 }

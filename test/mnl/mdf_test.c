@@ -61,6 +61,7 @@ void test_import()
 
     PT_ASSERT(mode->num_attr == 2);
     PT_ASSERT(mode->dirty == false);
+    PT_ASSERT_STR_EQ(hdf_get_value(node, "aa10", "cc"), "bb");
 
     hdf_write_string(mode->node, &stra);
     hdf_write_string(node, &strb);
@@ -75,6 +76,8 @@ void test_import()
 
     free(stra);
     free(strb);
+
+    mdf_empty(mode);
 
     /*
      * TODO import with node not empty?
@@ -175,8 +178,18 @@ void test_set()
     hdf_init(&node);
 
     hdf_set_value(node, "aa", "bb");
-    err = mdf_set_value(mode, "aa", "bb");
+    mdf_import_from_hdf(mode, node);
+    PT_ASSERT_STR_EQ(hdf_get_value(mode->node, "aa", "xx"), "bb");
+
+    hdf_set_value(node, "aab", "aab");
+    err = mdf_set_value(mode, "aab", "aab");
     PT_ASSERT(err == STATUS_OK);
+    PT_ASSERT_STR_EQ(hdf_get_value(mode->node, "aab", "xx"), "aab");
+
+    hdf_set_int_value(node, "aa2", 101);
+    err = mdf_set_int_value(mode, "aa2", 101);
+    PT_ASSERT(err == STATUS_OK);
+    PT_ASSERT(hdf_get_int_value(mode->node, "aa2", 0) == 101);
 
     hdf_set_value(node, "xx.yy", "123");
     err = mdf_set_value(mode, "xx.yy", "123");
@@ -185,9 +198,6 @@ void test_set()
     hdf_set_attr(node, "xx", "type", "108");
     err = mdf_set_attr(mode, "xx", "type", "108");
     PT_ASSERT(err == STATUS_OK);
-
-    PT_ASSERT(mode->num_node == 3);
-    PT_ASSERT(mode->num_attr == 1);
 
     hdf_write_string(mode->node, &stra);
     hdf_write_string(node, &strb);
@@ -215,8 +225,96 @@ void test_set()
     free(stra);
     free(strb);
 
+    mdf_destroy(&mode);
+    hdf_destroy(&node);
+
+    /*
+     * import readed
+     */
+    hdf_init(&node);
+    mdf_init(&mode);
+    hdf_read_file(node, "data/wordnode.hdf");
+    mdf_import_from_hdf(mode, node);
+
+    for (int i = 0; i < 300; i++) {
+        hdf_set_valuef(node, "areas.0.tmp%d=%d", i, i);
+        hdf_set_valuef(node, "areas.0.slots.0.cards.0.ttzs.0.tmp%d=%d", i, i);
+    }
+    for (int i = 0; i < 300; i++) {
+        char tok[164];
+
+        snprintf(tok, sizeof(tok), "areas.0.tmp%d", i);
+        err = mdf_set_int_value(mode, tok, i);
+        PT_ASSERT(err == STATUS_OK);
+
+        snprintf(tok, sizeof(tok), "areas.0.slots.0.cards.0.ttzs.0.tmp%d", i);
+        err = mdf_set_int_value(mode, tok, i);
+        PT_ASSERT(err == STATUS_OK);
+    }
+
+    hdf_write_string(mode->node, &stra);
+    hdf_write_string(node, &strb);
+    PT_ASSERT_STR_EQ(stra, strb);
+
+    free(stra);
+    free(strb);
+
     //mdf_destroy(&mode);
     //hdf_destroy(&node);
+
+    /*
+     * misc
+     */
+    //hdf_init(&node);
+    //mdf_init(&mode);
+    //hdf_read_file(node, "data/wordnode.hdf");
+    //mdf_import_from_hdf(mode, node);
+
+    char *val = strdup("hahahhahah");
+    char *val2 = strdup("aaaaaa");
+
+    hdf_set_symlink(node, "areas", "ukey1");
+    err = mdf_set_symlink(mode, "areas", "ukey1");
+    PT_ASSERT(err == STATUS_OK);
+
+    hdf_set_buf(node, "ukey", val);
+    err = mdf_set_buf(mode, "ukey", val);
+    PT_ASSERT(err == STATUS_OK);
+
+    hdf_set_buf(node, "ukey2", val2);
+    err = mdf_set_buf(mode, "ukey2", val2);
+    PT_ASSERT(err == STATUS_OK);
+
+    hdf_set_value(node, "ukey3", "val1");
+    err = mdf_set_buf(mode, "ukey3", "val1");
+    PT_ASSERT(err == STATUS_OK);
+
+    hdf_set_value(node, "ukey4", "hahah");
+    err = mdf_set_buf(mode, "ukey4", "hahah");
+    PT_ASSERT(err == STATUS_OK);
+
+    hdf_set_copy(node, "ukey5", "ukey4");
+    err = mdf_set_copy(mode, "ukey5", "ukey4");
+    PT_ASSERT(err == STATUS_OK);
+    TRACE_NOK(err);
+
+    hdf_set_valuef(node, "ukey6=%d", 100);
+    err = mdf_set_valuef(mode, "ukey6=%d", 100);
+    PT_ASSERT(err == STATUS_OK);
+
+    hdf_set_attr(node, "ukey6", "type2", "val2");
+    err = mdf_set_attr(mode, "ukey6", "type2", "val2");
+    PT_ASSERT(err == STATUS_OK);
+
+    hdf_write_string(mode->node, &stra);
+    hdf_write_string(node, &strb);
+    PT_ASSERT_STR_EQ(stra, strb);
+
+    free(stra);
+    free(strb);
+
+    mdf_destroy(&mode);
+    hdf_destroy(&node);
 }
 
 void test_remove()
@@ -232,6 +330,8 @@ void test_remove()
     mdf_init(&mode);
     hdf_init(&node);
 
+    /* 当前不支持往空mdf中set 和  remove，暂不测试 */
+#if 0
     err = mdf_remove_tree(mode, "aa");
     PT_ASSERT(err != STATUS_OK); /* todo: right? */
 
@@ -245,6 +345,7 @@ void test_remove()
     PT_ASSERT_STR_EQ(stra, "");
 
     free(stra);
+#endif
 
     /*
      * import mode

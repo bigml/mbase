@@ -11,3 +11,4 @@ bin
 *.class
 gen
 .DS_Store
+*.log
