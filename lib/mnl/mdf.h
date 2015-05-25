@@ -50,11 +50,13 @@ NEOERR* mdf_copy(MDF *dst, MDF *src);
  * the read only operation, we can use clearsilver's api.
  * these function are as fast as clearsilver's
  */
-NEOERR* mdf_get_node(MDF *mode, const char *name, HDF **ret);
+
 
 /*
+ * modify functions set 1: fullpath version, name must be full path you wan't to set
  * attention: can't write empty mode(param mode must be imported or copied) currently.
  */
+NEOERR* mdf_get_node(MDF *mode, const char *name, HDF **ret);
 NEOERR* mdf_set_value(MDF *mode, const char *name, const char *value);
 NEOERR* mdf_set_symlink(MDF *mode, const char *src, const char *dest);
 NEOERR* mdf_set_int_value(MDF *mode, const char *name, int value);
@@ -64,6 +66,21 @@ NEOERR* mdf_set_valuef(MDF *mode, const char *fmt, ...);
 
 NEOERR* mdf_set_attr(MDF *mode, const char *name, const char *key, const char *value);
 NEOERR* mdf_remove_tree(MDF *mode, const char *name);
+NEOERR* mdf_remove_treef(MDF *mode, const char *fmt, ...);
+
+/*
+ * modify functions set 2: relative path version.
+ * relative version. you can pass the HDF *cnode that want to set into,
+ * don't need the full hdf name key.
+ * caller must ensure cnode is a child of mode->node
+ */
+NEOERR* mdf_set_relative_value(MDF *mode, HDF *cnode, const char *name, const char *value);
+NEOERR* mdf_set_relative_int_value(MDF *mode, HDF *cnode, const char *name, int value);
+NEOERR* mdf_set_relative_valuef(MDF *mode, HDF *cnode, const char *fmt, ...);
+NEOERR* mdf_set_relative_attr(MDF *mode, HDF *cnode, const char *name,
+                              const char *key, const char *value);
+NEOERR* mdf_remove_relative_tree(MDF *mode, HDF *cnode, const char *name);
+NEOERR* mdf_remove_relative_treef(MDF *mode, HDF *cnode, const char *fmt, ...);
 
 
 __END_DECLS
