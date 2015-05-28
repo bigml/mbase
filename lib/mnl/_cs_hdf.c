@@ -28,7 +28,7 @@ static void _post_remove_mem(MDF *mode, void *p)
     else mtc_err("can't found %lx", (uint64_t)p);
 }
 
-static NE_HASHNODE **__cshash_lookup_node (NE_HASH *hash, void *key, UINT32 *o_hashv)
+NE_HASHNODE **__cshash_lookup_node (NE_HASH *hash, void *key, UINT32 *o_hashv)
 {
     UINT32 hashv, bucket;
     NE_HASHNODE **node;

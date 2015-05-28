@@ -9,7 +9,7 @@ areas [type="108"] {
         sequence [type="100"]  = 
         cards [type="108"] {
           0 [type="107"] {
-            cardid [type="100"]  = 124
+            cardid [type="100"]  = 159
             orderid [type="100"]  = 1
             ttzs [type="108"] {
               0 [type="107"] {
@@ -50,7 +50,1162 @@ areas [type="108"] {
               }
               freqon [type="100"]  = 0
               freqtrack [type="100"]  = 0
-              direction [type="107"]  = 
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          1 [type="107"] {
+            cardid [type="100"]  = 160
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          2 [type="107"] {
+            cardid [type="100"]  = 161
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          3 [type="107"] {
+            cardid [type="100"]  = 162
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          4 [type="107"] {
+            cardid [type="100"]  = 163
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          5 [type="107"] {
+            cardid [type="100"]  = 200
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          6 [type="107"] {
+            cardid [type="100"]  = 201
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          7 [type="107"] {
+            cardid [type="100"]  = 202
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          8 [type="107"] {
+            cardid [type="100"]  = 207
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          9 [type="107"] {
+            cardid [type="100"]  = 208
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          10 [type="107"] {
+            cardid [type="100"]  = 225
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          11 [type="107"] {
+            cardid [type="100"]  = 226
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          12 [type="107"] {
+            cardid [type="100"]  = 227
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          13 [type="107"] {
+            cardid [type="100"]  = 232
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          14 [type="107"] {
+            cardid [type="100"]  = 233
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          15 [type="107"] {
+            cardid [type="100"]  = 250
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          16 [type="107"] {
+            cardid [type="100"]  = 251
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          17 [type="107"] {
+            cardid [type="100"]  = 252
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          18 [type="107"] {
+            cardid [type="100"]  = 257
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
+            }
+          }
+          19 [type="107"] {
+            cardid [type="100"]  = 258
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 4
+                weight [type="100"]  = 0
+                name [type="100"]  = 美人制造暂停
+                type [type="100"]  = 57
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 0
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"] {
+                word [type="107"] {
+                  classification [type="107"] {
+                    type [type="102"]  = 1
+                    ids [type="108"] {
+                      0 [type="102"]  = 467
+                    }
+                    contents [type="108"] {
+                      0 [type="100"]  = 100994
+                    }
+                    names [type="108"] {
+                      0 [type="100"]  = 一年级
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -67,7 +1222,7 @@ areas [type="108"] {
         sequence [type="100"]  = 1
         cards [type="108"] {
           0 [type="107"] {
-            cardid [type="100"]  = 119
+            cardid [type="100"]  = 141
             orderid [type="100"]  = 1
             ttzs [type="108"] {
               0 [type="107"] {
@@ -78,7 +1233,843 @@ areas [type="108"] {
                 width [type="100"]  = 1024
                 height [type="100"]  = 576
                 url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
-                clickurl [type="100"]  = http://m.hunantv.com
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          1 [type="107"] {
+            cardid [type="100"]  = 142
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          2 [type="107"] {
+            cardid [type="100"]  = 138
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          3 [type="107"] {
+            cardid [type="100"]  = 139
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          4 [type="107"] {
+            cardid [type="100"]  = 140
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          5 [type="107"] {
+            cardid [type="100"]  = 184
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          6 [type="107"] {
+            cardid [type="100"]  = 185
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          7 [type="107"] {
+            cardid [type="100"]  = 203
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          8 [type="107"] {
+            cardid [type="100"]  = 204
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          9 [type="107"] {
+            cardid [type="100"]  = 205
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          10 [type="107"] {
+            cardid [type="100"]  = 209
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          11 [type="107"] {
+            cardid [type="100"]  = 210
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          12 [type="107"] {
+            cardid [type="100"]  = 228
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          13 [type="107"] {
+            cardid [type="100"]  = 229
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          14 [type="107"] {
+            cardid [type="100"]  = 230
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          15 [type="107"] {
+            cardid [type="100"]  = 234
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          16 [type="107"] {
+            cardid [type="100"]  = 235
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          17 [type="107"] {
+            cardid [type="100"]  = 253
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          18 [type="107"] {
+            cardid [type="100"]  = 254
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          19 [type="107"] {
+            cardid [type="100"]  = 255
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 1
+                weight [type="100"]  = 0
+                name [type="100"]  = 莫斯利安贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842807.mp4
+                clickurl [type="100"]  = http://www.baidu.com
                 duration [type="100"]  = 15
                 dateswitch [type="100"]  = 
               }
@@ -118,7 +2109,7 @@ areas [type="108"] {
         sequence [type="100"]  = 2
         cards [type="108"] {
           0 [type="107"] {
-            cardid [type="100"]  = 121
+            cardid [type="100"]  = 149
             orderid [type="100"]  = 1
             ttzs [type="108"] {
               0 [type="107"] {
@@ -161,6 +2152,851 @@ areas [type="108"] {
               direction [type="107"]  = 
             }
           }
+          1 [type="107"] {
+            cardid [type="100"]  = 150
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          2 [type="107"] {
+            cardid [type="100"]  = 152
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          3 [type="107"] {
+            cardid [type="100"]  = 153
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          4 [type="107"] {
+            cardid [type="100"]  = 151
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          5 [type="107"] {
+            cardid [type="100"]  = 191
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          6 [type="107"] {
+            cardid [type="100"]  = 192
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          7 [type="107"] {
+            cardid [type="100"]  = 193
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          8 [type="107"] {
+            cardid [type="100"]  = 194
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          9 [type="107"] {
+            cardid [type="100"]  = 206
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          10 [type="107"] {
+            cardid [type="100"]  = 216
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          11 [type="107"] {
+            cardid [type="100"]  = 217
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          12 [type="107"] {
+            cardid [type="100"]  = 218
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          13 [type="107"] {
+            cardid [type="100"]  = 219
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          14 [type="107"] {
+            cardid [type="100"]  = 231
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          15 [type="107"] {
+            cardid [type="100"]  = 241
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          16 [type="107"] {
+            cardid [type="100"]  = 242
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          17 [type="107"] {
+            cardid [type="100"]  = 243
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          18 [type="107"] {
+            cardid [type="100"]  = 244
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          19 [type="107"] {
+            cardid [type="100"]  = 256
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 2
+                weight [type="100"]  = 0
+                name [type="100"]  = 容园美贴片
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421842910.mp4
+                clickurl [type="100"]  = http://github.com
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"] {
+                0 [type="107"] {
+                  url [type="100"]  = http://www.taobao1.com
+                  time [type="102"]  = 0
+                }
+                1 [type="107"] {
+                  url [type="100"]  = http://www.taobao2.com
+                  time [type="102"]  = 1
+                }
+              }
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
         }
       }
       2 [type="107"] {
@@ -169,7 +3005,862 @@ areas [type="108"] {
         sequence [type="100"]  = 3
         cards [type="108"] {
           0 [type="107"] {
-            cardid [type="100"]  = 122
+            cardid [type="100"]  = 154
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          1 [type="107"] {
+            cardid [type="100"]  = 155
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          2 [type="107"] {
+            cardid [type="100"]  = 156
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          3 [type="107"] {
+            cardid [type="100"]  = 157
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          4 [type="107"] {
+            cardid [type="100"]  = 158
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          5 [type="107"] {
+            cardid [type="100"]  = 195
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          6 [type="107"] {
+            cardid [type="100"]  = 196
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          7 [type="107"] {
+            cardid [type="100"]  = 197
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          8 [type="107"] {
+            cardid [type="100"]  = 198
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          9 [type="107"] {
+            cardid [type="100"]  = 199
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          10 [type="107"] {
+            cardid [type="100"]  = 220
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          11 [type="107"] {
+            cardid [type="100"]  = 221
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          12 [type="107"] {
+            cardid [type="100"]  = 222
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          13 [type="107"] {
+            cardid [type="100"]  = 223
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          14 [type="107"] {
+            cardid [type="100"]  = 224
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          15 [type="107"] {
+            cardid [type="100"]  = 245
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          16 [type="107"] {
+            cardid [type="100"]  = 246
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          17 [type="107"] {
+            cardid [type="100"]  = 247
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          18 [type="107"] {
+            cardid [type="100"]  = 248
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 15
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视贴片_伊利 QQ 星
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/1/1421930543.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          19 [type="107"] {
+            cardid [type="100"]  = 249
             orderid [type="100"]  = 1
             ttzs [type="108"] {
               0 [type="107"] {
@@ -221,7 +3912,862 @@ areas [type="108"] {
         sequence [type="100"]  = 4
         cards [type="108"] {
           0 [type="107"] {
-            cardid [type="100"]  = 123
+            cardid [type="100"]  = 144
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          1 [type="107"] {
+            cardid [type="100"]  = 145
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          2 [type="107"] {
+            cardid [type="100"]  = 146
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          3 [type="107"] {
+            cardid [type="100"]  = 147
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          4 [type="107"] {
+            cardid [type="100"]  = 148
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          5 [type="107"] {
+            cardid [type="100"]  = 186
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          6 [type="107"] {
+            cardid [type="100"]  = 187
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          7 [type="107"] {
+            cardid [type="100"]  = 188
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          8 [type="107"] {
+            cardid [type="100"]  = 189
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          9 [type="107"] {
+            cardid [type="100"]  = 190
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          10 [type="107"] {
+            cardid [type="100"]  = 211
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          11 [type="107"] {
+            cardid [type="100"]  = 212
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          12 [type="107"] {
+            cardid [type="100"]  = 213
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          13 [type="107"] {
+            cardid [type="100"]  = 214
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          14 [type="107"] {
+            cardid [type="100"]  = 215
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          15 [type="107"] {
+            cardid [type="100"]  = 236
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          16 [type="107"] {
+            cardid [type="100"]  = 237
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          17 [type="107"] {
+            cardid [type="100"]  = 238
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          18 [type="107"] {
+            cardid [type="100"]  = 239
+            orderid [type="100"]  = 1
+            ttzs [type="108"] {
+              0 [type="107"] {
+                ttzid [type="100"]  = 24
+                weight [type="100"]  = 0
+                name [type="100"]  = 电视创意_统一
+                type [type="100"]  = 56
+                width [type="100"]  = 1024
+                height [type="100"]  = 576
+                url [type="100"]  = http://mp4.res.hunantv.com//mediafiles/wiad_creative/2/1422516465.mp4
+                clickurl [type="100"]  = http://
+                duration [type="100"]  = 15
+                dateswitch [type="100"]  = off
+                ondate [type="108"]  = 
+              }
+            }
+            report [type="107"] {
+              impression [type="108"]  = 
+              click [type="108"]  = 
+            }
+            extdata [type="107"] {
+              billtype [type="100"]  = 1
+              billpercent [type="100"]  = 
+              priority [type="100"]  = 8
+              ondate [type="108"] {
+                0 [type="107"] {
+                  min [type="102"]  = 1431273600
+                  max [type="102"]  = 1433865599
+                }
+              }
+              flowtype [type="100"]  = 1
+              flows [type="107"] {
+                type [type="100"]  = 0
+                count [type="100"]  = 
+                countperday [type="100"]  = 
+                speed [type="100"]  = 
+                weight [type="100"]  = 0
+              }
+              freqon [type="100"]  = 0
+              freqtrack [type="100"]  = 0
+              direction [type="107"]  = 
+            }
+          }
+          19 [type="107"] {
+            cardid [type="100"]  = 240
             orderid [type="100"]  = 1
             ttzs [type="108"] {
               0 [type="107"] {

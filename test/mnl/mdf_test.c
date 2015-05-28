@@ -133,18 +133,21 @@ void test_copy()
     mdf_init(&modea);
     mdf_init(&modeb);
 
-    hdf_read_file(node, "data/wordnode.hdf");
+    hdf_read_file(node, "data/metanodedbrend.hdf");
     hdf_set_value(node, "aa", "bb");
     mdf_import_from_hdf(modea, node);
 
     err = mdf_copy(modeb, modea);
     PT_ASSERT(err == STATUS_OK);
+    TRACE_NOK(err);
 
     PT_ASSERT(modea->num_node == modeb->num_node);
     PT_ASSERT(modea->num_attr == modeb->num_attr);
     PT_ASSERT(modea->num_tble == modeb->num_tble);
     PT_ASSERT(modea->num_elem == modeb->num_elem);
     PT_ASSERT(modea->len == modeb->len);
+
+    mdf_remove_tree(modea, "slots.0");
 
     mdf_destroy(&modea);
     PT_ASSERT_STR_EQ(hdf_get_value(modeb->node, "areas.0.slots.0.slotid", "xx"), "5");
@@ -156,6 +159,9 @@ void test_copy()
 
     free(stra);
     free(strb);
+
+    mdf_remove_tree(modeb, "areas.0.slots.0.cards.0");
+    mdf_remove_tree(modeb, "areas.0.slots.0.card.0");
 
     hdf_destroy(&node);
     mdf_destroy(&modeb);

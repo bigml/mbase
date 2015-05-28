@@ -9,6 +9,8 @@ __BEGIN_DECLS
  * only internal use, by mdf
  */
 
+NE_HASHNODE **__cshash_lookup_node (NE_HASH *hash, void *key, UINT32 *o_hashv);
+
 NEOERR* _cshdf_set_attr (HDF *hdf, const char *name, const char *key,
                          const char *value, MDF *mode);
 

@@ -15,7 +15,8 @@ typedef struct {
     int num_node;               /* hdf node number */
     int num_attr;               /* hdf attribute number */
     int num_tble;               /* hash table number */
-    int num_elem;               /* hash node number */
+    int num_tble_node;          /* hash node size */
+    int num_tble_elem;          /* hash node number */
 
     size_t len;                 /* all length */
     size_t len_str;             /* string buffer length */
