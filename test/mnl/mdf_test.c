@@ -134,7 +134,7 @@ void test_copy()
     mdf_init(&modeb);
 
     hdf_read_file(node, "data/metanodedbrend.hdf");
-    hdf_set_value(node, "aa", "bb");
+    //hdf_set_value(node, "aa", "bb");
     mdf_import_from_hdf(modea, node);
 
     err = mdf_copy(modeb, modea);
@@ -144,10 +144,9 @@ void test_copy()
     PT_ASSERT(modea->num_node == modeb->num_node);
     PT_ASSERT(modea->num_attr == modeb->num_attr);
     PT_ASSERT(modea->num_tble == modeb->num_tble);
-    PT_ASSERT(modea->num_elem == modeb->num_elem);
     PT_ASSERT(modea->len == modeb->len);
 
-    mdf_remove_tree(modea, "slots.0");
+    mdf_remove_tree(modea, NULL, "slots.0");
 
     mdf_destroy(&modea);
     PT_ASSERT_STR_EQ(hdf_get_value(modeb->node, "areas.0.slots.0.slotid", "xx"), "5");
@@ -160,8 +159,8 @@ void test_copy()
     free(stra);
     free(strb);
 
-    mdf_remove_tree(modeb, "areas.0.slots.0.cards.0");
-    mdf_remove_tree(modeb, "areas.0.slots.0.card.0");
+    mdf_remove_tree(modeb, NULL, "areas.0.slots.0.cards.0");
+    mdf_remove_tree(modeb, NULL, "areas.0.slots.0.card.0");
 
     hdf_destroy(&node);
     mdf_destroy(&modeb);
@@ -188,21 +187,21 @@ void test_set()
     PT_ASSERT_STR_EQ(hdf_get_value(mode->node, "aa", "xx"), "bb");
 
     hdf_set_value(node, "aab", "aab");
-    err = mdf_set_value(mode, "aab", "aab");
+    err = mdf_set_value(mode, NULL, "aab", "aab");
     PT_ASSERT(err == STATUS_OK);
     PT_ASSERT_STR_EQ(hdf_get_value(mode->node, "aab", "xx"), "aab");
 
     hdf_set_int_value(node, "aa2", 101);
-    err = mdf_set_int_value(mode, "aa2", 101);
+    err = mdf_set_int_value(mode, NULL, "aa2", 101);
     PT_ASSERT(err == STATUS_OK);
     PT_ASSERT(hdf_get_int_value(mode->node, "aa2", 0) == 101);
 
     hdf_set_value(node, "xx.yy", "123");
-    err = mdf_set_value(mode, "xx.yy", "123");
+    err = mdf_set_value(mode, NULL, "xx.yy", "123");
     PT_ASSERT(err == STATUS_OK);
 
     hdf_set_attr(node, "xx", "type", "108");
-    err = mdf_set_attr(mode, "xx", "type", "108");
+    err = mdf_set_attr(mode, NULL, "xx", "type", "108");
     PT_ASSERT(err == STATUS_OK);
 
     hdf_write_string(mode->node, &stra);
@@ -221,7 +220,7 @@ void test_set()
     mdf_import_from_hdf(mode, node);
 
     hdf_set_value(node, "foo", "bar");
-    err = mdf_set_value(mode, "foo", "bar");
+    err = mdf_set_value(mode, NULL, "foo", "bar");
     PT_ASSERT(err == STATUS_OK);
 
     hdf_write_string(mode->node, &stra);
@@ -250,11 +249,11 @@ void test_set()
         char tok[164];
 
         snprintf(tok, sizeof(tok), "areas.0.tmp%d", i);
-        err = mdf_set_int_value(mode, tok, i);
+        err = mdf_set_int_value(mode, NULL, tok, i);
         PT_ASSERT(err == STATUS_OK);
 
         snprintf(tok, sizeof(tok), "areas.0.slots.0.cards.0.ttzs.0.tmp%d", i);
-        err = mdf_set_int_value(mode, tok, i);
+        err = mdf_set_int_value(mode, NULL, tok, i);
         PT_ASSERT(err == STATUS_OK);
     }
 
@@ -280,36 +279,36 @@ void test_set()
     char *val2 = strdup("aaaaaa");
 
     hdf_set_symlink(node, "areas", "ukey1");
-    err = mdf_set_symlink(mode, "areas", "ukey1");
+    err = mdf_set_symlink(mode, NULL, "areas", "ukey1");
     PT_ASSERT(err == STATUS_OK);
 
     hdf_set_buf(node, "ukey", val);
-    err = mdf_set_buf(mode, "ukey", val);
+    err = mdf_set_buf(mode, NULL, "ukey", val);
     PT_ASSERT(err == STATUS_OK);
 
     hdf_set_buf(node, "ukey2", val2);
-    err = mdf_set_buf(mode, "ukey2", val2);
+    err = mdf_set_buf(mode, NULL, "ukey2", val2);
     PT_ASSERT(err == STATUS_OK);
 
     hdf_set_value(node, "ukey3", "val1");
-    err = mdf_set_buf(mode, "ukey3", "val1");
+    err = mdf_set_buf(mode, NULL, "ukey3", "val1");
     PT_ASSERT(err == STATUS_OK);
 
     hdf_set_value(node, "ukey4", "hahah");
-    err = mdf_set_buf(mode, "ukey4", "hahah");
+    err = mdf_set_buf(mode, NULL, "ukey4", "hahah");
     PT_ASSERT(err == STATUS_OK);
 
     hdf_set_copy(node, "ukey5", "ukey4");
-    err = mdf_set_copy(mode, "ukey5", "ukey4");
+    err = mdf_set_copy(mode, NULL, "ukey5", "ukey4");
     PT_ASSERT(err == STATUS_OK);
     TRACE_NOK(err);
 
     hdf_set_valuef(node, "ukey6=%d", 100);
-    err = mdf_set_valuef(mode, "ukey6=%d", 100);
+    err = mdf_set_valuef(mode, NULL, "ukey6=%d", 100);
     PT_ASSERT(err == STATUS_OK);
 
     hdf_set_attr(node, "ukey6", "type2", "val2");
-    err = mdf_set_attr(mode, "ukey6", "type2", "val2");
+    err = mdf_set_attr(mode, NULL, "ukey6", "type2", "val2");
     PT_ASSERT(err == STATUS_OK);
 
     hdf_write_string(mode->node, &stra);
@@ -338,11 +337,11 @@ void test_remove()
 
     /* 当前不支持往空mdf中set 和  remove，暂不测试 */
 #if 0
-    err = mdf_remove_tree(mode, "aa");
+    err = mdf_remove_tree(mode, NULL, "aa");
     PT_ASSERT(err != STATUS_OK); /* todo: right? */
 
-    mdf_set_value(mode, "aa", "bb");
-    err = mdf_remove_tree(mode, "aa");
+    mdf_set_value(mode, NULL, "aa", "bb");
+    err = mdf_remove_tree(mode, NULL, "aa");
     PT_ASSERT(err == STATUS_OK);
 
     PT_ASSERT(mode->num_node == 0);
@@ -362,7 +361,7 @@ void test_remove()
     mdf_import_from_hdf(mode, node);
 
     hdf_remove_tree(node, "foo");
-    err = mdf_remove_tree(mode, "foo");
+    err = mdf_remove_tree(mode, NULL, "foo");
     PT_ASSERT(err == STATUS_OK);
 
     hdf_write_string(mode->node, &stra);

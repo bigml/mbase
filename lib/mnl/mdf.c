@@ -758,94 +758,178 @@ NEOERR* mdf_copy(MDF *dst, MDF *src)
 }
 
 
-NEOERR* mdf_get_node(MDF *mode, const char *name, HDF **ret)
+NEOERR* mdf_get_node(MDF *mode, HDF *cnode, const char *name, HDF **ret)
 {
+    HDF *node;
+
     if (!mode) return nerr_raise(NERR_ASSERT, "param null");
     if (!mode->node) return nerr_raise(NERR_ASSERT, "can't get node from empty mode");
+    if (cnode && cnode->top != mode->node) return nerr_raise(NERR_ASSERT, "not child");
 
-    return nerr_pass(_cshdf_get_node(mode->node, name, ret, mode));
+    node = cnode ? cnode : mode->node;
+
+    return nerr_pass(_cshdf_get_node(node, name, ret, mode));
 }
 
-NEOERR* mdf_set_value(MDF *mode, const char *name, const char *value)
+NEOERR* mdf_set_value(MDF *mode, HDF *cnode, const char *name, const char *value)
 {
+    HDF *node;
+
     if (!mode) return nerr_raise(NERR_ASSERT, "param null");
     if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+    if (cnode && cnode->top != mode->node) return nerr_raise(NERR_ASSERT, "not child");
 
-    return nerr_pass(_cshdf_set_value(mode->node, name, value, mode));
+    node = cnode ? cnode : mode->node;
+
+    return nerr_pass(_cshdf_set_value(node, name, value, mode));
 }
 
-NEOERR* mdf_set_value_attr(MDF *mode, const char *name, const char *value, HDF_ATTR *attr)
+NEOERR* mdf_set_value_attr(MDF *mode, HDF *cnode,
+                           const char *name, const char *value, HDF_ATTR *attr)
 {
+    HDF *node;
+
     if (!mode) return nerr_raise(NERR_ASSERT, "param null");
     if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+    if (cnode && cnode->top != mode->node) return nerr_raise(NERR_ASSERT, "not child");
 
-    return nerr_pass(_cshdf_set_value_attr(mode->node, name, value, attr, mode));
+    node = cnode ? cnode : mode->node;
+
+    return nerr_pass(_cshdf_set_value_attr(node, name, value, attr, mode));
 }
 
-NEOERR* mdf_set_symlink(MDF *mode, const char *src, const char *dest)
+NEOERR* mdf_set_symlink(MDF *mode, HDF *cnode, const char *src, const char *dest)
 {
+    HDF *node;
+
     if (!mode) return nerr_raise(NERR_ASSERT, "param null");
     if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+    if (cnode && cnode->top != mode->node) return nerr_raise(NERR_ASSERT, "not child");
 
-    return nerr_pass(_cshdf_set_symlink(mode->node, src, dest, mode));
+    node = cnode ? cnode : mode->node;
+
+    return nerr_pass(_cshdf_set_symlink(node, src, dest, mode));
 }
 
-NEOERR* mdf_set_int_value(MDF *mode, const char *name, int value)
+NEOERR* mdf_set_int_value(MDF *mode, HDF *cnode, const char *name, int value)
 {
+    HDF *node;
+
     if (!mode) return nerr_raise(NERR_ASSERT, "param null");
     if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+    if (cnode && cnode->top != mode->node) return nerr_raise(NERR_ASSERT, "not child");
 
-    return nerr_pass(_cshdf_set_int_value(mode->node, name, value, mode));
+    node = cnode ? cnode : mode->node;
+
+    return nerr_pass(_cshdf_set_int_value(node, name, value, mode));
 }
 
-NEOERR* mdf_set_buf(MDF *mode, const char *name, char *value)
+NEOERR* mdf_set_float_value(MDF *mode, HDF *cnode, const char *name, float value)
 {
+    char buf[256];
+    HDF *node;
+
     if (!mode) return nerr_raise(NERR_ASSERT, "param null");
     if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+    if (cnode && cnode->top != mode->node) return nerr_raise(NERR_ASSERT, "not child");
 
-    return nerr_pass(_cshdf_set_buf(mode->node, name, value, mode));
+    snprintf(buf, sizeof(buf), "%f", value);
+
+    node = cnode ? cnode : mode->node;
+
+    return nerr_pass(_cshdf_set_value(node, name, buf, mode));
 }
 
-NEOERR* mdf_set_copy(MDF *mode, const char *dst, const char *src)
+NEOERR* mdf_set_buf(MDF *mode, HDF *cnode, const char *name, char *value)
 {
+    HDF *node;
+
     if (!mode) return nerr_raise(NERR_ASSERT, "param null");
     if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+    if (cnode && cnode->top != mode->node) return nerr_raise(NERR_ASSERT, "not child");
 
-    return nerr_pass(_cshdf_set_copy(mode->node, dst, src, mode));
+    node = cnode ? cnode : mode->node;
+
+    return nerr_pass(_cshdf_set_buf(node, name, value, mode));
 }
 
-NEOERR* mdf_set_valuef(MDF *mode, const char *fmt, ...)
+NEOERR* mdf_set_copy(MDF *mode, HDF *cnode, const char *dst, const char *src)
 {
+    HDF *node;
+
+    if (!mode) return nerr_raise(NERR_ASSERT, "param null");
+    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+    if (cnode && cnode->top != mode->node) return nerr_raise(NERR_ASSERT, "not child");
+
+    node = cnode ? cnode : mode->node;
+
+    return nerr_pass(_cshdf_set_copy(node, dst, src, mode));
+}
+
+NEOERR* mdf_set_valuef(MDF *mode, HDF *cnode, const char *fmt, ...)
+{
+    HDF *node;
     NEOERR *err;
     va_list ap;
 
     if (!mode) return nerr_raise(NERR_ASSERT, "param null");
     if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+    if (cnode && cnode->top != mode->node) return nerr_raise(NERR_ASSERT, "not child");
+
+    node = cnode ? cnode : mode->node;
 
     va_start(ap, fmt);
-    err = _cshdf_set_valuevf(mode->node, mode, fmt, ap);
+    err = _cshdf_set_valuevf(node, mode, fmt, ap);
     va_end(ap);
 
     return nerr_pass(err);
 }
 
-NEOERR* mdf_set_attr(MDF *mode, const char *name, const char *key, const char *value)
+NEOERR* mdf_set_attr(MDF *mode, HDF *cnode,
+                     const char *name, const char *key, const char *value)
 {
+    HDF *node;
+
     if (!mode) return nerr_raise(NERR_ASSERT, "param null");
     if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+    if (cnode && cnode->top != mode->node) return nerr_raise(NERR_ASSERT, "not child");
 
-    return nerr_pass(_cshdf_set_attr(mode->node, name, key, value, mode));
+    node = cnode ? cnode : mode->node;
+
+    return nerr_pass(_cshdf_set_attr(node, name, key, value, mode));
 }
 
-NEOERR* mdf_remove_tree(MDF *mode, const char *name)
+NEOERR* mdf_set_int_attr(MDF *mode, HDF *cnode,
+                         const char *name, const char *key, int value)
 {
+    char tok[64] = {0};
+    HDF *node;
+
+    if (!mode) return nerr_raise(NERR_ASSERT, "param null");
+    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
+    if (cnode && cnode->top != mode->node) return nerr_raise(NERR_ASSERT, "not child");
+
+    node = cnode ? cnode : mode->node;
+
+    snprintf(tok, sizeof(tok), "%d", value);
+
+    return nerr_pass(_cshdf_set_attr(node, name, key, tok, mode));
+}
+
+NEOERR* mdf_remove_tree(MDF *mode, HDF *cnode, const char *name)
+{
+    HDF *node;
+
     if (!mode) return nerr_raise(NERR_ASSERT, "param null");
     if (!mode->node) return nerr_raise(NERR_ASSERT, "can't remove with empty mode");
+    if (cnode && cnode->top != mode->node) return nerr_raise(NERR_ASSERT, "not child");
 
-    return nerr_pass(_cshdf_remove_tree(mode->node, name, mode));
+    node = cnode ? cnode : mode->node;
+
+    return nerr_pass(_cshdf_remove_tree(node, name, mode));
 }
 
-NEOERR* mdf_remove_treef(MDF *mode, const char *fmt, ...)
+NEOERR* mdf_remove_treef(MDF *mode, HDF *cnode, const char *fmt, ...)
 {
     char key[256];
     va_list ap;
@@ -854,65 +938,5 @@ NEOERR* mdf_remove_treef(MDF *mode, const char *fmt, ...)
     vsnprintf(key, sizeof(key), fmt, ap);
     va_end(ap);
 
-    return nerr_pass(mdf_remove_tree(mode, key));
-}
-
-NEOERR* mdf_set_relative_value(MDF *mode, HDF *cnode, const char *name, const char *value)
-{
-    if (!mode || !cnode) return nerr_raise(NERR_ASSERT, "param null");
-    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
-
-    return nerr_pass(_cshdf_set_value(cnode, name, value, mode));
-}
-
-NEOERR* mdf_set_relative_int_value(MDF *mode, HDF *cnode, const char *name, int value)
-{
-    if (!mode || !cnode) return nerr_raise(NERR_ASSERT, "param null");
-    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
-
-    return nerr_pass(_cshdf_set_int_value(cnode, name, value, mode));
-}
-
-NEOERR* mdf_set_relative_valuef(MDF *mode, HDF *cnode, const char *fmt, ...)
-{
-    NEOERR *err;
-    va_list ap;
-
-    if (!mode || !cnode) return nerr_raise(NERR_ASSERT, "param null");
-    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
-
-    va_start(ap, fmt);
-    err = _cshdf_set_valuevf(cnode, mode, fmt, ap);
-    va_end(ap);
-
-    return nerr_pass(err);
-}
-
-NEOERR* mdf_set_relative_attr(MDF *mode, HDF *cnode, const char *name,
-                              const char *key, const char *value)
-{
-    if (!mode || !cnode) return nerr_raise(NERR_ASSERT, "param null");
-    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't set with empty mode");
-
-    return nerr_pass(_cshdf_set_attr(cnode, name, key, value, mode));
-}
-
-NEOERR* mdf_remove_relative_tree(MDF *mode, HDF *cnode, const char *name)
-{
-    if (!mode || !cnode) return nerr_raise(NERR_ASSERT, "param null");
-    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't remove with empty mode");
-
-    return nerr_pass(_cshdf_remove_tree(cnode, name, mode));
-}
-
-NEOERR* mdf_remove_relative_treef(MDF *mode, HDF *cnode, const char *fmt, ...)
-{
-    char key[256];
-    va_list ap;
-
-    va_start(ap, fmt);
-    vsnprintf(key, sizeof(key), fmt, ap);
-    va_end(ap);
-
-    return nerr_pass(mdf_remove_relative_tree(mode, cnode, key));
+    return nerr_pass(mdf_remove_tree(mode, cnode, key));
 }
