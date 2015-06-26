@@ -21,6 +21,7 @@
 #include <fcntl.h>                /* fcntl() */
 #include <dirent.h>                /* scandir()... */
 #include <iconv.h>
+#include <signal.h>             /* signal()... */
 
 #include <stdarg.h>
 #include <sys/stat.h>
