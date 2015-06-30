@@ -1,4 +1,4 @@
-#include "mtrace.h"
+#include "mheads.h"
 
 /* global file name for trace info write to */
 static char m_fn[_POSIX_PATH_MAX] = "";
