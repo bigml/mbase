@@ -61,6 +61,8 @@ D DIY
     --until="2012-10-02" --before="2012-10-02" 某日期前的提交
 
     git checkout 3727ae1d48de841b0ed99467c74172301b6a2c3c 将工作目录恢复到特定版本（请记下Previous HEAD position was ....，以便checkout回来）
+    git reset --soft HEAD^; edit; git commit -a -c ORIG_HEAD 取消刚刚的commit，然后重做此commit。
+        This is most often done when you remembered what you just committed is incomplete, or you misspelled your commit message, or both
     git reset --hard 3727ae1d48de841b0ed99467c74172301b6a2c3c 恢复到特定版本，之后的提交将被完全抛弃（慎用）
     git revert 3727ae1d48de841b0ed99467c74172301b6a2c3c 取消某次的提交，log中会多一条历史纪录
     git show 3727ae1d48de841b0ed99467c74172301b6a2c3c:pop/tpl/layout.html 查看文件的特定版本
@@ -119,8 +121,8 @@ E 协调
     git push origin voov:qa/asownone 将本机的 voov branch 推到 origin remote 的 qa/asownone branch(fetch refspec 中可以使用refs/remotes/origin/qa/*分开获取)，
         其他用户可以通过 git pull 来同步该分支，pull一般会拉取所有分支数据，但不会在本机创建该分支，
         可以用
-          git checkout -t origin/event_data
-          git checkout -b myeventdata origin/event_data
+          git checkout -b[-t] myeventdata origin/event_data
+          (git checkout -b|-B <new_branch> [<start point>])
         来创建该分支，并在今后的pull命令中保持同步(请比较修改前后的config)。 以下命令临时获取远程分支（不是一个track branch，且不会自动切换到该分支）
         git fetch origin event_data:event_data
     git push [remotename] [localbranch]:[remotebranch]
@@ -228,3 +230,20 @@ H 底层
     $git write-tree
     39658813b199973b695f849adb987cafa5d97167
     $git cat-file -t 39658813b199973b695f849adb987cafa5d97167
+
+
+
+I 例子
+
+       Undo a commit, making it a topic branch
+
+               $ git branch topic/wip     (1)
+               $ git reset --hard HEAD~3  (2)
+               $ git checkout topic/wip   (3)
+
+           1. You have made some commits, but realize they were premature to
+           be in the "master" branch. You want to continue polishing them in
+           a topic branch, so create "topic/wip" branch off of the current
+           HEAD.
+           2. Rewind the master branch to get rid of those three commits.
+           3. Switch to "topic/wip" branch and keep working.
