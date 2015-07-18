@@ -141,21 +141,33 @@ char* mcs_prepend_string_valuef(HDF *node, char *key, char *sfmt, ...)
 void mcs_hdf_rep(HDF *data, HDF *dst);
 
 /*
- * modify string, according data node
- * in:
- * src = $level$, $level$$name$,  name.$level$.in$desc$,  or name.$level$
- * data {
- *     level = 100
- *     name = test data
- *     desc = a desc
- * }
- * c = $
+ * return an allocated modify string, according data node
+ * 1. in:
+ *    src = $level$, $level$$name$,  name.$level$.in$desc$,  or name.$level$
+ *    data {
+ *        level = 100
+ *        name = test data
+ *        desc = a desc
+ *    }
+ *    begin = $
+ *    end = $
+ * out:
+ *    100, 100test data, name.100.ina desc, or name.100
  *
- * out
- * 100, 100test data, name.100.ina desc, or name.100
- * return an allocated string, remember to free it
+ * 2. in:
+ * src = ${ADSPACE_ID}&nn=${OS}__HUNANTV__&m2=__IMEI__&m4=__MAC__&m5=__IDFA__
+ *    data {
+ *        IMEI = 392269EE54
+ *        MAC = 267F12B4543F8
+ *        IDFA =
+ *    }
+ *    begin = __
+ *    end = __
+ *
+ * out:
+ *    ${ADSPACE_ID}&nn=${OS}__HUNANTV__&m2=392269EE54&m4=267F12B4543F8&m5=
  */
-char* mcs_repvstr_byhdf(char *src, char c, HDF *data);
+char* mcs_repvstr_byhdf(const char *src, const char *begin, const char *end, HDF *data);
 
 /*
  * merge two node(confignode, datanode), produce a node(outnode)

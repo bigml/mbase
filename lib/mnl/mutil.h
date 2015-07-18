@@ -7,9 +7,9 @@ __BEGIN_DECLS
 
 #define SAFE_FREE(str)                          \
     do {                                        \
-        if (str != NULL) {                      \
+        if ((str) != NULL) {                      \
             free(str);                          \
-            str = NULL;                         \
+            (str) = NULL;                         \
         }                                       \
     } while (0)
 

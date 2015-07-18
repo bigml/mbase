@@ -229,7 +229,7 @@ NEOERR* mmg_query(mmg_conn *db, char *dsn, char *prefix, HDF *outnode)
                     err = mbson_export_to_hdf(tnode, doc, NULL, MBSON_EXPORT_TYPE, true);
                     if (err != STATUS_OK) return nerr_pass(err);
 
-                    char *tkeya = mcs_repvstr_byhdf(prefix, '$', tnode);
+                    char *tkeya = mcs_repvstr_byhdf(prefix, "$", "$", tnode);
                     char *tkey = mstr_repstr(1, tkeya, "..", ".");
 
                     if (!(db->flags & MMG_FLAG_MIXROWS) && db->limit > 1)

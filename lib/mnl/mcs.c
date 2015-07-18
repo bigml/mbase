@@ -612,47 +612,51 @@ void mcs_hdf_rep(HDF *data, HDF *dst)
     }
 }
 
-char* mcs_repvstr_byhdf(char *src, char c, HDF *data)
+char* mcs_repvstr_byhdf(const char *src, const char *begin, const char *end, HDF *data)
 {
-    char *p, key[LEN_HDF_KEY], *val;
-    int x;
-    STRING str;
+    char *p, *q, *value, *stmp;
+    STRING str, stok;
+    HDF *cnode;
 
+    stmp = NULL;
     string_init(&str);
+    string_init(&stok);
 
     if (!src) return NULL;
     if (!data) return strdup(src);
 
-    p = src;
+    cnode = hdf_obj_child(data);
+    while (cnode) {
+        string_appendf(&stok, "%s%s%s", begin, hdf_obj_name(cnode), end);
+        value = hdf_obj_value(cnode);
 
-    while (*p) {
-        if (*p != c) {
-            string_append_char(&str, *p);
-            p++;
-        } else if (*p == c) {
-            memset(key, 0x0, sizeof(key));
-            x = 0;
+        //mtc_dbg("replace %s", stok.buf);
 
-            /*
-             * skip series start $
-             */
-            while (*p && *p == c) p++;
-
-            while (*p && *p != c && x < LEN_HDF_KEY) {
-                key[x++] = *p;
-                p++;
-            }
-
-            if (x > 0) {
-                /*
-                 * skip single end $
-                 */
-                if (*p == c) p++;
-
-                val = hdf_get_value(data, key, NULL);
-                if (val) string_append(&str, val);
-            }
+        if (str.len == 0) {
+            stmp = (char*)src;
+        } else {
+            /* already replaced key, so, refresh the src pointer */
+            stmp = strdup(str.buf);
+            string_clear(&str);
         }
+
+        p = q = stmp;
+        q = strstr(p, stok.buf);
+        while (q) {
+            string_appendn(&str, p, q - p);
+            if (value) string_append(&str, value);
+            p = q + stok.len;
+
+            if (p) q = strstr(p, stok.buf);
+            else q = NULL;
+        }
+        if (p) string_append(&str, p);
+
+        /* cleanup memory */
+        if (stmp != src) SAFE_FREE(stmp);
+        string_clear(&stok);
+
+        cnode = hdf_obj_next(cnode);
     }
 
     return str.buf;

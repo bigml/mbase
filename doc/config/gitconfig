@@ -26,5 +26,8 @@
         #           http://gitready.com/advanced/2009/02/11/pull-with-rebase.html
 #        autosetuprebase = always
 
+[push]
+        default = simple
+
 [alias]
         pr = pull --rebase
