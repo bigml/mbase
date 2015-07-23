@@ -23,6 +23,7 @@
 #include <iconv.h>
 #include <signal.h>             /* signal()... */
 
+#include <math.h>
 #include <stdarg.h>
 #include <sys/stat.h>
 #include <sys/shm.h>
