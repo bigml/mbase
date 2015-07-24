@@ -164,6 +164,58 @@ void test_copy()
 
     hdf_destroy(&node);
     mdf_destroy(&modeb);
+
+    /* test hash */
+    hdf_init(&node);
+    mdf_init(&modea);
+    mdf_init(&modeb);
+    for (int i = 0; i < 2283; i++) {
+        hdf_set_valuef(node, "name%d=value%d", i, i);
+        hdf_set_valuef(node, "namex.%d=valuex%d", i, i);
+        hdf_set_valuef(node, "namex.10.new.%d=v%d", i, i);
+    }
+    mdf_import_from_hdf(modea, node);
+    err = mdf_copy(modeb, modea);
+    TRACE_NOK(err);
+
+    hdf_destroy(&node);
+    TRACE_HDF(modea->node);
+    HDF *cnode = hdf_obj_child(modea->node);
+    while (cnode) {
+        char *name = hdf_obj_name(cnode);
+        HDF *xnode = hdf_get_obj(modea->node, name);
+        //printf("name %s\n", hdf_obj_name(xnode));
+
+        cnode = hdf_obj_next(cnode);
+    }
+    cnode = hdf_get_child(modea->node, "namex.10.new");
+    TRACE_HDF(modea->node);
+    while (cnode) {
+        char *name = hdf_obj_name(cnode);
+        HDF *xnode = mcs_get_objf(modea->node, "namex.%s", name);
+        //printf("namex%s\n", hdf_obj_name(xnode));
+
+        cnode = hdf_obj_next(cnode);
+    }
+    mdf_destroy(&modea);
+
+    cnode = hdf_obj_child(modeb->node);
+    while (cnode) {
+        char *name = hdf_obj_name(cnode);
+        HDF *xnode = hdf_get_obj(modeb->node, name);
+        //printf("name %s\n", hdf_obj_name(xnode));
+
+        cnode = hdf_obj_next(cnode);
+    }
+    cnode = hdf_get_child(modeb->node, "namex.10.new");
+    while (cnode) {
+        char *name = hdf_obj_name(cnode);
+        HDF *xnode = mcs_get_objf(modeb->node, "namex.%s", name);
+        //printf("name %s\n", hdf_obj_name(xnode));
+
+        cnode = hdf_obj_next(cnode);
+    }
+    mdf_destroy(&modeb);
 }
 
 /*

@@ -139,8 +139,8 @@ static NEOERR *_csne_hash_insert(NE_HASH *hash, void *key, void *value, MDF *mod
         (*node)->key = key;
         (*node)->value = value;
         (*node)->next = NULL;
+        hash->num++;
     }
-    hash->num++;
 
     return __cshash_resize(hash, mode);
 }

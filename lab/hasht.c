@@ -30,19 +30,30 @@ int main()
 
     list = nl;
 
-    hash_insert(etbl, "ape_ext_a", "ape_ext_a");
+    for (int i = 0; i < 399; i++) {
+        hash_insert(etbl, "ape_ext_a", "ape_ext_a");
+    }
     hash_insert(etbl, "ape_ext_b", "ape_ext_b");
 
+    printf("size %d number %d\n", etbl->size, etbl->num);
+
+    char *name;
+
+    name = (char*)hash_next(etbl, (void**)&name);
+    while (name) {
+        printf("name %s\n", name);
+        name = hash_next(etbl, (void**)&name);
+    }
+
+#if 0
     unsigned long elapsed;
     mtimer_start();
     for (int i = 0; i < 100000000; i++) {
-#if 0
         p = hash_lookup(etbl, "ape_ext_b");
         if (!p) {
             printf("error");
             break;
         }
-#endif
         nl = list;
         while (nl) {
             if (!strcmp(nl->name, "ape_ext_a"))
@@ -55,6 +66,7 @@ int main()
         }
     }
     mtimer_stop(NULL);
+#endif
 
     return 0;
 }

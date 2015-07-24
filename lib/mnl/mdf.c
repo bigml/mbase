@@ -1,6 +1,39 @@
 #include "mheads.h"
 #include "_cs_hdf.h"
 
+/*
+ * memory map of mdf->node:
+ *
+ * /-----------------\    \
+ * | hdf node 1      |    |
+ * | hdf node 2      |    |
+ * | ...             |    |
+ * | hdf node x      |    |
+ * |-----------------|    |
+ * | hdf attribute 1 |    |
+ * | hdf attribute 2 |    |
+ * | ...             |     > fix length for each unit
+ * | hdf attribute x |    |
+ * |-----------------|    |
+ * | hash table 1    |    |
+ * | hash table 2    |    |
+ * | ...             |    |
+ * | hash table x    |    |
+ * |-----------------|    |
+ * | hash node 1     |    |
+ * | hash node 2     |    |
+ * | ...             |    |
+ * | hash node x     |    |
+ * |-----------------|    /
+ * |                 |
+ * |-----------------|    \
+ * | char string 1   |    |
+ * | char string 2   |     > variable length for each unit
+ * | ...             |    |
+ * | char string x   |    |
+ * \-----------------/    /
+ */
+
 #define PACK_STR(s) do {                                                \
         if (s) {                                                        \
             slen = strlen(s) + 1;                                       \
@@ -33,34 +66,41 @@
         }                                                               \
     } while (0)
 
-#define PACK_ELEMENTS(htble) do {                                       \
-        if (htble) {                                                    \
-            HDF *parent = (HDF*)pnode;                                  \
-            HDF *child = parent->child;                                 \
-            while (child) {                                             \
-                UINT32 hashv;                                           \
-                NE_HASHNODE **hsnode = __cshash_lookup_node(parent->hash, child, &hashv); \
-                if (!*hsnode) {                                         \
-                    *hsnode = (NE_HASHNODE*)pelem;                      \
-                    * (UINT32*)pos = hashv;                             \
-                    pos += sz_uint32 * 2;                               \
-                    * (void **)pos = (void*)child;                      \
-                    pos += sz_pointer;                                  \
-                    * (void **)pos = (void*)child;                      \
-                    pos += sz_pointer;                                  \
-                    * (unsigned char **)pos = NULL;                     \
-                    pelem += sz_elem;                                   \
-                    pos = pelem;                                        \
-                }                                                       \
-                child = child->next;                                    \
+#define PACK_HASH_NODES(htble) do {                                     \
+        HDF *child = ((HDF*)pnode)->child;                              \
+        UINT32 hashv;                                                   \
+        while (child) {                                                 \
+            mtc_dbg("pack %s", hdf_obj_name(child));                    \
+            NE_HASHNODE **hnode = __cshash_lookup_node(((HDF*)pnode)->hash, child, &hashv); \
+            if (*hnode) {                                               \
+                (*hnode)->value = child;                                \
+            } else {                                                    \
+                *len_elem -= sz_elem;                                   \
+                if (*len_elem < 0) return nerr_raise(NERR_ASSERT, "elem error"); \
+                *hnode = (NE_HASHNODE*)pelem;                           \
+                *(UINT32*)pos = hashv;                                  \
+                /* node->key */                                         \
+                pos += sz_uint32 * 2;                                   \
+                *(void**)pos = (void*)child;                            \
+                /* node->value */                                       \
+                pos += sz_pointer;                                      \
+                *(void**)pos = (void*)child;                            \
+                /* node->next */                                        \
+                pos += sz_pointer;                                      \
+                *(NE_HASHNODE**)pos = NULL;                             \
+                /* next pelem */                                        \
+                *pos_elem += sz_elem;                                   \
+                pelem = *pos_elem;                                      \
             }                                                           \
+            pos = pelem;                                                \
+            child = child->next;                                        \
         }                                                               \
     } while (0)
 
 #define PACK_HASH(htble) do {                                           \
         UINT32 size = htble->size;                                      \
         UINT32 step = sz_tble + size * sz_tble_node;                    \
-        if (htble) * (unsigned char**)pos = ptble;                      \
+        if (htble) *(unsigned char**)pos = ptble;                       \
         *len_tble -= step;                                              \
         if (*len_tble < 0) return nerr_raise(NERR_ASSERT, "hash table error"); \
         pos = ptble;                                                    \
@@ -71,15 +111,10 @@
         /* init all empty nodes */                                      \
         pos += sz_pointer;                                              \
         memset(pos, 0x0, sz_pointer * size);                            \
+        pos = pelem;                                                    \
+        PACK_HASH_NODES(htble);                                         \
         *pos_tble += step;                                              \
         ptble = *pos_tble;                                              \
-        /* pack nodes which have contents */                            \
-        *len_elem -= sz_elem * htble->num;                              \
-        if (*len_elem < 0) return nerr_raise(NERR_ASSERT, "elem error"); \
-        pos = pelem;                                                    \
-        PACK_ELEMENTS(htble);                                           \
-        *pos_elem += sz_elem * htble->num;                              \
-        pelem = *pos_elem;                                              \
     } while (0);
 
 /*
@@ -229,97 +264,6 @@ NEOERR* _mdf_calculate_hdf_len(MDF *mode, HDF *node)
     return STATUS_OK;
 }
 
-NEOERR* _mdf_pack_top_node(HDF *node, unsigned char *pos_top,
-                           int *len_node, int *len_attr, int *len_tble,
-                           int *len_elem, int *len_char,
-                           unsigned char **pos_node, unsigned char **pos_attr,
-                           unsigned char **pos_tble, unsigned char **pos_elem,
-                           unsigned char **pos_char)
-{
-    int sz_int, sz_uint32, sz_char, sz_pointer;
-    int sz_node, sz_attr, sz_tble, sz_tble_node, sz_elem;
-    unsigned char *pos, *pnode, *pattr, *ptble, *pelem, *pchar;
-    size_t slen;
-
-    if (*len_node < 0 || *len_attr < 0 || *len_tble < 0 || *len_elem < 0 || *len_char < 0)
-        return nerr_raise(NERR_ASSERT, "something wrong, stop %d %d %d %d %d",
-                          *len_node, *len_attr, *len_tble, *len_elem, *len_char);
-
-    sz_int = sizeof(int);
-    sz_uint32 = sizeof(UINT32);
-    sz_char = sizeof(char);
-    sz_pointer = sizeof(void*);
-    sz_node = sizeof(HDF);
-    sz_attr = sizeof(HDF_ATTR);
-    sz_tble = sizeof(HASH);
-    sz_tble_node = sizeof(NE_HASHNODE*);
-    sz_elem = sizeof(NE_HASHNODE);
-
-    /*
-     * refresh pointer
-     */
-    pos   = *pos_node;
-    pnode = *pos_node;
-    pattr = *pos_attr;
-    ptble = *pos_tble;
-    pelem = *pos_elem;
-    pchar = *pos_char;
-
-    /*
-     * node
-     */
-    *len_node -= sz_node;
-    *pos_node += sz_node;
-    if (*len_node < 0) return nerr_raise(NERR_ASSERT, "node memory error");
-    memcpy(pos, node, sz_node);
-
-    /* name */
-    pos = pnode + sz_int * 4;
-    PACK_STR(node->name);
-
-    /* value */
-    pos = pnode + sz_int * 4 + sz_pointer;
-    PACK_STR(node->value);
-
-    /* attr */
-    if (hdf_obj_attr(node)) {
-        pos = pnode + sz_int * 4 + sz_pointer * 2;
-        PACK_ATTR(node);
-    }
-
-    /* top */
-    pos = pnode + sz_int * 4 + sz_pointer * 3;
-    * (unsigned char**)pos = pos_top;
-
-    /* TODO last_hp */
-    /* TODO last_hs */
-    pos = pnode + sz_int * 4 + sz_pointer * 6;
-    * (unsigned char**)pos = 0x0;
-    pos = pnode + sz_int * 4 + sz_pointer * 7;
-    * (unsigned char**)pos = 0x0;
-
-    /* child */
-    if (hdf_obj_child(node)) {
-        pos = pnode + sz_int * 4 + sz_pointer * 5;
-        * (unsigned char**)pos = pnode + sz_node;
-    }
-
-    if (node->hash) {
-        /* hash */
-        pos = pnode + sz_int * 4 + sz_pointer * 8;
-        PACK_HASH(node->hash);
-
-    }
-
-    if (node->last_child) {
-        /* last_child */
-        pos = pnode + sz_int * 4 + sz_pointer * 9;
-        * (unsigned char**)pos = 0x0;
-    }
-
-    return STATUS_OK;
-}
-
 NEOERR* _mdf_pack_hdf_node(HDF *node, unsigned char *pos_top,
                            int *len_node, int *len_attr, int *len_tble,
                            int *len_elem, int *len_char,
@@ -356,8 +300,6 @@ NEOERR* _mdf_pack_hdf_node(HDF *node, unsigned char *pos_top,
         pos   = *pos_node;
         pnode = *pos_node;
         pattr = *pos_attr;
-        ptble = *pos_tble;
-        pelem = *pos_elem;
         pchar = *pos_char;
 
         /*
@@ -406,6 +348,8 @@ NEOERR* _mdf_pack_hdf_node(HDF *node, unsigned char *pos_top,
 
         if (cnode->hash) {
             /* hash */
+            ptble = *pos_tble;
+            pelem = *pos_elem;
             pos = pnode + sz_int * 4 + sz_pointer * 8;
             PACK_HASH(cnode->hash);
         }
@@ -424,6 +368,106 @@ NEOERR* _mdf_pack_hdf_node(HDF *node, unsigned char *pos_top,
 
         cnode = hdf_obj_next(cnode);
     }
+
+    return STATUS_OK;
+}
+
+NEOERR* _mdf_pack_top_node(HDF *node, unsigned char *pos_top,
+                           int *len_node, int *len_attr, int *len_tble,
+                           int *len_elem, int *len_char,
+                           unsigned char **pos_node, unsigned char **pos_attr,
+                           unsigned char **pos_tble, unsigned char **pos_elem,
+                           unsigned char **pos_char)
+{
+    int sz_int, sz_uint32, sz_char, sz_pointer;
+    int sz_node, sz_attr, sz_tble, sz_tble_node, sz_elem;
+    unsigned char *pos, *pnode, *pattr, *ptble, *pelem, *pchar;
+    size_t slen;
+    NEOERR *err;
+
+    if (*len_node < 0 || *len_attr < 0 || *len_tble < 0 || *len_elem < 0 || *len_char < 0)
+        return nerr_raise(NERR_ASSERT, "something wrong, stop %d %d %d %d %d",
+                          *len_node, *len_attr, *len_tble, *len_elem, *len_char);
+
+    sz_int = sizeof(int);
+    sz_uint32 = sizeof(UINT32);
+    sz_char = sizeof(char);
+    sz_pointer = sizeof(void*);
+    sz_node = sizeof(HDF);
+    sz_attr = sizeof(HDF_ATTR);
+    sz_tble = sizeof(HASH);
+    sz_tble_node = sizeof(NE_HASHNODE*);
+    sz_elem = sizeof(NE_HASHNODE);
+
+    /*
+     * refresh pointer
+     */
+    pos   = *pos_node;
+    pnode = *pos_node;
+    pattr = *pos_attr;
+    pchar = *pos_char;
+
+    /*
+     * node
+     */
+    *len_node -= sz_node;
+    *pos_node += sz_node;
+    if (*len_node < 0) return nerr_raise(NERR_ASSERT, "node memory error");
+    memcpy(pos, node, sz_node);
+
+    /* name */
+    pos = pnode + sz_int * 4;
+    PACK_STR(node->name);
+
+    /* value */
+    pos = pnode + sz_int * 4 + sz_pointer;
+    PACK_STR(node->value);
+
+    /* attr */
+    if (hdf_obj_attr(node)) {
+        pos = pnode + sz_int * 4 + sz_pointer * 2;
+        PACK_ATTR(node);
+    }
+
+    /* top */
+    pos = pnode + sz_int * 4 + sz_pointer * 3;
+    * (unsigned char**)pos = pos_top;
+
+    /* TODO last_hp */
+    /* TODO last_hs */
+    pos = pnode + sz_int * 4 + sz_pointer * 6;
+    * (unsigned char**)pos = 0x0;
+    pos = pnode + sz_int * 4 + sz_pointer * 7;
+    * (unsigned char**)pos = 0x0;
+
+    /* child */
+    if (hdf_obj_child(node)) {
+        pos = pnode + sz_int * 4 + sz_pointer * 5;
+        * (unsigned char**)pos = pnode + sz_node;
+
+        err = _mdf_pack_hdf_node(node, pos_top,
+                                 len_node, len_attr, len_tble, len_elem, len_char,
+                                 pos_node, pos_attr, pos_tble, pos_elem, pos_char);
+        if (err) return nerr_pass(err);
+    }
+
+    if (node->hash) {
+        /* hash */
+        ptble = *pos_tble;
+        pelem = *pos_elem;
+        pos = pnode + sz_int * 4 + sz_pointer * 8;
+        PACK_HASH(node->hash);
+    }
+
+    if (node->last_child) {
+        /* last_child */
+        pos = pnode + sz_int * 4 + sz_pointer * 9;
+        * (unsigned char**)pos = *pos_node - sz_node;
+    }
+
+    /* next */
+    pos = pnode + sz_int * 4 + sz_pointer * 4;
+    * (unsigned char**)pos = 0x0;
 
     return STATUS_OK;
 }
@@ -458,11 +502,6 @@ NEOERR* _mdf_import_hdf(MDF *mode, HDF *node)
     pos_char = pos_elem + len_elem;
 
     err = _mdf_pack_top_node(node, (unsigned char*)mode->node,
-                             &len_node, &len_attr, &len_tble, &len_elem, &len_char,
-                             &pos_node, &pos_attr, &pos_tble, &pos_elem, &pos_char);
-    if (err) return nerr_pass(err);
-
-    err = _mdf_pack_hdf_node(node, (unsigned char*)mode->node,
                              &len_node, &len_attr, &len_tble, &len_elem, &len_char,
                              &pos_node, &pos_attr, &pos_tble, &pos_elem, &pos_char);
     if (err) return nerr_pass(err);
