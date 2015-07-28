@@ -70,7 +70,7 @@
         HDF *child = ((HDF*)pnode)->child;                              \
         UINT32 hashv;                                                   \
         while (child) {                                                 \
-            mtc_dbg("pack %s", hdf_obj_name(child));                    \
+            /* mtc_dbg("pack %s", hdf_obj_name(child)); */              \
             NE_HASHNODE **hnode = __cshash_lookup_node(((HDF*)pnode)->hash, child, &hashv); \
             if (*hnode) {                                               \
                 (*hnode)->value = child;                                \
