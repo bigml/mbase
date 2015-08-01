@@ -163,6 +163,7 @@ NEOERR* mmg_query(mmg_conn *db, char *dsn, char *prefix, HDF *outnode)
     int count, thiscount;
     char key[LEN_HDF_KEY];
     HDF *node, *cnode;
+    int mbson_flag;
     bson *doc;
     NEOERR *err;
 
@@ -212,6 +213,9 @@ NEOERR* mmg_query(mmg_conn *db, char *dsn, char *prefix, HDF *outnode)
         if (outnode) node = outnode; /* need store result */
         else hdf_init(&node);
 
+        mbson_flag = MBSON_EXPORT_TYPE;
+        if (db->flags & MMG_FLAG_NO_TYPE) mbson_flag = MBSON_EXPORT_NONE;
+
         db->c = mongo_sync_cursor_new(db->con, dsn, db->p);
         if (!db->c) return nerr_raise(NERR_DB, "cursor: %s", strerror(errno));
 
@@ -226,7 +230,7 @@ NEOERR* mmg_query(mmg_conn *db, char *dsn, char *prefix, HDF *outnode)
                     HDF *tnode;
                     hdf_init(&tnode);
                     doc = mongo_sync_cursor_get_data(db->c);
-                    err = mbson_export_to_hdf(tnode, doc, NULL, MBSON_EXPORT_TYPE, true);
+                    err = mbson_export_to_hdf(tnode, doc, NULL, mbson_flag, true);
                     if (err != STATUS_OK) return nerr_pass(err);
 
                     char *tkeya = mcs_repvstr_byhdf(prefix, "$", "$", tnode);
@@ -284,7 +288,7 @@ NEOERR* mmg_query(mmg_conn *db, char *dsn, char *prefix, HDF *outnode)
             }
 
             doc = mongo_sync_cursor_get_data(db->c);
-            err = mbson_export_to_hdf(node, doc, key, MBSON_EXPORT_TYPE, true);
+            err = mbson_export_to_hdf(node, doc, key, mbson_flag, true);
             if (err != STATUS_OK) return nerr_pass(err);
 
             /*
@@ -665,11 +669,12 @@ NEOERR* mmg_deletef(mmg_conn *db, char *dsn, int flags, char *selfmt, ...)
     return STATUS_OK;
 }
 
-NEOERR* mmg_custom(mmg_conn *db, char *dbname,
+NEOERR* mmg_custom(mmg_conn *db, char *dbname, int flags,
                    char *prefix, HDF *outnode, char *command)
 {
     mongo_packet *p;
     mongo_sync_cursor *c;
+    int mbson_flag;
     bson *doc;
 
     NEOERR *err;
@@ -695,11 +700,14 @@ NEOERR* mmg_custom(mmg_conn *db, char *dbname,
     if (!c) return nerr_raise(NERR_DB, "cursor: %s", strerror(errno));
 
     if (outnode) {
+        mbson_flag = MBSON_EXPORT_TYPE;
+        if (flags & MMG_FLAG_NO_TYPE) mbson_flag = MBSON_EXPORT_NONE;
+
         if (mongo_sync_cursor_next(c)) {
             doc = mongo_sync_cursor_get_data(c);
             if (!doc) return nerr_raise(NERR_DB, "doc: %s", strerror(errno));
 
-            err = mbson_export_to_hdf(outnode, doc, prefix, MBSON_EXPORT_TYPE, true);
+            err = mbson_export_to_hdf(outnode, doc, prefix, mbson_flag, true);
             if (err != STATUS_OK) return nerr_pass(err);
         } else return nerr_raise(NERR_DB, "cursor next: %s", strerror(errno));
     }
@@ -709,7 +717,7 @@ NEOERR* mmg_custom(mmg_conn *db, char *dbname,
     return STATUS_OK;
 }
 
-NEOERR* mmg_customf(mmg_conn *db, char *dbname,
+NEOERR* mmg_customf(mmg_conn *db, char *dbname, int flags,
                     char *prefix, HDF *outnode, char *cmdfmt, ...)
 {
     char *qa;
@@ -721,7 +729,7 @@ NEOERR* mmg_customf(mmg_conn *db, char *dbname,
     va_end(ap);
     if (!qa) return nerr_raise(NERR_NOMEM, "Unable to allocate mem for string");
 
-    err = mmg_custom(db, dbname, prefix, outnode, qa);
+    err = mmg_custom(db, dbname, flags, prefix, outnode, qa);
     if (err != STATUS_OK) return nerr_pass(err);
 
     free(qa);
@@ -804,6 +812,13 @@ int mmg_get_int_valuef(mmg_conn *db, char *dsn, char *key, int skip, int limit,
     SAFE_FREE(querys);
 
     return val;
+}
+
+int mmg_last_query_count(mmg_conn *db)
+{
+    if (!db) return 0;
+
+    return db->rescount;
 }
 
 #endif  /* DROP_MONGO */

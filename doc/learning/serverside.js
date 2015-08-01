@@ -35,11 +35,20 @@ db.system.js.save({
             "new":true,
             upsert:true
         });
-        
+
         return ret.id;
     }
 })
 
+db.system.js.save({_id: 'playColls', value: function() {
+    var colls = db.getCollectionNames();
+    var pcolls = [];
+    for (var i = 0; i < colls.length; i++) {
+        if (parseInt(colls[i]) > 0) pcolls.push(colls[i]);
+    }
+    return pcolls;
+}
+})
 
 // 统计投票结果
 db.system.js.save({
@@ -59,7 +68,7 @@ db.system.js.save({
     value: function(collname)
     {
         var col = db.getCollection(collname);
-        
+
         col.renameCollection('baker_tmp');
         db.baker_tmp.find().forEach(function(x) {
             db.getCollection('archive_'+collname).save(x);

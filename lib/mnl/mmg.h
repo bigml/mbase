@@ -49,6 +49,9 @@ enum {
     /* when mmg_hdf_update(), you can wrap the value you need to update by '$set' key */
     MMG_FLAG_HDFUPSET = 1 << 14,
 
+    /* don't export type attribute to hdf */
+    MMG_FLAG_NO_TYPE = 1 << 15,
+
     /** When set, inserts if no matching document was found. */
     MMG_FLAG_UPDATE_UPSERT = 0x01,
 
@@ -154,13 +157,28 @@ NEOERR* mmg_deletef(mmg_conn *db, char *dsn, int flags, char *selfmt, ...)
                    ATTRIBUTE_PRINTF(4, 5);
 
 /*
+ * http://docs.mongodb.org/manual/reference/glossary/#glossary
+ *   1. command: A MongoDB operation, other than an insert, update, remove, or query.
+ *   2. $cmd:    A special virtual collection that exposes MongoDB’s database commands
+ * 具体有哪些命令，和每个命令不同的传参格式，请参考：
+ *   1. http://docs.mongodb.org/manual/reference/command/
+ *   或
+ *   2. > db.listCommands()
+ * 这里的命令，与mongo shell中的命令是2个不同概念，
+ *   如 > db.getCollectionNames() 可以执行，但db.$cmd.db.getCollectionNames 没有这个东东
+ *   server size js 里可以写 var colls = db.getCollectionNames();
+ *
+ * C API 使用 mmg_custom[f]() 用来执行上面这些 command
+ *   （底层是通过查询 .$cmd 来实现，可以用来实现删库、建表、索引、ss js等各种奇葩操作）
+ * 用法请参考: tut/mnl/mmg.c
+ *
  * dbname: just dbname, without collection name
  */
-NEOERR* mmg_custom(mmg_conn *db, char *dbname,
+NEOERR* mmg_custom(mmg_conn *db, char *dbname, int flags,
                    char *prefix, HDF *outnode, char *command);
-NEOERR* mmg_customf(mmg_conn *db, char *dbname,
+NEOERR* mmg_customf(mmg_conn *db, char *dbname, int flags,
                     char *prefix, HDF *outnode, char *cmdfmt, ...)
-                    ATTRIBUTE_PRINTF(5, 6);
+                    ATTRIBUTE_PRINTF(6, 7);
 
 /*
  * get one row's string value
@@ -174,6 +192,11 @@ char* mmg_get_valuef(mmg_conn *db, char *dsn, char *key, int skip, char *qfmt, .
 int mmg_get_int_valuef(mmg_conn *db, char *dsn, char *key, int skip, int limit,
                        char *qfmt, ...)
                        ATTRIBUTE_PRINTF(6, 7);
+
+/*
+ * 获取查询结果的个数
+ */
+int mmg_last_query_count(mmg_conn *db);
 
 
 #define MMG_SET_NTT(hdf, key, db, dbname, collname, selfmt, ...)        \

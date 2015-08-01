@@ -243,6 +243,10 @@ int main(int argc, char **argv)
     mtc_foo("custom result...");
     TRACE_HDF(nodea);
 
+    err = mmg_customf(db, "dbtut", NULL, NULL,
+                      "{'eval': 'baker(\"%s\")'}", 'colla');
+    TRACE_NOK(err);
+
     hdf_destroy(&nodea);
     hdf_destroy(&nodeb);
 
