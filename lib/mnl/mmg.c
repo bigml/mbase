@@ -440,6 +440,42 @@ done:
     return nerr_pass(err);
 }
 
+NEOERR* mmg_hdf_insert_n(mmg_conn *db, char *dsn, HDF *nodes)
+{
+    int cnum;
+    HDF *cnode;
+    NEOERR *err;
+
+    MCS_NOT_NULLC(db, dsn, nodes);
+
+    cnum = mcs_get_child_num(nodes, NULL);
+    if (cnum <= 0) return nerr_raise(NERR_ASSERT, "child nexist");
+
+    bson *docs[cnum];
+    for (int i = 0; i < cnum; i++) {
+        docs[i] = NULL;
+    }
+
+    cnode = hdf_obj_child(nodes);
+    for (cnum = 0; cnode; cnode = hdf_obj_next(cnode)) {
+        err = mbson_import_from_hdf(cnode, &docs[cnum], true);
+        CONTINUE_NOK(err);
+
+        cnum++;
+    }
+
+    if (!mongo_sync_cmd_insert_n(db->con, dsn, cnum, (const bson**)docs)) {
+        return nerr_raise(NERR_DB, "sync_cmd_insert_n: %s %d %s",
+                          GET_CONN_ERROR(db->con), errno, strerror(errno));
+    }
+
+    for (int i = 0; i < cnum; i++) {
+        bson_free(docs[cnum]);
+    }
+
+    return STATUS_OK;
+}
+
 NEOERR* mmg_string_update(mmg_conn *db, char *dsn, int flags, char *up, char *sel)
 {
     bson *doca, *docb;

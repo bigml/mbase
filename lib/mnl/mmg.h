@@ -136,6 +136,12 @@ NEOERR* mmg_hdf_insert(mmg_conn *db, char *dsn, HDF *node);
  * with a little config syntax, please refer mcs_data_rend header
  */
 NEOERR* mmg_hdf_insertl(mmg_conn *db, char *dsn, HDF *node, HDF *lnode);
+/*
+ * bulk insert n documents (n is the nodes's child number)
+ * every child of nodes is a document
+ * default bulk size is 4M, you can change it through mongo_sync_conn_set_max_insert_size()
+ */
+NEOERR* mmg_hdf_insert_n(mmg_conn *db, char *dsn, HDF *nodes);
 
 NEOERR* mmg_string_update(mmg_conn *db, char *dsn, int flags, char *up, char *sel);
 NEOERR* mmg_string_updatef(mmg_conn *db, char *dsn, int flags, char *up, char *selfmt, ...)
