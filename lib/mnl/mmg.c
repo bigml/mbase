@@ -470,7 +470,10 @@ NEOERR* mmg_hdf_insert_n(mmg_conn *db, char *dsn, HDF *nodes)
     }
 
     for (int i = 0; i < cnum; i++) {
-        bson_free(docs[cnum]);
+        if (docs[i]) {
+            bson_free(docs[i]);
+            docs[i] = NULL;
+        }
     }
 
     return STATUS_OK;
