@@ -662,7 +662,7 @@ char* mcs_repvstr_byhdf(const char *src, const char *begin, const char *end, HDF
     return str.buf;
 }
 
-NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
+NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode, McsFlag flag)
 {
     HDF *childconfignode, *xnode, *ynode;
     char *keyp, *keyq;
@@ -745,8 +745,11 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
             } else if (require && !strcmp(require, "true")) {
                 return nerr_raise(NERR_ASSERT, "need %s %d", name, type);
             } else {
-                if (!defaultval) defaultval = "";
-                hdf_set_value(outnode, name, defaultval);
+                if (defaultval) {
+                    hdf_set_value(outnode, name, defaultval);
+                } else if (!(flag & MCS_FLAG_REND_NO_EMPTY)) {
+                    hdf_set_value(outnode, name, "");
+                }
             }
             break;
 
@@ -754,7 +757,7 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
             if (hdf_obj_child(childconfignode)) {
                 /* appoint object key from confignode */
                 err = mcs_data_rend(childconfignode, valuenode,
-                                    mcs_fetch_nodef(outnode, name));
+                                    mcs_fetch_nodef(outnode, name), flag);
                 if (err != STATUS_OK) return nerr_pass(err);
             } else if (valuenode) {
                 /* use object key from datanode */
@@ -790,7 +793,7 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
                         while (ynode) {
                             err = mcs_data_rend(childconfignode, ynode,
                                                 mcs_fetch_nodef(outnode, "%s.%d",
-                                                                name, cnum++));
+                                                                name, cnum++), flag);
                             if (err != STATUS_OK) return nerr_pass(err);
 
                             ynode = hdf_obj_next(ynode);
@@ -803,7 +806,7 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
                     /* static array value from datanode */
                     if (singlechild) {
                         err = mcs_data_rend(childconfignode, valuenode,
-                                            mcs_fetch_nodef(outnode, "%s.0", name));
+                                            mcs_fetch_nodef(outnode, "%s.0", name), flag);
                         if (err != STATUS_OK) return nerr_pass(err);
                     } else if (valuenode && hdf_obj_child(valuenode)) {
                         cnum = 0;
@@ -811,7 +814,7 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
                         while (xnode) {
                             err = mcs_data_rend(childconfignode, xnode,
                                                 mcs_fetch_nodef(outnode, "%s.%d",
-                                                                name, cnum++));
+                                                                name, cnum++), flag);
                             if (err != STATUS_OK) return nerr_pass(err);
 
                             xnode = hdf_obj_next(xnode);
@@ -829,8 +832,10 @@ NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode)
             break;
         }
 
-        err = mcs_set_int_attr(outnode, name, "type", type);
-        if (err != STATUS_OK) nerr_ignore(&err);
+        if (!(flag & MCS_FLAG_REND_NO_TYPE)) {
+            err = mcs_set_int_attr(outnode, name, "type", type);
+            if (err != STATUS_OK) nerr_ignore(&err);
+        }
 
         childconfignode = hdf_obj_next(childconfignode);
     }

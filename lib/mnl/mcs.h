@@ -26,6 +26,12 @@ typedef enum {
     CNODE_TYPE_BITOP
 } CnodeType;
 
+typedef enum {
+    MCS_FLAG_Z = 0,
+    MCS_FLAG_REND_NO_TYPE = 1,  /* don't set type attribute on mcs_data_rend() */
+    MCS_FLAG_REND_NO_EMPTY = 1 << 1, /* don't set empty key on mcs_data_rend() */
+} McsFlag;
+
 #define MLIST_ITERATE(list, item)                                       \
     item = list->items[0];                                              \
     for (int t_rsv_i = 0; t_rsv_i < list->num; item = list->items[++t_rsv_i])
@@ -243,7 +249,7 @@ char* mcs_repvstr_byhdf(const char *src, const char *begin, const char *end, HDF
  *      we will iteral two datanodes before and after ".$."
  * please refer doc/mnl/mcs_data_rend.md for more detail
  */
-NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode);
+NEOERR* mcs_data_rend(HDF *confignode, HDF *datanode, HDF *outnode, McsFlag flag);
 
 
 char* mcs_hdf_attr(HDF *hdf, char *name, char*key);

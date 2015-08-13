@@ -16,7 +16,7 @@ int main(int argc, char **argv, char **envp)
 
     for (int i = 0; i < 2; i++) {
         hdf_init(&outnode);
-        err = mcs_data_rend(confignode, datanode, outnode);
+        err = mcs_data_rend(confignode, datanode, outnode, MCS_FLAG_Z);
         OUTPUT_NOK(err);
 
         hdf_dump_format(outnode, 0, stdout);
