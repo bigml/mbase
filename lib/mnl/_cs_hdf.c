@@ -568,7 +568,7 @@ static NEOERR* _set_value (HDF *hdf, const char *name, const char *value,
                     if (hp->value == NULL)
                         return nerr_raise (NERR_NOMEM, "Unable to duplicate value %s for %s",
                                            value, name);
-                    _post_new_mem(mode, hdf->value);
+                    _post_new_mem(mode, hp->value);
                 }
                 else
                 {
