@@ -64,13 +64,18 @@ NEOERR* mdf_set_float_value(MDF *mode, HDF *cnode, const char *name, float value
 NEOERR* mdf_set_buf(MDF *mode, HDF *cnode, const char *name, char *value);
 NEOERR* mdf_set_copy(MDF *mode, HDF *cnode, const char *dst, const char *src);
 NEOERR* mdf_set_valuef(MDF *mode, HDF *cnode, const char *fmt, ...);
-
 NEOERR* mdf_set_attr(MDF *mode, HDF *cnode,
                      const char *name, const char *key, const char *value);
 NEOERR* mdf_set_int_attr(MDF *mode, HDF *cnode,
                          const char *name, const char *key, int value);
+/*
+ * deep copy an HDF tree into a MDF tree, use mdf_set_value()
+ */
+NEOERR* mdf_merge_from_hdf(MDF *mode, HDF *cnode, const char *name, HDF *node);
+
 NEOERR* mdf_remove_tree(MDF *mode, HDF *cnode, const char *name);
 NEOERR* mdf_remove_treef(MDF *mode, HDF *cnode, const char *fmt, ...);
+
 
 __END_DECLS
 #endif    /* __MDF_H__ */

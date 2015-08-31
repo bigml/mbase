@@ -8,6 +8,7 @@ static int m_number = 0;
 static pthread_t *m_thread[5];
 static int m_num[5] = {1, 2, 3, 4, 5};
 static size_t m_thread_size = 5;
+static  __thread int ti; 
 
 static void* log_routine(void *arg)
 {
@@ -15,10 +16,11 @@ static void* log_routine(void *arg)
 
     errno = cnum;
 
+ti = 0;
     while (1) {
         pthread_rwlock_rdlock(&m_lock);
 
-        printf("read thread I'm %d thread number : %d\n", cnum, m_number);
+        printf("read thread I'm %d thread number : %d ti %d\n", cnum, m_number, ti++);
         //mtc_dbg("errno from child %d %d%d%d%d %s ",
         //cnum, cnum, cnum, cnum, errno, strerror(errno));
 

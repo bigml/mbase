@@ -17,7 +17,7 @@ areas [type="108"] {
                 weight [type="100"]  = 0
                 name [type="100"]  = 美人制造暂停
                 type [type="100"]  = 57
-                width [type="100"]  = 1024
+                width [type="100", 2ndattr=yyy]  = 1024
                 height [type="100"]  = 576
                 url [type="100"]  = http://image.res.hunantv.com//mediafiles/wiad_creative/1/1421851178.jpg
                 clickurl [type="100"]  = http://github.com

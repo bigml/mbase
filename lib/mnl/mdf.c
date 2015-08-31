@@ -955,6 +955,24 @@ NEOERR* mdf_set_int_attr(MDF *mode, HDF *cnode,
     return nerr_pass(_cshdf_set_attr(node, name, key, tok, mode));
 }
 
+NEOERR* mdf_merge_from_hdf(MDF *mode, HDF *cnode, const char *name, HDF *node)
+{
+    HDF *lnode, *xnode;
+    NEOERR *err;
+
+    if (!mode || !node) return nerr_raise(NERR_ASSERT, "paramter null");
+    if (!mode->node) return nerr_raise(NERR_ASSERT, "can't remove with empty mode");
+    if (cnode && cnode->top != mode->node) return nerr_raise(NERR_ASSERT, "not child");
+
+    lnode = cnode ? cnode : mode->node;
+
+    err = mdf_get_node(mode, lnode, name, &xnode);
+    if (err) return nerr_pass(err);
+
+    err = _cshdf_merge_nodes(mode, xnode, node);
+    return nerr_pass(err);
+}
+
 NEOERR* mdf_remove_tree(MDF *mode, HDF *cnode, const char *name)
 {
     HDF *node;

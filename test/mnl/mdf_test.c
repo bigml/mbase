@@ -374,6 +374,65 @@ void test_set()
     hdf_destroy(&node);
 }
 
+void test_merge()
+{
+    char *stra, *strb;
+    HDF *node;
+    MDF *mode;
+    NEOERR *err;
+
+    hdf_init(&node);
+    mdf_init(&mode);
+
+    hdf_read_file(node, "data/wordnode.hdf");
+    mdf_import_from_hdf(mode, node);
+
+    hdf_destroy(&node);
+    hdf_init(&node);
+
+    hdf_set_value(node, "naa", "aaa");
+    err = mdf_merge_from_hdf(mode, NULL, NULL, node);
+    PT_ASSERT(err == STATUS_OK);
+
+    PT_ASSERT_STR_EQ(hdf_get_value(mode->node, "naa", "xx"), "aaa");
+
+
+    hdf_destroy(&node);
+    mdf_destroy(&mode);
+    hdf_init(&node);
+    mdf_init(&mode);
+
+    hdf_read_file(node, "data/wordnode.hdf");
+    mdf_import_from_hdf(mode, node);
+
+    HDF *mnode;
+    hdf_init(&mnode);
+    hdf_read_file(mnode, "data/wordnode_s.hdf");
+    hdf_copy(node, "areas.0.slots.0.mergedNode", mnode);
+
+    HDF *cnode = hdf_get_obj(mode->node, "areas.0.slots.0");
+    err = mdf_merge_from_hdf(mode, cnode, "mergedNode", mnode);
+    PT_ASSERT(err == STATUS_OK);
+
+    //hdf_write_file(node, "mdf_merge_node.hdf");
+    //hdf_write_file(mode->node, "mdf_merge_mode.hdf");
+
+    PT_ASSERT_STR_EQ(mcs_hdf_attr(mode->node,
+                                  "areas.0.slots.0.mergedNode.areas.0.slots.0.cards.0.ttzs.0.width",
+                                  "2ndattr"), "yyy");
+
+    hdf_write_string(mode->node, &stra);
+    hdf_write_string(node, &strb);
+    PT_ASSERT_STR_EQ(stra, strb);
+
+    free(stra);
+    free(strb);
+
+    hdf_destroy(&node);
+    hdf_destroy(&mnode);
+    mdf_destroy(&mode);
+}
+
 void test_remove()
 {
     char *stra, *strb;
@@ -444,6 +503,7 @@ void suite_new()
 void suite_write()
 {
     pt_add_test(test_set, "test set", "suite write");
+    pt_add_test(test_merge, "test merge", "suite merge");
     pt_add_test(test_remove, "test remove", "suite write");
 }
 

@@ -611,6 +611,56 @@ static NEOERR* _set_value (HDF *hdf, const char *name, const char *value,
     return STATUS_OK;
 }
 
+static void _cshdf_dealloc_hdf_attr(HDF_ATTR **attr)
+{
+    HDF_ATTR *next;
+
+    while ((*attr) != NULL)
+    {
+        next = (*attr)->next;
+        if ((*attr)->key) free((*attr)->key);
+        if ((*attr)->value) free((*attr)->value);
+        free(*attr);
+        *attr = next;
+    }
+    *attr = NULL;
+}
+
+static NEOERR* _cshdf_copy_attr(HDF_ATTR **dest, HDF_ATTR *src)
+{
+    HDF_ATTR *copy, *last = NULL;
+
+    *dest = NULL;
+    while (src != NULL)
+    {
+        copy = (HDF_ATTR *)malloc(sizeof(HDF_ATTR));
+        if (copy == NULL)
+        {
+            _cshdf_dealloc_hdf_attr(dest);
+            return nerr_raise(NERR_NOMEM, "Unable to allocate copy of HDF_ATTR");
+        }
+        copy->key = strdup(src->key);
+        copy->value = strdup(src->value);
+        copy->next = NULL;
+        if ((copy->key == NULL) || (copy->value == NULL))
+        {
+            _cshdf_dealloc_hdf_attr(dest);
+            return nerr_raise(NERR_NOMEM, "Unable to allocate copy of HDF_ATTR");
+        }
+        if (last) {
+            last->next = copy;
+        }
+        else
+        {
+            *dest = copy;
+        }
+        last = copy;
+
+        src = src->next;
+    }
+    return STATUS_OK;
+}
+
 NEOERR* _cshdf_set_attr (HDF *hdf, const char *name, const char *key,
                          const char *value, MDF *mode)
 {
@@ -820,6 +870,63 @@ NEOERR* _cshdf_remove_tree (HDF *hdf, const char *name, MDF *mode)
     if (lp && lp->last_hp == hp) lp->last_hp = NULL;
     if (lp && lp->last_hs == hp) lp->last_hs = NULL;
     // moon _dealloc_hdf (&hp);
+
+    return STATUS_OK;
+}
+
+NEOERR* _cshdf_merge_nodes(MDF *mode, HDF *lnode, HDF *node)
+{
+    if (!mode || !lnode || !node) return STATUS_OK;
+
+    HDF *cnode;
+    char *key, *val;
+    HDF *xnode;
+    HDF_ATTR *attr, *attr_copy;
+    NEOERR *err;
+
+    cnode = node->child;
+    while (cnode) {
+        key = cnode->name;
+        val = cnode->value;     /* TODO link */
+
+        /*
+         * attribute
+         */
+        err = _cshdf_copy_attr(&attr_copy, cnode->attr);
+        if (err) return nerr_pass(err);
+        attr = attr_copy;
+        while (attr) {
+            err = _cshdf_get_node(lnode, key, &xnode, mode);
+            if (err) return nerr_pass(err);
+
+            err = _cshdf_set_attr(lnode, key, attr->key, attr->value, mode);
+            if (err) return nerr_pass(err);
+
+            attr = attr->next;
+        }
+        _cshdf_dealloc_hdf_attr(&attr_copy);
+
+        /*
+         * value
+         */
+        if (key) {
+            err = _cshdf_set_value(lnode, key, val, mode);
+            if (err) return nerr_pass(err);
+        }
+
+        /*
+         * child
+         */
+        if (hdf_obj_child(cnode)) {
+            err = _cshdf_get_node(lnode, key, &xnode, mode);
+            if (err) return nerr_pass(err);
+
+            err = _cshdf_merge_nodes(mode, xnode, cnode);
+            if (err) return nerr_pass(err);
+        }
+
+        cnode = cnode->next;
+    }
 
     return STATUS_OK;
 }

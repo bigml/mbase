@@ -34,5 +34,8 @@ NEOERR* _cshdf_get_node (HDF *hdf, const char *name, HDF **ret, MDF *mode);
 
 NEOERR* _cshdf_remove_tree (HDF *hdf, const char *name, MDF *mode);
 
+NEOERR* _cshdf_merge_nodes(MDF *mode, HDF *lnode, HDF *node);
+
+
 __END_DECLS
 #endif    /* ___CSHDF_H__ */
