@@ -52,12 +52,18 @@ bool mtc_init(const char *fn, int level)
     atexit(mtc_leave);
     return true;
 }
+
 void mtc_leave()
 {
     if (m_fp != NULL)
         fclose(m_fp);
     m_fp = NULL;
     memset(m_fn, 0x0, sizeof(m_fn));
+}
+
+void mtc_set_level(int level)
+{
+    if (level > 0 && level <= TC_LEVELS) m_dftlv = level;
 }
 
 bool mtc_msg(const char *func, const char *file, long line,

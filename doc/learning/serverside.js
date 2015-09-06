@@ -50,6 +50,16 @@ db.system.js.save({_id: 'playColls', value: function() {
 }
 })
 
+db.system.js.save({_id: 'freqColls', value: function() {
+    var colls = db.getCollectionNames();
+    var pcolls = [];
+    for (var i = 0; i < colls.length; i++) {
+        if (parseInt(colls[i]) > 0) pcolls.push(colls[i]);
+    }
+    return pcolls;
+}
+})
+
 // 统计投票结果
 db.system.js.save({
     _id: 'quizRate',

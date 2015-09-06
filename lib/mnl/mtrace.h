@@ -57,6 +57,7 @@ __BEGIN_DECLS
 
 bool mtc_init(const char *fn, int level);
 void mtc_leave();
+void mtc_set_level(int level);
 bool mtc_msg(const char *func, const char *file, long line,
              int level, const char *format, ...)
              ATTRIBUTE_PRINTF(5, 6);
