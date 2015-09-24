@@ -75,19 +75,21 @@ bool mtc_msg(const char *func, const char *file, long line,
     if (m_fp == NULL) return false;
 
     va_list ap;
-    char tm[25] = {0};
-    double usec = ne_timef();
-    time_t sec = (time_t)usec;
-    //mutil_getdatetime(tm, sizeof(tm), "%Y-%m-%d %H:%M:%S", time(NULL));
-    struct tm *stm = localtime(&sec);
-    strftime(tm, 25, "%Y-%m-%d %H:%M:%S", stm);
-    tm[24] = '\0';
+    struct timeval tv;
+    struct tm *tm;
+    char timestr[25] = {0};
+
+    gettimeofday(&tv, NULL);
+    tm = localtime(&tv.tv_sec);
+
+    strftime(timestr, 25, "%Y-%m-%d %H:%M:%S", tm);
+    timestr[24] = '\0';
 
 #ifdef HAVE_PTHREADS
     mLock(&m_lock);
 #endif
 
-    fprintf(m_fp, "[%s %f]", tm, usec);
+    fprintf(m_fp, "[%s.%06u]", timestr, (unsigned)tv.tv_usec);
 
     switch (level) {
     case TC_WARNING:
