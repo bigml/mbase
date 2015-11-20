@@ -33,6 +33,12 @@ debug
 ----
 M-x gdb --annotate=3 xxx
 
+Run gdb (like this): gdb --annotate=3 /ssh:host:~/myprog <RET>
+     The file name can also be relative to a remote default directory.
+   Given you are in a buffer that belongs to the remote directory
+   /ssh:host:/home/user, you could call
+
+
 C-x <SPC>       添加断点
 C-x C-a C-b     添加断点
 C-x C-a C-d     删除断点
