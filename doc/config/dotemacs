@@ -172,6 +172,7 @@
       (autoload 'calculator "calculator"
         "Run Emacs Caculator." t)
       (global-set-key [(control return)] 'calculator)))
+(windmove-default-keybindings) ;let you move cursor by Shift+Up... to another window
 ;(global-set-key "\C-cc" 'counter)
 ;(define-key global-map "\C-cdc" 'desktop-clear)
 ;(define-key global-map "\C-c\C-l" 'goto-line)    ;deprecate in 2006-04-04
@@ -320,8 +321,8 @@
 (setq smtpmail-auth-credentials
       '(("smtp.163.com"
      25
-     "bigmaliang"
-     "163161552")))
+     "bigmaliang@163.com"
+     "xxxxxx")))
 (setq smtpmail-default-smtp-server "smtp.163.com")
 (setq smtpmail-smtp-server "smtp.163.com")
 (setq smtpmail-local-domain nil)

@@ -4,7 +4,8 @@ sever
 
 
 2, vim /etc/exports
-/usr/local/3min/ *(rw,all_squash,insecureanonuid=0,anongid=0)
+/home/pi         192.168.2.1/24(rw,async,insecure,all_squash,anonuid=1000,anongid=1000)
+/usr/local/3min/ *(rw,all_squash,insecure,anonuid=0,anongid=0)
 /usr/local   192.168.0.1(ro) 192.168.0.2(ro)
 /home        192.168.0.1(rw) 192.168.0.2(rw)
 
@@ -18,4 +19,3 @@ client
 OR
 
  2, mount 172.10.7.204:/usr/local/3min    /mnt/dev
-  
