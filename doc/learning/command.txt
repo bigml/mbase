@@ -4,6 +4,65 @@
 rpcinfo -p localhost give a listing of running RPC programs that has to include mountd, portmapper, nfs, and nlockmgr
 
 
+备份
+---
+I
+    # 在每台工作中心机上，添加以下几条crontab（请自行修改机器名、目录等），以自动增量备份，不自动同步删除，不然无法达到目标。
+
+# 上传
+0,20,40 * * * * echo `date` >> /tmp/backup_code.log; rsync -avu /Users/ml/code/ alia:/root/code/ >> /tmp/backup_code.log 2>&1
+5,25,45 * * * * echo `date` >> /tmp/backup_doc.log; rsync -avu /Users/ml/doc/ alia:/root/doc/ >> /tmp/backup_doc.log 2>&1
+
+# 下载
+10,30,50 * * * * echo `date` >> /tmp/receive_code.log; rsync -avu alia:/root/code/ /Users/ml/code/ >> /tmp/receive_code.log 2>&1
+15,35,55 * * * * echo `date` >> /tmp/receive_doc.log; rsync -avu alia:/root/doc/ /Users/ml/doc/ >> /tmp/receive_doc.log 2>&1
+
+    # 上传
+    7,17,27,37,47,57 * * * * echo `date` >> /tmp/backup_code.log; rsync -avu /Users/bigml/code odroid@odr:/home/odroid/yun/ >> /tmp/backup_code.log 2>&1
+    38 * * * * echo `date` >> /tmp/backup_meiti.log; rsync -avu /Volumes/opt/媒体 odroid@odr:/home/odroid/yun/ >> /tmp/backup_meiti.log 2>&1
+    49 * * * * echo `date` >> /tmp/backup_work.log; rsync -avu /Volumes/opt/work odroid@odr:/home/odroid/yun/ >> /tmp/backup_work.log 2>&1
+
+    # 下载
+    */5 * * * * echo `date` >> /tmp/receive_code.log; rsync -avu odroid@odr:/home/odroid/yun/code/ /Users/bigml/code/ >> /tmp/receive_code.log 2>&1
+    12 * * * * echo `date` >> /tmp/receive_meiti.log; rsync -avu odroid@odr:/home/odroid/yun/媒体/ /Volumes/opt/媒体/ >> /tmp/receive_meiti.log 2>&1
+    23 * * * * echo `date` >> /tmp/receive_work.log; rsync -avu odroid@odr:/home/odroid/yun/work/ /Volumes/opt/work/ >> /tmp/receive_work.log 2>&1
+
+    # 中心机开机最多5分钟后（每隔5分钟），会从备份机上同步最新代码至本机。
+    # 错峰出行，每隔10分钟（逢7）,上传一次代码。故，中心机上的代码最多10分钟会做好备份。请确保下载代码2分钟之内搞定。
+    # 中心机的媒体和work需要等到后半个小时才会备份。
+    # 备份机的媒体和work前半个小时会同步至中心机。
+
+    # @reboot 是个假的。
+    # 每次开机把 odr 上的修改同步到 本机
+    @reboot rsync -avu odroid@odr:/home/odroid/yun/code/ /Users/bigml/code/ >> /tmp/receive_code.log 2>&
+    @reboot rsync -avu odroid@odr:/home/odroid/yun/媒体/ /Volumes/opt/媒体/ >> /tmp/receive_meiti.log 2>&
+    @reboot rsync -avu odroid@odr:/home/odroid/yun/work/ /Volumes/opt/work/ >> /tmp/receive_work.log 2>&
+
+    code 后面的 / 表示同步其目录下内容，不加 / 表示同步他自身。
+
+
+II
+
+    # 空间不够时，需要如下手动清理空间。
+    machine one:
+      1. cd code; rm -rf RUBISH
+      2. rsync -avu --delete /Users/bigml/code odroid@odr:/home/odroid/yun/
+
+    machine others:
+      1.  rsync -avu --delete odroid@odr:/home/odroid/yun/code/ /Users/bigml/code/
+
+
+
+              field          allowed values
+              -----          --------------
+              minute         0-59
+              hour           0-23
+              day of month   1-31
+              month          1-12 (or names, see below)
+              day of week    0-7 (0 or 7 is Sun, or use names)
+
+
+
 恢复文件
 ------
 grep -a -B 50 -A 60 'some string in the file' /dev/sda1 > result.txt

@@ -9,6 +9,15 @@ sever
 /usr/local   192.168.0.1(ro) 192.168.0.2(ro)
 /home        192.168.0.1(rw) 192.168.0.2(rw)
 
+OSX:
+    $ id
+      uid=501(bigml) gid=20(staff)
+    $ vim /etc/exports
+      /Users/bigml/code -network 192.168.0.0 -mask 255.255.0.0 -mapall=501:20
+    $sudo nfsd enable #确认NFSD服务开启
+    $sudo nfsd update #刷新NFSD共享资源
+    $showmount -e #显示当前共享的资源
+
 
 
 client

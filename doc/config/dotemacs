@@ -5,8 +5,8 @@
 
 ;;;====================
 ;;; require: auctex, scim-bridge-el
-;;; $ln -s ~/web/moon/doc/config/dotemacs .emacs
-;;; $ln -s ~/web/moon/doc/config/dotsite-lisp .site-lisp
+;;; $ln -s ~/code/mbase/doc/config/dotemacs .emacs
+;;; $cd .site-lisp; ln -s ~/code/mbase/doc/config/emacs_lisp emacs_lisp
 ;;;====================
 
 
@@ -65,7 +65,7 @@
 
 
 ;;;========== EXTEND ==========
-(setq load-path (append load-path '("~bigml/.site-lisp/emacs_lisp")))
+(setq load-path (append load-path '("~/.site-lisp/emacs_lisp")))
 (setq exec-path (cons "/usr/local/bin" exec-path))
 (require 'c-comment-edit)
 (require 'backup-dir)
@@ -192,7 +192,7 @@
 (setq case-fold-search t) ;C-s ingore case match
 (setq Info-enable-edit t) ;enable you edit the info files
 (setq semantic-idle-scheduler-idle-time 432000) ;semantic occupile 100% cpu on emacs-snapshot
-(setq visible-bell t) ;stop audibel-bee instead by visible-bell 2006-04-04
+;(setq visible-bell t) ;stop audibel-bee instead by visible-bell 2006-04-04
 (setq semanticdb-default-save-directory "~/.semanticdb")    ;store all cache file in a seprated directory
 (setq vc-cvs-stay-local nil) ;not make local backup file in vc mode
 (setq js-auto-indent-flag nil) ;,{}; don't indent js
@@ -210,15 +210,15 @@
 (auto-compression-mode t) ;when visiting a zip file, unzip it first
 (which-func-mode t) ;which function in c mode
 (desktop-save-mode 1) ;this variable can recover file visited last session, register saved, file-cache saved
-(toggle-uniquify-buffer-names)
+;(toggle-uniquify-buffer-names)
 (display-time)
 (setq diary-file "~/doc/diary")
 ;(setq tex-command "pdftex") ;use pdflatex instead of latex
+(setq electric-indent-mode nil)         ; C-j to indent code [Wed 2016-04-27 14:59:23]
 (diary)
 (setq bkup-backup-directory-info
-      '(("/home/bigml/.*" "/home/bigml/.backups/" ok-create full-path prepend-name)
-        ("/Users/bigml/.*" "/Users/bigml/.backups" ok-create full-path prepend-name)
-        ("/mnt/dev/.*" "/home/bigml/.backups" ok-create full-path prepend-name)
+      '(("/Users/maliang/.*" "~/.backups/" ok-create full-path prepend-name)
+        ("/Users/ml/.*" "~/.backups/" ok-create full-path prepend-name)
         ("/mnt/revive/.*" "/home/bigml/.backups" ok-create full-path prepend-name)))
 ;(setq show-trailing-whitespace t)
 (custom-set-variables

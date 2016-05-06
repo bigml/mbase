@@ -146,24 +146,27 @@ E 协调
                D---E---F---G---H master
 
     git rebase
-       Assume the following history exists and the current branch is "topic":
+       I. Assume the following history exists and the current branch is "topic":
 
                      A---B---C topic
                     /
                D---E---F---G master
 
-       From this point, the result of either of the following commands:
+         From this point, the result of either of the following commands:
 
            git rebase master
            git rebase master topic
 
-       would be:
+         would be:
 
                              A'--B'--C' topic
                             /
                D---E---F---G master
+
+       II. git rebase -i commit 能对之前的历史 commit 进行编辑，修改，删除，fixup等。
     rebase 能产生一个更为简洁的提交历史（特别是非维护者，仅小修改时）。
-    注：永远不要rebase那些已经推送到公共仓库的更新(参考http://github.danmarner.com/section/ch3-6/)。
+    注：尽量不要rebase那些已经推送到公共仓库的更新(参考http://github.danmarner.com/section/ch3-6/)。
+    注：rebase 已经推送的更新后，再次更新，需要 push -f，而且，别人pull时需要 merge。
 
 
 F 远程
