@@ -18,26 +18,6 @@
   (mwheel-install)
   (set-selection-coding-system 'compound-text-with-extensions))
 (when (eq system-type 'darwin)
-      ;; default Latin font (e.g. Consolas)
-      (set-face-attribute
-        'default (selected-frame) :font
-        "-apple-Monaco-medium-normal-normal-*-16-*-*-*-m-0-iso10646-1")
-
-      ;; default font size (point * 14)
-      ;;
-      ;; WARNING!  Depending on the default font,
-      ;; if the size is not supported very well, the frame will be clipped
-      ;; so that the beginning of the buffer may not be visible correctly.
-      ;;(set-face-attribute 'default nil :height 165)
-      ;; use specific font for Korean charset.
-      ;; if you want to use different font size for specific charset,
-      ;; add :size POINT-SIZE in the font-spec.
-      ;;(set-fontset-font t 'hangul (font-spec :name "NanumGothicCoding"))
-      ;; you may want to add different for other charset in this way.
-      (autoload 'php-mode "php-mode" nil t)
-      (setq auto-mode-alist
-            (cons '("\\.php$" . php-mode)
-                  auto-mode-alist))
       (global-set-key (kbd "M-`") 'set-mark-command)
       ;(global-set-key [M-[] 'backward-paragraph)
 
@@ -54,15 +34,24 @@
             '(("PDF Viewer" "open -a Preview %o")))
 )
 
-(create-fontset-from-fontset-spec "-xos4-*-medium-r-normal-*-16-*-*-*-*-*-fontset-bigml,\n  chinese-gb2312:-wenquanyi-*-*-*-*-*-12-*-*-*-*-*-*-*,\n mule-unicode-0100-24ff:-wenquanyi-*-*-*-*-*-12-*-*-*-*-*-*-*,\n  mule-unicode-2500-33ff:-wenquanyi-*-*-*-*-*-12-*-*-*-*-*-*-*,\n  mule-unicode-e000-ffff:-wenquanyi-*-*-*-*-*-12-*-*-*-*-*-*-*")
+(when (display-graphic-p)
+  (setq fonts
+        (cond ((eq system-type 'darwin)     '("Monaco"    "STHeiti"))
+              ((eq system-type 'gnu/linux)  '("Menlo"     "WenQuanYi Zen Hei"))
+              ((eq system-type 'windows-nt) '("Consolas"  "Microsoft Yahei"))))
+
+  ;(setq face-font-rescale-alist '(("STHeiti" . 1.2) ("Microsoft Yahei" . 1.2) ("WenQuanYi Zen Hei" . 1.2)))
+  (set-face-attribute 'default nil :font
+                      (format "%s:pixelsize=%d" (car fonts) 14))
+  (dolist (charset '(kana han symbol cjk-misc bopomofo))
+    (set-fontset-font (frame-parameter nil 'font) charset
+                      (font-spec :family (car (cdr fonts))))))
+
 (defface font-lock-function-call-face
   '((t (:foreground "SteelBlue1")))
   "Font Lock mode face used to highlight function calls."
   :group 'font-lock-highlighting-faces)
 (defvar font-lock-function-call-face 'font-lock-function-call-face)
-;(setq default-frame-alist '((height . 90) (width . 153)))
-;(setq default-frame-alist '((font . "terminus")))
-
 
 ;;;========== EXTEND ==========
 (setq load-path (append load-path '("~/.site-lisp/emacs_lisp")))
@@ -343,8 +332,6 @@
  )
 
 
-;;; Uncomment this on Linux distribution
-;(setq default-frame-alist '((font . "fontset-bigml")))
 ;(require 'scim-bridge-zh-si)
 ;(global-set-key (quote [33554464]) (quote set-mark-command))
 ;(add-hook 'after-init-hook 'scim-mode-on)
