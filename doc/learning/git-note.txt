@@ -62,7 +62,9 @@ D DIY
 
     git checkout 3727ae1d48de841b0ed99467c74172301b6a2c3c 将工作目录恢复到特定版本（请记下Previous HEAD position was ....，以便checkout回来）
     git reset --soft HEAD^; edit; git commit -a -c ORIG_HEAD 取消刚刚的commit，然后重做此commit。
-        This is most often done when you remembered what you just committed is incomplete, or you misspelled your commit message, or both
+        This is most often done when you remembered what you just committed is incomplete,
+        or you misspelled your commit message, or both
+        reset --soft 不会修改仓库和工作目录下的文件，只是对当前HEAD移位，适合用来编辑提交历史。
     git reset --hard 3727ae1d48de841b0ed99467c74172301b6a2c3c 恢复到特定版本，之后的提交将被完全抛弃（慎用）
     git revert 3727ae1d48de841b0ed99467c74172301b6a2c3c 取消某次的提交，log中会多一条历史纪录
     git show 3727ae1d48de841b0ed99467c74172301b6a2c3c:pop/tpl/layout.html 查看文件的特定版本
@@ -80,6 +82,7 @@ D DIY
 
     git diff view the changes you made relative to the index
     git diff --cached view the changes you staged for the next commit
+    git diff --cached b73c78a 下次提交和某次版本之间的差异
     git commit 之前用 git diff --check 检查空格
     每次提交限定于完成一次逻辑功能或bug修复，并适当的分解为多次小更新。
     提交说明一行以内(module - description)，空开一行后，再详细说明。
@@ -92,7 +95,7 @@ D DIY
     git blame -L 11,21 Make.env 查看Make.env 11至21行的修改详细记录，可以方便查看某缺陷被引进的时间。
     git blame -C 可以追溯文件重命名操作。
 
-    git rm --cache 取消跟踪，但不删除（untrack but not delete）当前工作目录中的文件，一般结合.gitignore用于取消对配置文件的跟踪。
+    git rm --cached 取消跟踪，但不删除（untrack but not delete）当前工作目录中的文件，一般结合.gitignore用于取消对配置文件、二进制文件的跟踪。
     但在 git push 后会删掉其他 clone 的 index 及 工作目录文件。 故执行该操作前请做好文件备份。
 
     git submodule add git@github.com:bigml/cmoon.git moon 添加其他项目到当前某个子目录。
@@ -100,7 +103,7 @@ D DIY
  子项目下的子项目初始化代码
     git pull --recurse-submodules 同步所有代码
 
-    submodule改变路径：
+    改变submodule的路径：
       修改.gitmodule; git submodlue sync
     submodule删除：
       1. Delete the relevant section from the .gitmodules file.
@@ -110,9 +113,15 @@ D DIY
       5. Run rm -rf .git/modules/path_to_submodule
       6. Commit git commit -m "Removed submodule <name>"
       7. Delete the now untracked submodule files. rm -rf path_to_submodule
+    改变submodule的remote,只需修改相关文件
+    .gitmodules
+    .git/config
+    .git/modules/xxx/config
 
 
     git reflog expire --expire=now --all; git gc --aggressive --prune=now 删掉没有被引用过的文件，清理空间
+
+    git clone --depth=1; cd resp; git fetch --unshallow 用来 clone 大仓库。
 
 
 E 协调
@@ -125,8 +134,11 @@ E 协调
           (git checkout -b|-B <new_branch> [<start point>])
         来创建该分支，并在今后的pull命令中保持同步(请比较修改前后的config)。 以下命令临时获取远程分支（不是一个track branch，且不会自动切换到该分支）
         git fetch origin event_data:event_data
+    git push [remotename] <Refspec>
     git push [remotename] [localbranch]:[remotebranch]
     git push origin :event_data， 删掉远程event_data branch
+    git pull origin master 将origin远端配置分支拉到本地 master 分支
+    git pull origin nexist:master 将origin远端 nexist 分支拉到本地 master 分支
 
     把一个分支整合到另一个分支的办法有两种：
 
@@ -211,7 +223,7 @@ G 服务器
     client$ git push origin master
     另外，服务器端将 /etc/passwd 文件的 git:x:1000:1000::/home/git:/bin/sh 改为 git:x:1000:1000::/home/git:/usr/bin/git-shell 可以将 git 用户的活动范围限制在仅与git相关（无bash登录权限）
 
-    http 服务器以下配置：
+    http 服务器（可以通过匿名 http 进行克隆）以下配置：
 		$ cd /var/www/htdocs/
 		$ git clone --bare /path/to/git_project gitproject.git
 		$ cd gitproject.git

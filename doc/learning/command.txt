@@ -78,6 +78,15 @@ grep -a -B 50 -A 60 'some string in the file' /dev/sda1 > result.txt
 sed -i "s/oldstring/newstring/g" `grep oldstring -rl yourdir`
 
 
+
+sed -i 's/\(\/\* Amalgamated: \)\(#include ".*"\)\( \*\/\)/\2/g' x.c
+
+/* Amalgamated: #include "common/cs_dbg.h" */
+===>
+#include "common/cs_dbg.h"
+
+
+
 日期处理
 ------
 输出当前秒数
@@ -105,8 +114,12 @@ ps -eo pid,tty,user,comm,stime,etime
 
 添加用户
 ------
+快速添加账号
 #useradd -d /home/hjj -m hjj
 #passwd hjj
+
+完善信息添加账号
+#adduser hjj
 
 
 创建密匙
@@ -167,3 +180,18 @@ scrot -u x.jpg
 
 
 git rev-list --objects --all |     while read sha1 fname;     do         echo -e "$(git cat-file -s $sha1)\t$\t$fname";     done | sort -n > filesize.txt
+
+cpp -dM /dev/null show all the predefined macros. 可以用来检测系统预定义宏
+
+用U盘安装系统
+diskutil list
+diskutil umountDisk /dev/disk2
+hdiutil convert -format UDRW debian-8.8.0-amd64-CD-1.iso -o debian-8.8.0-amd64-CD-1.dmg
+sudo dd if=debian-8.8.0-amd64-CD-1.dmg of=/dev/[r]disk2 bs=4m  [/1m/1M]
+diskutil eject /dev/disk1
+
+反过来，可以备份整个系统（rpi,odroid...）
+dd if=/dev/disk0 of=fdimage.img count=2880
+
+另，hdiutil convert 这一步是将 iso 转换成 osx 的 UDIF格式，Linux下，iso 和 img通用，可以直接改后缀名(https://www.techwalla.com/articles/what-are-the-differences-between-iso-and-img-files)。
+[UDWR]https://en.wikipedia.org/wiki/Apple_Disk_Image#UDIF_data_format, https://en.wikipedia.org/wiki/ISO_image

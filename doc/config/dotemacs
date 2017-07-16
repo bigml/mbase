@@ -11,8 +11,19 @@
 
 
 ;;;========== WINDOW ==========
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+
 (menu-bar-mode 0)
 (tool-bar-mode 0)
+(ido-mode 1)
 (set-scroll-bar-mode 'right)
 (when window-system
   (mwheel-install)
@@ -55,18 +66,21 @@
 
 ;;;========== EXTEND ==========
 (setq load-path (append load-path '("~/.site-lisp/emacs_lisp")))
+(setq load-path (append load-path '("/usr/local/share/emacs/site-lisp/nhexl-mode")))
 (setq exec-path (cons "/usr/local/bin" exec-path))
 (require 'c-comment-edit)
 (require 'backup-dir)
 (require 'color-theme)
 (require 'xcscope)
-(load-library "desktop-menu")
+;(require 'nhexl-mode)
+;(load-library "desktop-menu")                      ;replaced by workgroup2 on [Sun 2017-07-16 17:21:39]
 (load-library "etach")                              ;use emacs RMAIL to deal with /var/mail/bigml 2006-09-22
 (load-library "smtpmail")                           ;use smtp mail instead of sendmail to outgoing mail 2006-09-24
 (load-library "cs-mode")                            ;clearsilver use
 (autoload 'all "all" nil t)
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)       ;markdown mode [Wed 2014-06-11 10:41:17]
+(require 'workgroups2)
 ;(:eval (list (nyan-create)))
 ;(autoload #'espresso-mode "espresso" "Start espresso-mode" t) ;Espresso has been incorporated into GNU Emacs starting with version 23.2 and has been renamed js-mode. espresso-mode will no longer be maintained outside of Emacs proper. This page has been kept only for historical interest.
 ;(require 'un-define)                                ;2006-10-23 use mule-ucs
@@ -149,9 +163,18 @@
 (define-key global-map "\C-c\C-m\C-f" 'facemenu-set-foreground)
 (define-key global-map "\C-c\C-m\C-b" 'facemenu-set-background)
 (define-key global-map "\C-c\C-m\C-i" 'facemenu-set-italic)
-(define-key global-map "\C-cds" 'desktop-menu-save-into)
-(define-key global-map "\C-cdl" 'desktop-menu-load)
-(define-key global-map "\C-cdd" 'desktop-menu)
+;(define-key global-map "\C-cds" 'desktop-menu-save-into)
+;(define-key global-map "\C-cdl" 'desktop-menu-load)
+;(define-key global-map "\C-cdc" 'desktop-clear)
+;(define-key global-map "\C-cdd" 'desktop-menu)
+
+(setq wg-prefix-key (kbd "C-c w"))
+(setq wg-session-file "~/.emacs.d/.emacs_workgroups")
+(global-set-key (kbd "C-c w f") 'wg-find-session-file)
+(global-set-key (kbd "C-c w r") 'wg-reload-session)
+(global-set-key (kbd "C-c w s") 'wg-save-session)
+(setq wg-mess-with-buffer-list t)
+
 (define-key global-map "\C-xvp" 'svn-status)
 (define-key global-map "\C-ci" 'cs-insert-tag)
 (define-key global-map "\C-cm" 'c-comment-edit)
@@ -163,7 +186,6 @@
       (global-set-key [(control return)] 'calculator)))
 (windmove-default-keybindings) ;let you move cursor by Shift+Up... to another window
 ;(global-set-key "\C-cc" 'counter)
-;(define-key global-map "\C-cdc" 'desktop-clear)
 ;(define-key global-map "\C-c\C-l" 'goto-line)    ;deprecate in 2006-04-04
 ;(define-key global-map "\C-cq" (global-set-key (quote [33554464]) (quote quail-select-current)))
 ;(define-key global-map "\C-cm" (global-set-key (quote [33554464]) (quote set-mark-command)))
@@ -194,7 +216,8 @@
 (global-font-lock-mode t) ;enable global font-lock-mode highlight
 (transient-mark-mode t) ;highlight the region
 (column-number-mode t) ;display the column number in the mode line
-(iswitchb-mode) ;C-x b list the matchs file name
+;(iswitchb-mode) ;C-x b list the matchs file name replaced by ido-mode on [Sun 2017-07-16 17:25:10]
+;(icomplete-mode 99) ;[Fri 2016-06-03 09:22:32] icomplete-mode replaced iswitchb-mode
 (auto-image-file-mode t) ;visiting of image files as images
 (auto-compression-mode t) ;when visiting a zip file, unzip it first
 (which-func-mode t) ;which function in c mode
@@ -335,3 +358,4 @@
 ;(require 'scim-bridge-zh-si)
 ;(global-set-key (quote [33554464]) (quote set-mark-command))
 ;(add-hook 'after-init-hook 'scim-mode-on)
+(workgroups-mode 1)
