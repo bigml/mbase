@@ -134,6 +134,22 @@ ssh-keygen -t rsa -C "bigmaliang@gmail.com"
 ssh -[v]T git@github.com
 
 
+网络及查找机器
+-------------
+
+用namp对局域网扫描一遍，然后查看arp缓存表就可以知道局域内ip对应的mac了
+# nmap -sP 192.168.1.0/24 扫描局域网内的机器
+# arp -a | grep b8:27:eb:f1:27:1f
+
+
+查看指定端口的流量占用
+# iftop -P -f "port 6001 or (src host iZwz9fkz67tuns8f78ed31Z and src port 80)"
+
+文本方式查看60秒数据
+# iftop -t -s 60
+
+
+
 修改路由
 ------
 #route 查看路由表
@@ -159,6 +175,13 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 default         *               0.0.0.0         U     0      0        0 ppp0
 
 
+针对OSX
+-------
+$ ps aux
+$ netstat -ap tcp
+$ otool -L
+
+
 TAB 键自动补齐 link 目录后的 /
 --------------------------
 echo "set mark-symlinked-directories on" >> ~/.inputrc
@@ -182,6 +205,24 @@ scrot -u x.jpg
 git rev-list --objects --all |     while read sha1 fname;     do         echo -e "$(git cat-file -s $sha1)\t$\t$fname";     done | sort -n > filesize.txt
 
 cpp -dM /dev/null show all the predefined macros. 可以用来检测系统预定义宏
+
+lsof -i :$port | grep -v "PID" | awk '{print "kill -9",$2}' | sh  # 杀掉绑定了指定端口的程序
+
+
+dmesg and watch
+---------------
+watch -n 0.1 "dmesg | tail -n $((LINES-6))"
+
+
+pushd dirs and popd
+-------------------
+$ pushd /usr/local/src  #将当前目录push，并且跳到/usr/local/src
+$ dirs -v               #查看目录堆栈
+$ pushd +n              #跳转到第几个堆栈(跳转后堆栈会变，需再次dirs -v)
+$ pushd -n ~            #只压入堆栈，而不跳转目录
+$ dirs -c               #清空堆栈
+$ popd +N               #删除堆栈元素
+
 
 用U盘安装系统
 diskutil list

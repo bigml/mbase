@@ -54,6 +54,22 @@ tcpdump对截获的数据并没有进行彻底解码，数据包内的大部分�
 * 使用-i参数指定tcpdump监听的网络界面，这在计算机具有多个网络界面时非常有用，
 * 使用-c参数指定要监听的数据包数量，
 * 使用-w参数指定将监听到的数据包写入文件中保存
+* 使用-X参数以十六进制和文本格式打印消息体（除链路层），与-s 0 结合使用可打印全长度消息。
+    When parsing and printing, in addition to printing the headers of each packet, print the data of each packet (minus its link  level  header)  in  hex  and
+    ASCII.  This is very handy for analysing new protocols.
+
+* 抓包并实时查看 websocket 二进制数据
+  sudo tcpdump -l -w - dst host s50.37wandtsh5.5jli.com | tcpflow -C -D -r - | while read line; do  echo $line | sed 's/0000: //' | sed 's/ \.\..*//' | sed 's/ //g' | xargs ./unws; done
+
+  sudo tcpdump -s 0 -l -w - dst host pdk.pkgame.net and port 8500 | tcpflow -C -D -r - | awk -F'[0-9]{4}: ' '{print $2; fflush()}' | awk -F[..] '{print $1; fflush()}' | sed -u 's/ //g' | ./callunws.sh
+
+  -l line buffer
+  -w - 输出到stdou
+  -C console print without packet source and destination detail
+  -D console out should be in hex
+  -r - 从stdin 读入
+  fflush() 关闭 awk buffer功能
+  -u unbuffer
 
 
 expression为以下几种情况：
