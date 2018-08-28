@@ -121,6 +121,12 @@ ps -eo pid,tty,user,comm,stime,etime
 完善信息添加账号
 #adduser hjj
 
+将用户加入组
+usermod -G git -a ml
+
+查看用户和组信息
+id ml 或直接 id
+
 
 创建密匙
 ------
@@ -214,6 +220,12 @@ dmesg and watch
 watch -n 0.1 "dmesg | tail -n $((LINES-6))"
 
 
+xargs
+-----
+$ redis-cli keys order_* | xargs redis-cli del
+$ redis-cli keys user_history* | xargs -I % redis-cli move % 9
+
+
 pushd dirs and popd
 -------------------
 $ pushd /usr/local/src  #将当前目录push，并且跳到/usr/local/src
@@ -222,6 +234,10 @@ $ pushd +n              #跳转到第几个堆栈(跳转后堆栈会变，需再
 $ pushd -n ~            #只压入堆栈，而不跳转目录
 $ dirs -c               #清空堆栈
 $ popd +N               #删除堆栈元素
+
+gifv
+----
+https://i.imgur.com/qlImcfe.mp4
 
 
 用U盘安装系统

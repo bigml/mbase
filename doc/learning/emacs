@@ -24,8 +24,12 @@ gerneal
 ----
 C-x RET r 设置当前文件的显示coding system
 C-x RET f 设置当前文件的保存coding system
+C-x C-f /[METHOD:]USER@HOST#PORT:FILENAME edit remote file
+
+e.g.
 C-x C-f /sudo:/etc/fstab    edit file as root
-C-x C-f /METHOD:USER@HOST#PORT:FILENAME edit remote file
+C-x C-f /ssh:adola@bya:/home/adola/colias/cgi/viki.c
+C-x C-f /adola@bya:/home/adola/colias/cgi/viki.c
 
 M-i                insert tab/spaces (tab-to-tab-stop) ~= C-q TAB
 
@@ -145,3 +149,16 @@ Shift-<left/right/up/down> 上下左右切换屏
 C-x ^ 增高屏
 C-x } 加宽屏 ({变窄)
 C-x + 使所有屏等高
+
+
+
+calc
+----
+C-x * c   or M-x calc to begin
+C-x * k 图形按钮模式
+
+计算选择region的和
+1. Mark set begin, end
+2. select numbers to calculater C-x * r
+3. split the number in frames on the stack U v
+4. Add them all up. Iterate through by typing the +

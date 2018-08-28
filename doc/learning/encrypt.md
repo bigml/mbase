@@ -58,7 +58,7 @@ Base64常用于在通常处理文本数据的场合，表示、传输、存储�
 
    * 1976年 [DH](https://zh.wikipedia.org/wiki/%E8%BF%AA%E8%8F%B2-%E8%B5%AB%E7%88%BE%E6%9B%BC%E5%AF%86%E9%91%B0%E4%BA%A4%E6%8F%9B)
    * 1977年 RSA
-   * DSA ECDSA (椭圆曲线签名算法，比特币协议使用)
+   * DSA ECDSA ECC (椭圆曲线签名算法，比特币协议不使用 伪随机曲线，而是Koblitz曲线)
 
 非对称加密的应用场景：
 

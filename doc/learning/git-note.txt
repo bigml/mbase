@@ -12,6 +12,9 @@ B 基本概念
 	git 在 git 目录（一般为.git） 目录下存放所有版本，所有提交的文件快照（无改动时存放快照指针）， 这样对于任意一次提交都可以快速取得工作快照
     git 已track文件的三种状态： modified, staged(对应.git/index文件), commited
     git 的三个工作区域： working directory, staging area, git directory(respository)，一般 stagin area 也在 .git/目录下
+
+    When you checkout a branch, it changes HEAD(respository) to point to the new branch ref, populates your Index(staging area) with the snapshot of that commit, then copies the contents of the Index into your Working Directory(working directory).
+
     git 对象的四种类型： blob(文件), tree(管理tree和blob), commit, tag。 git 中的每个对象都包含 类型、大小、内容 三个部分。
 
     Revision（修订版本选择） 指明revision方法有：
@@ -23,6 +26,10 @@ B 基本概念
         范围引用，被后者包含，但不被前者包含的提交。 git log master..voov 查看在 voov 中存在，但 master 中不存在的提交
             git log refA..refB = git log ^refA refB = git log refB --not refA， 同时，多点选择 git log refA refB ^refC 也支持
         三点引用，被两者其中一个包含，但不被另一个包含的提交。 git log master...voov 取两分支的差集
+        ORIG_HEAD is previous state of HEAD, set by commands that have possibly dangerous behavior, to be easy to revert them.
+        It is less useful now that Git has reflog: HEAD@{1} is roughly equivalent to ORIG_HEAD
+        (HEAD@{1} is always last value of HEAD, ORIG_HEAD is last value of HEAD before dangerous operation).
+
 
     Refspec
         Ref 是引用的简写，是SHA-1值的一些可读性更强的名字引用
@@ -76,8 +83,10 @@ D DIY
     $ git checkout foo/bar.txt
 
     git tag 查看所有标签
+    轻量级标签就像是个不会变化的分支，实际上它就是个指向特定提交对象的引用
     git tag -a v1.2 -m "10st runable version" 9fceb02
     git show v1.2 查看v1.2标签的详细信息
+    一般是用轻量级标签，使用方法跟分支一样，如下：
     git push origin v1.2 分享标签, or, git push --tags 分享所有标签
 
     git diff view the changes you made relative to the index
@@ -127,18 +136,41 @@ D DIY
 E 协调
     git branch -a 查看所有分支（包括远程）, remotename/branchname 表示远程分支
     git branch -v --no-merge 查看所有还未合并到当前分支的分支及其最后一次 commit 信息
-    git push origin voov:qa/asownone 将本机的 voov branch 推到 origin remote 的 qa/asownone branch(fetch refspec 中可以使用refs/remotes/origin/qa/*分开获取)，
-        其他用户可以通过 git pull 来同步该分支，pull一般会拉取所有分支数据，但不会在本机创建该分支，
-        可以用
-          git checkout -b[-t] myeventdata origin/event_data
-          (git checkout -b|-B <new_branch> [<start point>])
-        来创建该分支，并在今后的pull命令中保持同步(请比较修改前后的config)。 以下命令临时获取远程分支（不是一个track branch，且不会自动切换到该分支）
-        git fetch origin event_data:event_data
+
+  1. 创建分支的用户
+    git config push.default current
+    - nothing : Do not push anything
+    - matching : Push all matching branches
+    - upstream/tracking : Push the current branch to whatever it is tracking
+    - current : Push the current branch
+    由于 git push 推送方式不能依分支定制（没找到？），所以我们对需要推送的分支名有全局管理，尽量不要出现 git push origin dev:maliangdev 的情况
+
+    $ git branch voov master
+    $ git checkout voov
+      等价于$ git checkout -b voov master  (git checkout -b|-B <new_branch> [<start point>])
+    .... (commit)
+    $ git push origin voov
+    $ git branch --set-upstream-to=origin/voov
+    $ git push
+    $ git pull
+
+  2. 查看分支的用户
+    $ git fetch
+    $ git branch voov origin/voov
+    $ git checkout voov
+    $ git pull
+
     git push [remotename] <Refspec>
     git push [remotename] [localbranch]:[remotebranch]
     git push origin :event_data， 删掉远程event_data branch
     git pull origin master 将origin远端配置分支拉到本地 master 分支
     git pull origin nexist:master 将origin远端 nexist 分支拉到本地 master 分支
+
+    git push origin voov:qa/asownone 将本机的 voov branch 推到 origin remote 的 qa/asownone branch(fetch refspec 中可以使用refs/remotes/origin/qa/*分开获取)，
+    其他用户可以通过 git pull 来同步该分支，pull一般会拉取所有分支数据，但不会在本机创建该分支，
+    git fetch origin event_data:event_data
+    临时获取远程分支（不是一个track branch，且不会自动切换到该分支）
+
 
     把一个分支整合到另一个分支的办法有两种：
 
