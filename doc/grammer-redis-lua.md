@@ -1,3 +1,10 @@
+### notice
+
+There is no difference between:
+
+> LPUSH myset 123
+> LPUSH myset "123"
+
 ### Redis to Lua conversion table.
 
 * Redis integer reply -> Lua number

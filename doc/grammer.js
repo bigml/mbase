@@ -41,6 +41,8 @@
         // balabala
     // 会抛出 undefined 异常
 
+    // 另外，可以参考业务端实现的 LEAF.valid()
+
 // 语法
 
     // 遍历数组
@@ -92,7 +94,7 @@
     a.splice(1, 2, 'mmm', 'nnn', 'ooo', 'ppp');    // "['aaa', 'mmm', 'nnn', 'ooo', 'ppp', 'ddd']"
 
     s.length;
-    s.slice();
+    s.slice(1, 11)              // 'c0486202080' ==> '0486202080'
     s.at();
     s.indexOf();
 

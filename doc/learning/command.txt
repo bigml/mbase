@@ -122,10 +122,23 @@ ps -eo pid,tty,user,comm,stime,etime
 #adduser hjj
 
 将用户加入组
-usermod -G git -a ml
+usermod -G git -a ml 将 ml 用户 加入 git 组
 
 查看用户和组信息
 id ml 或直接 id
+
+
+普通用户使用usb权限
+------------------
+cat /etc/udev/rules.d/99-com.rules
+id
+sudo groupadd usb
+sudo usermod -a -G usb pi
+id
+cd /etc/udev/rules.d/
+sudo touch 99-usbfp.rules
+sudo echo 'SUBSYSTEMS=="usb", ACTION=="add", MODE="0664", GROUP="usb"' >> 99-usbfp.rules
+sudo /etc/init.d/udev reload
 
 
 创建密匙
@@ -246,6 +259,10 @@ diskutil umountDisk /dev/disk2
 hdiutil convert -format UDRW debian-8.8.0-amd64-CD-1.iso -o debian-8.8.0-amd64-CD-1.dmg
 sudo dd if=debian-8.8.0-amd64-CD-1.dmg of=/dev/[r]disk2 bs=4m  [/1m/1M]
 diskutil eject /dev/disk1
+
+OR
+pv -tpreb fanta-2019-0315.img | sudo dd of=/dev/disk2 bs=4m conv=notrunc,noerror
+pv 不知道 ／dev/disk2 的大小，故不能反过来显示进度
 
 反过来，可以备份整个系统（rpi,odroid...）
 dd if=/dev/disk0 of=fdimage.img count=2880

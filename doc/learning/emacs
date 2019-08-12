@@ -152,6 +152,16 @@ C-x + 使所有屏等高
 
 
 
+workgroup
+---------
+C-c w c        创建新工作组
+C-c w C        克隆新工作组
+C-c w n/p      工作组前后切换
+C-c w v        工作组列表切换
+C-c w 1/2/3... 工作组index切换
+
+
+
 calc
 ----
 C-x * c   or M-x calc to begin

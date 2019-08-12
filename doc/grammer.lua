@@ -42,7 +42,7 @@
 
     -- 遍历数组
     for i, v in ipairs(ta) do
-       if i == 3 then
+       if i ~= 3 then
           -- v 'ccc'
        end
     end
