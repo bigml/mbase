@@ -24,3 +24,18 @@ OK
 title
 克里克塔
 
+
+### 数据结构
+出了常规的 list, set, sorted set, hash 之外，有几种数据结构值得注意
+
+* geo
+
+* bitmap
+
+* streams
+
+* skip list
+
+* [RedisJSON](https://github.com/RedisJSON/RedisJSON)
+
+* [RedisGraph](https://github.com/RedisGraph/RedisGraph)

@@ -78,10 +78,6 @@ D DIY
     git show 3727ae1d48de841b0ed99467c74172301b6a2c3c 查看这次提交, 约等价于 git log -p 3727ae1d48de841b0ed99467c74172301b6a2c3c, 约等价于git diff 3723^..3727
     git fetch origin; git checkout origin/master foo/bar.txt === svn up foo/bar.txt 仅升级指定文件
 
-    文件 merge 的时候有冲突，放弃本地修改
-    $ git reset foo/bar.txt
-    $ git checkout foo/bar.txt
-
     git tag 查看所有标签
     轻量级标签就像是个不会变化的分支，实际上它就是个指向特定提交对象的引用
     git tag -a v1.2 -m "10st runable version" 9fceb02
@@ -97,6 +93,7 @@ D DIY
     提交说明一行以内(module - description)，空开一行后，再详细说明。
 
     git stash 储藏当前工作目录变更
+    git stash -u 储藏当前工作目录变更(包括untracked files)，常配合 git checkout -f otherbranch、及 git clean -f 使用
     git stash list 列出所有储藏
     git stash apply --index [stash@{2}] 应用储藏到当前分支（无clean要求），并且应用被staged的状态文件。
     git stash branch testchanges 创建一个新的分支来应用储藏
@@ -163,6 +160,7 @@ E 协调
     git push [remotename] <Refspec>
     git push [remotename] [localbranch]:[remotebranch]
     git push origin :event_data， 删掉远程event_data branch
+      (其他已拉取用户通过 git branch -r -d origin/event_data 删除 remotes/origin/event_data 分支)
     git pull origin master 将origin远端配置分支拉到本地 master 分支
     git pull origin nexist:master 将origin远端 nexist 分支拉到本地 master 分支
 
@@ -218,7 +216,8 @@ F 远程
     $git remote show [remote-name] 查看某个远程仓库的分支等详细信息
     $git log origin/master..HEAD 查看将把什么推送到远程。
     $git fetch origin, git diff master..origin/master, git merge origin/master = git pull 但前者能更方便的查看远程上最近的修改。
-    $git merge --no-commit --squash voov 将voov分支上所有的改动合并到当前分支，但不自动生成提交，这样，可以继续在当前分支工作，最后一起提交。
+    $git merge --squash voov       将voov分支上所有的改动做一次修改合并到当前分支，但不自动生成提交，允许检验每个文件是否真正提交（此提交为普通提交，下次merge voov 还是有内容）
+    $git merge --no-commit --no-ff 将voov分支合并到当前分支，但不自动生成提交，允许检验每个文件是否真正提交（此提交为合并提交，下次 merge voov 则 Already up to date）
     $git request-pull origin/master voov 输出voov分支从origin/master以来的修改，可以直接 email 给管理员维护。
 
     分布式协作的三种方式：

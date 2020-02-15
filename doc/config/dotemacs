@@ -66,12 +66,16 @@
 
 ;;;========== EXTEND ==========
 (setq load-path (append load-path '("~/.site-lisp/emacs_lisp")))
+(setq load-path (append load-path '("~/.site-lisp/emacs_lisp/vue")))
 (setq load-path (append load-path '("/usr/local/share/emacs/site-lisp/nhexl-mode")))
+(setq load-path (append load-path '("/usr/local/share/emacs/site-lisp/mmm-mode")))
 (setq exec-path (cons "/usr/local/bin" exec-path))
 (require 'c-comment-edit)
 (require 'backup-dir)
 (require 'color-theme)
 (require 'xcscope)
+(require 'vue-mode)
+(cscope-setup)
 ;(require 'nhexl-mode)
 ;(load-library "desktop-menu")                      ;replaced by workgroup2 on [Sun 2017-07-16 17:21:39]
 (load-library "etach")                              ;use emacs RMAIL to deal with /var/mail/bigml 2006-09-22
@@ -240,7 +244,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(diff-switches "-u")
- '(fill-column 108))
+ '(fill-column 83))
                     ;[Sat 2017-08-05 15:25:42] for wider monitor
 ; '(show-trailing-whitespace t))
 ;(setq erc-fill-prefix " ")
@@ -303,6 +307,9 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-hook 'mmm-mode-hook
+          (lambda ()
+            (set-face-background 'mmm-default-submode-face "#2f4f4f"))) ;disable the mmm-mode ugly background color [Mon 2019-12-30 16:25:12]
 ;'("\\<\\(\\sw+\\)[ \t\n)]*(" 1 font-lock-function-call-face)) t))
 ;(add-hook 'LaTeX-mode-hook 'flyspell-mode)
 ;(add-hook 'LaTeX-mode-hook 'preview-document)

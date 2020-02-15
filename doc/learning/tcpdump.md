@@ -58,6 +58,9 @@ tcpdump对截获的数据并没有进行彻底解码，数据包内的大部分�
     When parsing and printing, in addition to printing the headers of each packet, print the data of each packet (minus its link  level  header)  in  hex  and
     ASCII.  This is very handy for analysing new protocols.
 
+* 抓包并实时查看 80 端口请求的文本数据
+  tcpdump -s 0 -l -w - src 220.202.119.249 and port 80 | tcpflow -c -D -r -
+
 * 抓包并实时查看 websocket 二进制数据
   sudo tcpdump -l -w - dst host s50.37wandtsh5.5jli.com | tcpflow -C -D -r - | while read line; do  echo $line | sed 's/0000: //' | sed 's/ \.\..*//' | sed 's/ //g' | xargs ./unws; done
 

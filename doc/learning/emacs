@@ -88,9 +88,9 @@ js
 tex
 ----
 C-c C-c            compile/view file
-C-c C-s            insert section, parag...
+C-c C-t            insert block(itemize, enumvertate, picture...)
+M-RET              insert item
 C-c C-m            insert macros(ref, space...)
-C-c C-t            insert enviorment(itemize, enumvertate, picture...)
 C-c C-f            insert font(press b for font list)
 
 C-C C-o C-f        enable/disable tex folder mode
