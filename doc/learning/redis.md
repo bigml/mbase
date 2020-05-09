@@ -4,8 +4,10 @@ e.g. $redis-cli --eval exist.lua adola_foods adola_food_ name , 测试家的牛�
 
       $redis-cli script load "$(cat exist.lua)"
       >EVALSHA d01a0f3046b623ba57f354be41baeb15b805c2f5 3 adola_foods adola_food_ name 测试家的牛肉
+      >eval "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}" 2 key1 key2 first second
 
       $redis-cli --ldb --eval ./exist.lua adola_foods adola_food_ name , 测试家的牛肉
+
 
 
 ### 删除

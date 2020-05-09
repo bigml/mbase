@@ -60,18 +60,37 @@ C-x C-a C-w     观察复杂结构提变量的值
 
 version control
 ----
-single file:
+编辑单个文件时:
 C-x v =            vc-diff
 C-x v D            vc-root-diff
 C-x v l            vc-print-log
-dir mode(skeleton)
-C-x v d            vc-dir
-l                  vc-print-log (can use any key in single mode - C-x v)
-TAB                vc-dir-next-directory
-M                  vc-dir-mark-all-files
-U                  vc-dir-unmark-all-files
-x                  vc-dir-hide-up-to-date (refresh)
-v                  vc-next-action
+C-x v d            vc-dir 检查某个文件夹（常是某个项目）下所有的修改，拉起 vc-dir buffer
+
+vc-dir buffer准备进行提交时(l, d等命令照常使用，只是不用C-x v前缀):
+
+1. D 检查这个dir下的所有修改，进入 vc-diff mode
+2. 在 vc-diff buffer 中 n, 或者 M-n 查看每处，或每个文件的修改
+3. 发现有不需要提交的内容，跳转至 vc-dir buffer，指定的文件上
+    a. C-k 消掉该行 (可用 g 取消消掉)
+    b. C-x v u 调用 git checkout xxx
+       确认后，按 x 刷新当前buffer
+4. 跳回 vc-diff 继续查看
+5. 查看完成后，vc-dir buffer 中全为要提交的文件
+6. 若不放心 M 后，再 =， 再次查看修改
+7. 确认ok后按 v 进行提交
+
+C-x v u
+C-k             vc-dir-kill-line
+TAB             vc-dir-next-directory
+SPC             vc-dir-next-line
+n               vc-dir-next-line
+o,或 enter      vc-dir-find-file-other-window
+p               vc-dir-previous-line
+
+M               vc-dir-mark-all-files
+U               vc-dir-unmark-all-files
+x               vc-dir-hide-up-to-date (refresh)
+v               vc-next-action
 
 
 html

@@ -22,6 +22,9 @@
         },
     }
 
+    -- 数组索引从1开始
+    tb[1] -- 'aaa'
+
     rdb['dbs']['main']  or rdb.dbs.main
 
     -- 空字符串判断

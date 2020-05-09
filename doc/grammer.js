@@ -49,6 +49,10 @@
     for (let i = 0; i < a.length; i++) {
         let node = a[i]
     }
+    // or
+    for (let idx in a) {
+        // idx go's from a.length - 1 to 0
+    }
 
     // 遍历对象
     for (let k in o) {

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>插槽 slot</title>
+    <script src="./vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <body-content>
+        <div slot="header">header</div>
+        <div slot="footer">footer</div>
+      </body-content>
+    </div>
+    <script>
+      Vue.component("bodyContent",{
+        template:`<div>
+                    <slot name='header'></slot>
+                    <div>content</div>
+                    <slot name='footer'></slot>
+                  </div>`
+      });
+      var app = new Vue({
+        el:'#app'
+      })
+    </script>
+  </body>
+</html>
