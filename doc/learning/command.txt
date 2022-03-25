@@ -271,3 +271,12 @@ dd if=/dev/disk0 of=fdimage.img count=2880
 
 另，hdiutil convert 这一步是将 iso 转换成 osx 的 UDIF格式，Linux下，iso 和 img通用，可以直接改后缀名(https://www.techwalla.com/articles/what-are-the-differences-between-iso-and-img-files)。
 [UDWR]https://en.wikipedia.org/wiki/Apple_Disk_Image#UDIF_data_format, https://en.wikipedia.org/wiki/ISO_image
+
+
+开机进入命令行
+--------------
+命令行
+sudo systemctl set-default multi-user.target 
+图形界面
+sudo systemctl set-default graphical.target 
+

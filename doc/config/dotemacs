@@ -17,8 +17,8 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (package-initialize)
 
 (menu-bar-mode 0)
@@ -48,7 +48,7 @@
 (when (display-graphic-p)
   (setq fonts
         (cond ((eq system-type 'darwin)     '("Monaco"    "STHeiti"))
-              ((eq system-type 'gnu/linux)  '("Menlo"     "WenQuanYi Zen Hei"))
+              ((eq system-type 'gnu/linux)  '("Monaco"     "WenQuanYi Zen Hei"))
               ((eq system-type 'windows-nt) '("Consolas"  "Microsoft Yahei"))))
 
   ;(setq face-font-rescale-alist '(("STHeiti" . 1.2) ("Microsoft Yahei" . 1.2) ("WenQuanYi Zen Hei" . 1.2)))
@@ -66,15 +66,11 @@
 
 ;;;========== EXTEND ==========
 (setq load-path (append load-path '("~/.site-lisp/emacs_lisp")))
-(setq load-path (append load-path '("~/.site-lisp/emacs_lisp/vue")))
-(setq load-path (append load-path '("/usr/local/share/emacs/site-lisp/nhexl-mode")))
-(setq load-path (append load-path '("/usr/local/share/emacs/site-lisp/mmm-mode")))
 (setq exec-path (cons "/usr/local/bin" exec-path))
 (require 'c-comment-edit)
 (require 'backup-dir)
 (require 'color-theme)
 (require 'xcscope)
-(require 'vue-mode)
 (cscope-setup)
 ;(require 'nhexl-mode)
 ;(load-library "desktop-menu")                      ;replaced by workgroup2 on [Sun 2017-07-16 17:21:39]
@@ -143,14 +139,6 @@
   (interactive)
   (insert (format-time-string "[%a %Y-%m-%d %H:%M:%S]")))
 
-(defun fullscreen (&optional f)
-  (interactive)
-  (modify-frame-parameters f `((fullscreen . maximized))))
-
-(when (and (eq window-system 'x)
-           (not (is-presentingp)))
-  (fullscreen))
-
 (global-set-key [f11] 'fullscreen)
 
 
@@ -177,6 +165,7 @@
 (global-set-key (kbd "C-c w f") 'wg-find-session-file)
 (global-set-key (kbd "C-c w r") 'wg-reload-session)
 (global-set-key (kbd "C-c w s") 'wg-save-session)
+(global-set-key (kbd "C-.") 'hs-toggle-hiding)
 (setq wg-mess-with-buffer-list t)
 
 (define-key global-map "\C-xvp" 'svn-status)
@@ -243,8 +232,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
  '(diff-switches "-u")
- '(fill-column 83))
+ '(display-time-mode t)
+ '(fill-column 83)
+ '(menu-bar-mode nil)
+ '(package-selected-packages '(workgroups2))
+ '(tool-bar-mode nil))
                     ;[Sat 2017-08-05 15:25:42] for wider monitor
 ; '(show-trailing-whitespace t))
 ;(setq erc-fill-prefix " ")
@@ -306,9 +300,9 @@
 
 (add-hook 'c-mode-hook   'hs-minor-mode)
 (add-hook 'c-mode-hook '(lambda ()
-                            (global-set-key [f5] 'hs-toggle-hiding)
+                            (global-set-key [C-.] 'hs-toggle-hiding)
                             (global-set-key [f6] 'hs-hide-all)
-                            (global-set-key [C-f6] 'hs-show-all)))
+                            (global-set-key [f7] 'hs-show-all)))
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 (add-hook 'java-mode-hook       'hs-minor-mode)
 (add-hook 'ess-mode-hook        'hs-minor-mode)
@@ -378,12 +372,6 @@
 ;(setq smtpmail-debug-info t)
 ;(setq gnus-startup-file "~/.site-lisp/config/newsrc")
 ;(setq gnus-init-file "~/.site-lisp/config/gnus-config")
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 
 ;(require 'scim-bridge-zh-si)

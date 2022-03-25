@@ -1,0 +1,28 @@
+:set number  显示行号
+
+
+多个文件
+:e filename 当前窗口打开新文件
+Ctrl + 6 两个文件间切换
+:bn     下一个文件
+:bp     上一个文件
+
+:vsplit filename 新开竖屏打开新文件
+
+
+分屏
+trl+w v 垂直分屏
+trl+w w 屏幕间跳转
+trl+w c 关闭当前操作的屏幕
+
+多行块插入
+移动
+Ctrl+v
+I
+xx
+Esc Esc
+
+多行块删除
+Ctrl+v
+移动
+d
