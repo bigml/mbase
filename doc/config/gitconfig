@@ -30,4 +30,7 @@
         default = simple
 
 [alias]
-        pr = pull --rebase
+	pr = pull --rebase
+
+[http]
+	proxy = http://172.16.0.121:7890

@@ -45,18 +45,18 @@
             '(("PDF Viewer" "open -a Preview %o")))
 )
 
-(when (display-graphic-p)
-  (setq fonts
-        (cond ((eq system-type 'darwin)     '("Monaco"    "STHeiti"))
-              ((eq system-type 'gnu/linux)  '("Monaco"     "WenQuanYi Zen Hei"))
-              ((eq system-type 'windows-nt) '("Consolas"  "Microsoft Yahei"))))
-
-  ;(setq face-font-rescale-alist '(("STHeiti" . 1.2) ("Microsoft Yahei" . 1.2) ("WenQuanYi Zen Hei" . 1.2)))
-  (set-face-attribute 'default nil :font
-                      (format "%s:pixelsize=%d" (car fonts) 14))
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font) charset
-                      (font-spec :family (car (cdr fonts))))))
+;(when (display-graphic-p)
+;  (setq fonts
+;        (cond ((eq system-type 'darwin)     '("Monaco"    "STHeiti"))
+;              ((eq system-type 'gnu/linux)  '("Monaco"     "WenQuanYi Zen Hei"))
+;              ((eq system-type 'windows-nt) '("Consolas"  "Microsoft Yahei"))))
+;
+;  ;(setq face-font-rescale-alist '(("STHeiti" . 1.2) ("Microsoft Yahei" . 1.2) ("WenQuanYi Zen Hei" . 1.2)))
+;  (set-face-attribute 'default nil :font
+;                      (format "%s:pixelsize=%d" (car fonts) 14))
+;  (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;    (set-fontset-font (frame-parameter nil 'font) charset
+;                      (font-spec :family (car (cdr fonts))))))
 
 (defface font-lock-function-call-face
   '((t (:foreground "SteelBlue1")))
@@ -237,7 +237,7 @@
  '(display-time-mode t)
  '(fill-column 83)
  '(menu-bar-mode nil)
- '(package-selected-packages '(workgroups2))
+ '(package-selected-packages (quote (workgroups2)))
  '(tool-bar-mode nil))
                     ;[Sat 2017-08-05 15:25:42] for wider monitor
 ; '(show-trailing-whitespace t))
@@ -378,3 +378,9 @@
 ;(global-set-key (quote [33554464]) (quote set-mark-command))
 ;(add-hook 'after-init-hook 'scim-mode-on)
 (workgroups-mode 1)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Monaco" :foundry "APPL" :slant normal :weight normal :height 113 :width normal)))))
