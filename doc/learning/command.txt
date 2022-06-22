@@ -195,6 +195,11 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 192.168.3.0     *               255.255.255.0   U     0      0        0 ppp1
 default         *               0.0.0.0         U     0      0        0 ppp0
 
+给网卡指定IP地址 ifconfig vpn_vpn 172.16.1.51 netmask 255.255.255.0
+指定网段路由
+route add -net 172.16.0.0/16 gw 172.16.1.1
+route add -net 172.16.0.0/16 eth0
+
 
 针对OSX
 -------
@@ -276,7 +281,9 @@ dd if=/dev/disk0 of=fdimage.img count=2880
 开机进入命令行
 --------------
 命令行
-sudo systemctl set-default multi-user.target 
+sudo systemctl set-default multi-user.target
 图形界面
-sudo systemctl set-default graphical.target 
+sudo systemctl set-default graphical.target
 
+临时交换 CapsLock 与 Control
+setxkbmap -option ctrl:swapcaps
