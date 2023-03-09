@@ -278,6 +278,13 @@ dd if=/dev/disk0 of=fdimage.img count=2880
 [UDWR]https://en.wikipedia.org/wiki/Apple_Disk_Image#UDIF_data_format, https://en.wikipedia.org/wiki/ISO_image
 
 
+调整磁盘分区大小
+#lsblk 查看内存卡设备名
+#cfdisk /dev/mmc0 调整分区大小 Resize & Write
+#umount /dev/mmc0p2
+#resize2fs /dev/mmc0p2 确认分区调整，会提示用 e2fsck 先检查，检查一遍即可
+
+
 开机进入命令行
 --------------
 命令行
