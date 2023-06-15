@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
     struct sockaddr_in srvsa;
     srvsa.sin_family = AF_INET;
-    srvsa.sin_port = htons(54110);
+    srvsa.sin_port = htons(7776);
     srvsa.sin_addr.s_addr = ia.s_addr;
     socklen_t srvlen = sizeof(struct sockaddr_in);
 
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
         
         rv = recv(fd, rcv, bsize, 0);
         if (rv > 1) {
-            //printf("%d %d, %s\n", count, rv, rcv);
+            printf("%d %d, %s\n", count, rv, rcv);
         } else {
             perror("rcv");
             return 1;

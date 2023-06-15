@@ -237,7 +237,7 @@
  '(display-time-mode t)
  '(fill-column 83)
  '(menu-bar-mode nil)
- '(package-selected-packages (quote (workgroups2)))
+ '(package-selected-packages (quote (magit workgroups2)))
  '(tool-bar-mode nil))
                     ;[Sat 2017-08-05 15:25:42] for wider monitor
 ; '(show-trailing-whitespace t))
