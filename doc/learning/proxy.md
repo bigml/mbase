@@ -38,3 +38,14 @@ Host github-bigml
   IdentitiesOnly yes
   ProxyCommand nc -X connect -x 172.16.0.121:7890 %h %p
 ```
+
+### wget,curl
+
+export http_proxy=172.16.0.121:7890
+export https_proxy=172.16.0.121:7890
+
+
+### 关于7890
+
+远古时代使用 国外VPS + shadowsocks，基于以上代理模式连通外网
+由于固定IP容易被墙，当代采用element + clash
