@@ -169,6 +169,9 @@ ssh -[v]T git@github.com
 文本方式查看60秒数据
 # iftop -t -s 60
 
+查看网卡上进程级的流量信息
+# nethogs eth1
+
 
 
 修改路由
