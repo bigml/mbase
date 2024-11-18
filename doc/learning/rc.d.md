@@ -33,6 +33,11 @@ or
 
 Oh, 现如今，这一堆的 shell 脚本，已经被 systemd 的 /lib/systemd/system/*.service 无情的取代了。
 
+$ cp usb-notify@.service /lib/systemd/system
+$ sudo systemctl enable usb-notify@.service
+$ sudo systemctl daemon-reload
+$ systemctl status media-sda1.mount
+
 
 ### 默认列出所有 Unit
 $ systemctl ,or, systemctl list-units
@@ -51,6 +56,22 @@ systemctl list-dependencies multi-user.target
 
 ### 设置启动时的默认 Target
 $ sudo systemctl set-default multi-user.target
+
+### 获取当前启动级别
+$ systemctl get-default
+$ ls -l /etc/systemd/system/default.target
+$ rm /etc/systemd/system/default.target; ln -s /lib/systemd/system/ftv.target /etc/systemd/system/default.target
+
+### 分析系统启动时间
+$ systemd-analyze 打印启动时间（kernel + User）
+$ systemd-analyze blame 打印所有正在运行的 units，按时间排序
+$ systemd-analyze critical-chain 同 blame ，树状显示
+$ systemd-analyze plot > bootup.svg 方便图形查看
+
+###
+$ systemctl list-unit-files --type=target
+$ systemctl list-dependencies [--all] lighttpd.service OR rescue.target
+$ systemctl cat systemd-remount-fs
 
 
 ### 启动 moc

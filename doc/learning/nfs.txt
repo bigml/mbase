@@ -18,6 +18,8 @@ OSX:
     $sudo nfsd update #刷新NFSD共享资源
     $showmount -e #显示当前共享的资源
 
+Linux:
+    $ sudo systemctl start nfs-server
 
 
 client
@@ -27,4 +29,4 @@ client
 
 OR
 
- 2, mount 172.10.7.204:/usr/local/3min    /mnt/dev
+ 2, sudo mount 172.10.7.204:/usr/local/3min    /mnt/dev

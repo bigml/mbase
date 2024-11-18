@@ -68,6 +68,7 @@ D DIY
     --until="2012-10-02" --before="2012-10-02" 某日期前的提交
 
     git checkout 3727ae1d48de841b0ed99467c74172301b6a2c3c 将工作目录恢复到特定版本（请记下Previous HEAD position was ....，以便checkout回来）
+    git checkout 011ff8b tools/subscribe.sh 将指定文件恢复到特定版本
     git reset --soft HEAD^; edit; git commit -a -c ORIG_HEAD 取消刚刚的commit，然后重做此commit。
         This is most often done when you remembered what you just committed is incomplete,
         or you misspelled your commit message, or both
@@ -159,7 +160,7 @@ E 协调
 
     git push [remotename] <Refspec>
     git push [remotename] [localbranch]:[remotebranch]
-    git push origin :event_data， 删掉远程event_data branch
+    git push origin :event_data， 删掉远程event_data branch; git push origin -d event_data also work
       (其他已拉取用户通过 git branch -r -d origin/event_data 删除 remotes/origin/event_data 分支)
     git pull origin master 将origin远端配置分支拉到本地 master 分支
     git pull origin nexist:master 将origin远端 nexist 分支拉到本地 master 分支

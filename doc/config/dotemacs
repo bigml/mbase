@@ -201,7 +201,8 @@
 (setq vc-cvs-stay-local nil) ;not make local backup file in vc mode
 (setq js-auto-indent-flag nil) ;,{}; don't indent js
 (setq mouse-buffer-menu-mode-mult 1)
-(setq tramp-bkup-backup-directory-info bkup-backup-directory-info)
+;(setq tramp-bkup-backup-directory-info bkup-backup-directory-info)
+(setq tramp-verbose 10)
 (setenv "CVS_RSH" "ssh") ;let emacs to use ssh
 (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
@@ -214,7 +215,6 @@
 (setq ido-auto-merge-work-directories-length -1)
 (auto-image-file-mode t) ;visiting of image files as images
 (auto-compression-mode t) ;when visiting a zip file, unzip it first
-(which-func-mode t) ;which function in c mode
 (desktop-save-mode 1) ;this variable can recover file visited last session, register saved, file-cache saved
 ;(toggle-uniquify-buffer-names)
 (display-time)
@@ -235,9 +235,9 @@
  '(column-number-mode t)
  '(diff-switches "-u")
  '(display-time-mode t)
- '(fill-column 83)
+ '(fill-column 100)
  '(menu-bar-mode nil)
- '(package-selected-packages (quote (magit workgroups2)))
+ '(package-selected-packages '(cnfonts dart-mode magit workgroups2))
  '(tool-bar-mode nil))
                     ;[Sat 2017-08-05 15:25:42] for wider monitor
 ; '(show-trailing-whitespace t))
@@ -299,6 +299,7 @@
 (add-hook 'diary-hook 'appt-make-list)
 
 (add-hook 'c-mode-hook   'hs-minor-mode)
+(add-hook 'c-mode-hook   'which-function-mode)
 (add-hook 'c-mode-hook '(lambda ()
                             (global-set-key [C-.] 'hs-toggle-hiding)
                             (global-set-key [f6] 'hs-hide-all)
@@ -378,9 +379,13 @@
 ;(global-set-key (quote [33554464]) (quote set-mark-command))
 ;(add-hook 'after-init-hook 'scim-mode-on)
 (workgroups-mode 1)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Monaco" :foundry "APPL" :slant normal :weight normal :height 113 :width normal)))))
+
+;(set-frame-font "monaco")
+(set-frame-font "-apple-Monaco-normal-normal-normal-*-14-*-*-*-*-0-iso10646-1")

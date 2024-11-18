@@ -6,6 +6,12 @@ MISC
 FONT
 ====
 apt-get install xfonts-terminus
+也可以使用font.txt中安装的 monaco 和 微软雅黑
+通过 cnfonts-model 进行字体配置
+
+对于从源代码安装的 emacs，需要添加truetype字体支持
+$ sudo apt-get install texinfo texi2html libgtk-3-dev
+$ ./configure --with-x-toolkit=gtk 从而使用 truetype 字体（ldd ./emacs）
 
 
 COLOR

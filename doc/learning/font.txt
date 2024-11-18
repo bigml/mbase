@@ -1,0 +1,18 @@
+Linux 安装字体
+
+
+C:/windows/fonts/  目录下的字体文件，
+或者网上下载的  monaco.ttc
+
+拷贝到 
+
+  1. /usr/local/share/fonts/
+  2. /usr/share/fonts/truetype/mine/
+  3. ~/.local/share/fonts/
+并 cd /usr/local/share/fonts/
+
+# mkfontscale
+# mkfontdir
+# fc-cache -fv
+
+即可完成安装

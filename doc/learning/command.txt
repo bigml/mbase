@@ -86,6 +86,11 @@ sed -i 's/\(\/\* Amalgamated: \)\(#include ".*"\)\( \*\/\)/\2/g' x.c
 #include "common/cs_dbg.h"
 
 
+只看配置文件有效配置项
+-------------------
+grep '^[^#;].*' smb.conf
+
+
 
 日期处理
 ------
@@ -297,3 +302,5 @@ sudo systemctl set-default graphical.target
 
 临时交换 CapsLock 与 Control
 setxkbmap -option ctrl:swapcaps
+
+ssh-copy-id ml@nv01 免密登录
